@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>7f1dda37-346a-4850-b2b4-2176d02c4713</ProjectGuid>
+    <ProjectGuid>{B8ADD3E8-2FAB-4EE3-818C-6DF696910AF7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>LibraryFaceRecog.Dal</RootNamespace>
