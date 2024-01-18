@@ -38,6 +38,10 @@
             this.lblInvalid = new DevExpress.XtraEditors.LabelControl();
             this.pictureEdit1 = new DevExpress.XtraEditors.PictureEdit();
             this.btnShowPass = new DevExpress.XtraEditors.SimpleButton();
+            this.lblConnectionError = new DevExpress.XtraEditors.LabelControl();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
+            this.bwCheckConnection = new System.ComponentModel.BackgroundWorker();
+            this.bwGetUserData = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
@@ -139,12 +143,36 @@
             this.btnShowPass.Text = "S";
             this.btnShowPass.Click += new System.EventHandler(this.btnShowPass_Click);
             // 
+            // lblConnectionError
+            // 
+            this.lblConnectionError.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblConnectionError.Appearance.ForeColor = System.Drawing.Color.Red;
+            this.lblConnectionError.Location = new System.Drawing.Point(44, 394);
+            this.lblConnectionError.Name = "lblConnectionError";
+            this.lblConnectionError.Size = new System.Drawing.Size(175, 14);
+            this.lblConnectionError.TabIndex = 9;
+            this.lblConnectionError.Text = "Unable to connect to database.";
+            this.lblConnectionError.Visible = false;
+            // 
+            // bwCheckConnection
+            // 
+            this.bwCheckConnection.WorkerSupportsCancellation = true;
+            this.bwCheckConnection.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwCheckConnection_DoWork);
+            this.bwCheckConnection.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwCheckConnection_RunWorkerCompleted);
+            // 
+            // bwGetUserData
+            // 
+            this.bwGetUserData.WorkerSupportsCancellation = true;
+            this.bwGetUserData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetUserData_DoWork);
+            this.bwGetUserData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetUserData_RunWorkerCompleted);
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btnlogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(260, 413);
+            this.Controls.Add(this.lblConnectionError);
             this.Controls.Add(this.btnShowPass);
             this.Controls.Add(this.lblInvalid);
             this.Controls.Add(this.btnlogin);
@@ -161,6 +189,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login ";
+            this.Shown += new System.EventHandler(this.LoginForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();
@@ -181,5 +210,9 @@
         private DevExpress.XtraEditors.SimpleButton btnlogin;
         private DevExpress.XtraEditors.LabelControl lblInvalid;
         private DevExpress.XtraEditors.SimpleButton btnShowPass;
+        private DevExpress.XtraEditors.LabelControl lblConnectionError;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private System.ComponentModel.BackgroundWorker bwCheckConnection;
+        private System.ComponentModel.BackgroundWorker bwGetUserData;
     }
 }

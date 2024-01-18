@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using LibraryFaceRecog.Core;
+using LibraryFaceRecog.Dal;
 
 namespace LibraryFaceRecog
 {
@@ -17,6 +18,44 @@ namespace LibraryFaceRecog
         {
             InitializeComponent();
         }
+
+        #region UTIL
+        bool loadingIsAlreadyShowing = false;
+        private void ShowLoading(string message)
+        {
+            try
+            {
+                foreach (Control c in this.Controls)
+                {
+                    c.Enabled = false;
+                }
+
+                if (!loadingIsAlreadyShowing)
+                {
+                    loadingIsAlreadyShowing = true;
+                    splashScreenManager1.ShowWaitForm();
+                }
+                splashScreenManager1.SetWaitFormDescription(message);
+            }
+            catch { }
+        }
+
+        private void HideLoading()
+        {
+            try
+            {
+                foreach (Control c in this.Controls)
+                {
+                    c.Enabled = true;
+                }
+
+                loadingIsAlreadyShowing = false;
+                splashScreenManager1.CloseWaitForm();
+            }
+            catch { }
+        }
+
+        #endregion
 
         public static bool Userlogout = false;
         private void btnlogin_Click(object sender, EventArgs e)
@@ -40,23 +79,15 @@ namespace LibraryFaceRecog
             }
         }
 
+        DataTable UserData = new DataTable();
         private void LoginSuccess()
         {
-            if (txtUsername.Text != "hehe")
+            if (!bwGetUserData.IsBusy)
             {
-                lblInvalid.Visible = true;
+                ShowLoading("Checking Credentials...");
+                bwGetUserData.RunWorkerAsync();
             }
-            else
-            {
-                MainForm mf = new MainForm();
-                this.Hide();
-                mf.ShowDialog();
-                if (Userlogout)
-                {
-                    txtPassword.Text = "";
-                    this.Show();
-                }
-            }
+         
         }
 
         private void btnShowPass_Click(object sender, EventArgs e)
@@ -72,5 +103,74 @@ namespace LibraryFaceRecog
                 txtPassword.Properties.PasswordChar = '*';
             }
         }
+
+        bool IsConGood = false;
+        private void LoginForm_Shown(object sender, EventArgs e)
+        {
+            if (!bwCheckConnection.IsBusy)
+            {
+                ShowLoading("Checking Connection...");
+                bwCheckConnection.RunWorkerAsync();
+            }
+        }
+
+        #region CheckConnection
+        private void bwCheckConnection_DoWork(object sender, DoWorkEventArgs e)
+        {
+            IsConGood = Login.testconnection(PublicVariables.ConnectionString);
+            bwCheckConnection.CancelAsync();
+        }
+
+        private void bwCheckConnection_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            HideLoading();
+            if (!IsConGood)
+            {
+                lblConnectionError.Visible = true;
+                txtPassword.Enabled = false;
+                txtUsername.Enabled = false;
+                btnlogin.Enabled = false;
+                btnShowPass.Enabled = false;
+            }
+            else
+                txtUsername.Focus();
+        }
+        #endregion
+
+        #region GetuserData
+        private void bwGetUserData_DoWork(object sender, DoWorkEventArgs e)
+        {
+            UserData = Login.Userlogin(txtUsername.Text, txtPassword.Text);
+            bwGetUserData.CancelAsync();
+        }
+
+        private void bwGetUserData_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            HideLoading();
+            if (Login.LoginIsSuccessful)
+            {
+                if (UserData != null && UserData.Rows.Count > 0)
+                {
+                    MainForm mf = new MainForm();
+                    this.Hide();
+                    mf.ShowDialog();
+                    if (Userlogout)
+                    {
+                        txtPassword.Text = "";
+                        lblInvalid.Visible = false;
+                        this.Show();
+                    }
+                }
+                else
+                {
+                    lblInvalid.Visible = true;
+                    txtUsername.Focus();
+                }
+            }
+            else
+                Msgbox.Error(Login.LoginErrorMessage);
+        }
+        #endregion
+
     }
 }

@@ -30,12 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.btnLogout = new DevExpress.XtraBars.BarButtonItem();
-            this.rpgMenu = new DevExpress.XtraBars.Ribbon.RibbonPage();
-            this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.btnUserManagement = new DevExpress.XtraBars.BarButtonItem();
+            this.rpgMenu = new DevExpress.XtraBars.Ribbon.RibbonPage();
+            this.rpgFunctions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,25 +46,17 @@
             this.ribbon.ExpandCollapseItem.Id = 0;
             this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbon.ExpandCollapseItem,
-            this.barButtonItem1,
             this.btnLogout,
             this.btnUserManagement});
             this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 13;
-            this.ribbon.Minimized = true;
+            this.ribbon.MaxItemId = 1;
             this.ribbon.Name = "ribbon";
             this.ribbon.PageHeaderItemLinks.Add(this.btnLogout);
             this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpgMenu});
-            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.TabletOffice;
-            this.ribbon.Size = new System.Drawing.Size(962, 52);
+            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.TabletOfficeEx;
+            this.ribbon.Size = new System.Drawing.Size(962, 82);
             this.ribbon.StatusBar = this.ribbonStatusBar;
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 9;
-            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // btnLogout
             // 
@@ -76,27 +67,6 @@
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLogout_ItemClick);
             // 
-            // rpgMenu
-            // 
-            this.rpgMenu.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
-            this.rpgMenu.Image = ((System.Drawing.Image)(resources.GetObject("rpgMenu.Image")));
-            this.rpgMenu.Name = "rpgMenu";
-            this.rpgMenu.Text = "Main menu";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnUserManagement);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "ribbonPageGroup1";
-            // 
-            // ribbonStatusBar
-            // 
-            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 494);
-            this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbon;
-            this.ribbonStatusBar.Size = new System.Drawing.Size(962, 31);
-            // 
             // btnUserManagement
             // 
             this.btnUserManagement.Caption = "User Management";
@@ -104,6 +74,27 @@
             this.btnUserManagement.Id = 12;
             this.btnUserManagement.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnUserManagement.LargeGlyph")));
             this.btnUserManagement.Name = "btnUserManagement";
+            // 
+            // rpgMenu
+            // 
+            this.rpgMenu.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.rpgFunctions});
+            this.rpgMenu.Image = ((System.Drawing.Image)(resources.GetObject("rpgMenu.Image")));
+            this.rpgMenu.Name = "rpgMenu";
+            this.rpgMenu.Text = "Main menu";
+            // 
+            // rpgFunctions
+            // 
+            this.rpgFunctions.ItemLinks.Add(this.btnUserManagement);
+            this.rpgFunctions.Name = "rpgFunctions";
+            this.rpgFunctions.Text = "Functions";
+            // 
+            // ribbonStatusBar
+            // 
+            this.ribbonStatusBar.Location = new System.Drawing.Point(0, 494);
+            this.ribbonStatusBar.Name = "ribbonStatusBar";
+            this.ribbonStatusBar.Ribbon = this.ribbon;
+            this.ribbonStatusBar.Size = new System.Drawing.Size(962, 31);
             // 
             // MainForm
             // 
@@ -129,9 +120,8 @@
 
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpgMenu;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgFunctions;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem btnLogout;
         private DevExpress.XtraBars.BarButtonItem btnUserManagement;
     }
