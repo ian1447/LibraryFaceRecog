@@ -28,35 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.ribbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.MainRibbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnLogout = new DevExpress.XtraBars.BarButtonItem();
             this.btnUserManagement = new DevExpress.XtraBars.BarButtonItem();
             this.rpgMenu = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgFunctions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).BeginInit();
+            this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
+            this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // ribbon
+            // MainRibbon
             // 
-            this.ribbon.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.ribbon.Dock = System.Windows.Forms.DockStyle.None;
-            this.ribbon.ExpandCollapseItem.Id = 0;
-            this.ribbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbon.ExpandCollapseItem,
+            this.MainRibbon.ExpandCollapseItem.Id = 0;
+            this.MainRibbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.MainRibbon.ExpandCollapseItem,
             this.btnLogout,
             this.btnUserManagement});
-            this.ribbon.Location = new System.Drawing.Point(0, 0);
-            this.ribbon.MaxItemId = 1;
-            this.ribbon.Name = "ribbon";
-            this.ribbon.PageHeaderItemLinks.Add(this.btnLogout);
-            this.ribbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
+            this.MainRibbon.Location = new System.Drawing.Point(0, 0);
+            this.MainRibbon.MaxItemId = 1;
+            this.MainRibbon.Name = "MainRibbon";
+            this.MainRibbon.PageHeaderItemLinks.Add(this.btnLogout);
+            this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpgMenu});
-            this.ribbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.TabletOfficeEx;
-            this.ribbon.Size = new System.Drawing.Size(962, 82);
-            this.ribbon.StatusBar = this.ribbonStatusBar;
+            this.MainRibbon.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.TabletOffice;
+            this.MainRibbon.Size = new System.Drawing.Size(962, 80);
+            this.MainRibbon.StatusBar = this.ribbonStatusBar;
             // 
             // btnLogout
             // 
@@ -74,6 +76,7 @@
             this.btnUserManagement.Id = 12;
             this.btnUserManagement.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnUserManagement.LargeGlyph")));
             this.btnUserManagement.Name = "btnUserManagement";
+            this.btnUserManagement.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUserManagement_ItemClick);
             // 
             // rpgMenu
             // 
@@ -93,8 +96,16 @@
             // 
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 494);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
-            this.ribbonStatusBar.Ribbon = this.ribbon;
+            this.ribbonStatusBar.Ribbon = this.MainRibbon;
             this.ribbonStatusBar.Size = new System.Drawing.Size(962, 31);
+            // 
+            // documentManager
+            // 
+            this.documentManager.MdiParent = this;
+            this.documentManager.MenuManager = this.MainRibbon;
+            this.documentManager.View = this.tabbedView1;
+            this.documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
+            this.tabbedView1});
             // 
             // MainForm
             // 
@@ -102,15 +113,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 525);
             this.Controls.Add(this.ribbonStatusBar);
-            this.Controls.Add(this.ribbon);
+            this.Controls.Add(this.MainRibbon);
+            this.IsMdiContainer = true;
             this.Name = "MainForm";
-            this.Ribbon = this.ribbon;
+            this.Ribbon = this.MainRibbon;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar;
             this.Text = "Library Management System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
-            ((System.ComponentModel.ISupportInitialize)(this.ribbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.documentManager)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,11 +132,13 @@
 
         #endregion
 
-        private DevExpress.XtraBars.Ribbon.RibbonControl ribbon;
+        private DevExpress.XtraBars.Ribbon.RibbonControl MainRibbon;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpgMenu;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgFunctions;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar;
         private DevExpress.XtraBars.BarButtonItem btnLogout;
         private DevExpress.XtraBars.BarButtonItem btnUserManagement;
+        private DevExpress.XtraBars.Docking2010.DocumentManager documentManager;
+        private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
     }
 }
