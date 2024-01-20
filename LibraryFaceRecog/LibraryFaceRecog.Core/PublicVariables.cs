@@ -27,7 +27,7 @@ namespace LibraryFaceRecog.Core
         /// Here add user privilege that are necessary for the program
         /// Add more if needed
         /// </summary>
-        public static string User;
+        public static string UserName;
         #endregion
     }
 }
