@@ -151,6 +151,7 @@ namespace LibraryFaceRecog
             {
                 if (UserData != null && UserData.Rows.Count > 0)
                 {
+                    PublicVariables.User = txtUsername.Text;
                     MainForm mf = new MainForm();
                     this.Hide();
                     mf.ShowDialog();
