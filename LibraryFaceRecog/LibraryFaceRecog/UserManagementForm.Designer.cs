@@ -32,7 +32,7 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
-            this.comboBoxEdit1 = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cmbPrivilege = new DevExpress.XtraEditors.ComboBoxEdit();
             this.chkShowPass = new DevExpress.XtraEditors.CheckEdit();
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.txtUsername = new DevExpress.XtraEditors.TextEdit();
@@ -69,9 +69,12 @@
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetDetails = new System.ComponentModel.BackgroundWorker();
+            this.bwAddUser = new System.ComponentModel.BackgroundWorker();
+            this.bwEditUser = new System.ComponentModel.BackgroundWorker();
+            this.bwUpdateUserStatus = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPrivilege.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkShowPass.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).BeginInit();
@@ -104,7 +107,7 @@
             // 
             this.layoutControl1.Controls.Add(this.btnCancel);
             this.layoutControl1.Controls.Add(this.btnSave);
-            this.layoutControl1.Controls.Add(this.comboBoxEdit1);
+            this.layoutControl1.Controls.Add(this.cmbPrivilege);
             this.layoutControl1.Controls.Add(this.chkShowPass);
             this.layoutControl1.Controls.Add(this.txtPassword);
             this.layoutControl1.Controls.Add(this.txtUsername);
@@ -143,16 +146,21 @@
             this.btnSave.StyleController = this.layoutControl1;
             this.btnSave.TabIndex = 11;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // comboBoxEdit1
+            // cmbPrivilege
             // 
-            this.comboBoxEdit1.Location = new System.Drawing.Point(779, 171);
-            this.comboBoxEdit1.Name = "comboBoxEdit1";
-            this.comboBoxEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cmbPrivilege.Location = new System.Drawing.Point(779, 171);
+            this.cmbPrivilege.Name = "cmbPrivilege";
+            this.cmbPrivilege.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEdit1.Size = new System.Drawing.Size(281, 20);
-            this.comboBoxEdit1.StyleController = this.layoutControl1;
-            this.comboBoxEdit1.TabIndex = 10;
+            this.cmbPrivilege.Properties.Items.AddRange(new object[] {
+            "Bisu-Admin",
+            "Congressional-Admin"});
+            this.cmbPrivilege.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbPrivilege.Size = new System.Drawing.Size(281, 20);
+            this.cmbPrivilege.StyleController = this.layoutControl1;
+            this.cmbPrivilege.TabIndex = 10;
             // 
             // chkShowPass
             // 
@@ -211,6 +219,7 @@
             this.btnDeact.StyleController = this.layoutControl1;
             this.btnDeact.TabIndex = 3;
             this.btnDeact.Text = "Deactivate";
+            this.btnDeact.Click += new System.EventHandler(this.btnDeact_Click);
             // 
             // btnEdit
             // 
@@ -221,6 +230,7 @@
             this.btnEdit.StyleController = this.layoutControl1;
             this.btnEdit.TabIndex = 2;
             this.btnEdit.Text = "Edit";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -258,6 +268,7 @@
             this.gvUsers.OptionsView.RowAutoHeight = true;
             this.gvUsers.OptionsView.ShowGroupPanel = false;
             this.gvUsers.OptionsView.ShowIndicator = false;
+            this.gvUsers.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvUsers_FocusedRowChanged);
             // 
             // id
             // 
@@ -477,7 +488,7 @@
             // 
             this.layoutControlItem10.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem10.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem10.Control = this.comboBoxEdit1;
+            this.layoutControlItem10.Control = this.cmbPrivilege;
             this.layoutControlItem10.Location = new System.Drawing.Point(0, 109);
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(285, 43);
@@ -517,6 +528,24 @@
             this.bwGetDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetDetails_DoWork);
             this.bwGetDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetDetails_RunWorkerCompleted);
             // 
+            // bwAddUser
+            // 
+            this.bwAddUser.WorkerSupportsCancellation = true;
+            this.bwAddUser.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwAddUser_DoWork);
+            this.bwAddUser.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwAddUser_RunWorkerCompleted);
+            // 
+            // bwEditUser
+            // 
+            this.bwEditUser.WorkerSupportsCancellation = true;
+            this.bwEditUser.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwEditUser_DoWork);
+            this.bwEditUser.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwEditUser_RunWorkerCompleted);
+            // 
+            // bwUpdateUserStatus
+            // 
+            this.bwUpdateUserStatus.WorkerSupportsCancellation = true;
+            this.bwUpdateUserStatus.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwUpdateUserStatus_DoWork);
+            this.bwUpdateUserStatus.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwUpdateUserStatus_RunWorkerCompleted);
+            // 
             // UserManagementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -530,7 +559,7 @@
             this.Shown += new System.EventHandler(this.UserManagementForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEdit1.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbPrivilege.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chkShowPass.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).EndInit();
@@ -594,7 +623,7 @@
         private DevExpress.XtraEditors.CheckEdit chkShowPass;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem3;
-        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEdit1;
+        private DevExpress.XtraEditors.ComboBoxEdit cmbPrivilege;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
         private DevExpress.XtraEditors.SimpleButton btnSave;
@@ -603,5 +632,8 @@
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private System.ComponentModel.BackgroundWorker bwGetDetails;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
+        private System.ComponentModel.BackgroundWorker bwAddUser;
+        private System.ComponentModel.BackgroundWorker bwEditUser;
+        private System.ComponentModel.BackgroundWorker bwUpdateUserStatus;
     }
 }
