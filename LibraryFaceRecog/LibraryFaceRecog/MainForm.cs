@@ -55,5 +55,36 @@ namespace LibraryFaceRecog
                     fc.Activate();
             }
         }
+
+        public static bool BookManagementFormIsOpen = false;
+        private void btnBooksManagement_ItemClick(object sender, ItemClickEventArgs e)
+        {
+             if (!BookManagementFormIsOpen)
+            {
+                BookManagementFormIsOpen = true;
+                BooksManagement bm = new BooksManagement();
+                bm.MdiParent = this;
+                bm.WindowState = FormWindowState.Maximized;
+                bm.Show();
+            }
+            else
+            {
+                Form fc = Application.OpenForms["BooksManagement"];
+                if (fc == null)
+                {
+                    BooksManagement a1 = new BooksManagement();
+                    a1.MdiParent = this;
+                    a1.Show();
+                }
+                else
+                    fc.Activate();
+            }
+        }
+
+        private void btnBookBorrow_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+        
     }
 }

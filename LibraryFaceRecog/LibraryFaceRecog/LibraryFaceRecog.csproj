@@ -55,6 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookBorrowManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookBorrowManagement.Designer.cs">
+      <DependentUpon>BookBorrowManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BooksManagement.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BooksManagement.Designer.cs">
+      <DependentUpon>BooksManagement.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,6 +93,12 @@
     <Compile Include="WaitForm1.Designer.cs">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BookBorrowManagement.resx">
+      <DependentUpon>BookBorrowManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BooksManagement.resx">
+      <DependentUpon>BooksManagement.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>

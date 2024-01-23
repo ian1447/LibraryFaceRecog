@@ -33,11 +33,13 @@
             this.MainRibbon = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.btnLogout = new DevExpress.XtraBars.BarButtonItem();
             this.btnUserManagement = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBooksManagement = new DevExpress.XtraBars.BarButtonItem();
             this.rpgMenu = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgFunctions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.btnBookBorrow = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -49,9 +51,11 @@
             this.MainRibbon.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.MainRibbon.ExpandCollapseItem,
             this.btnLogout,
-            this.btnUserManagement});
+            this.btnUserManagement,
+            this.btnBooksManagement,
+            this.btnBookBorrow});
             this.MainRibbon.Location = new System.Drawing.Point(0, 0);
-            this.MainRibbon.MaxItemId = 1;
+            this.MainRibbon.MaxItemId = 3;
             this.MainRibbon.Name = "MainRibbon";
             this.MainRibbon.PageHeaderItemLinks.Add(this.btnLogout);
             this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -78,6 +82,15 @@
             this.btnUserManagement.Name = "btnUserManagement";
             this.btnUserManagement.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUserManagement_ItemClick);
             // 
+            // btnBooksManagement
+            // 
+            this.btnBooksManagement.Caption = "Books Management";
+            this.btnBooksManagement.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBooksManagement.Glyph")));
+            this.btnBooksManagement.Id = 1;
+            this.btnBooksManagement.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBooksManagement.LargeGlyph")));
+            this.btnBooksManagement.Name = "btnBooksManagement";
+            this.btnBooksManagement.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBooksManagement_ItemClick);
+            // 
             // rpgMenu
             // 
             this.rpgMenu.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -89,6 +102,8 @@
             // rpgFunctions
             // 
             this.rpgFunctions.ItemLinks.Add(this.btnUserManagement);
+            this.rpgFunctions.ItemLinks.Add(this.btnBooksManagement);
+            this.rpgFunctions.ItemLinks.Add(this.btnBookBorrow);
             this.rpgFunctions.Name = "rpgFunctions";
             this.rpgFunctions.Text = "Functions";
             // 
@@ -106,6 +121,15 @@
             this.documentManager.View = this.tabbedView1;
             this.documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
+            // 
+            // btnBookBorrow
+            // 
+            this.btnBookBorrow.Caption = "Book Borrowing";
+            this.btnBookBorrow.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBookBorrow.Glyph")));
+            this.btnBookBorrow.Id = 2;
+            this.btnBookBorrow.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBookBorrow.LargeGlyph")));
+            this.btnBookBorrow.Name = "btnBookBorrow";
+            this.btnBookBorrow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBookBorrow_ItemClick);
             // 
             // MainForm
             // 
@@ -140,5 +164,7 @@
         private DevExpress.XtraBars.BarButtonItem btnUserManagement;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
+        private DevExpress.XtraBars.BarButtonItem btnBooksManagement;
+        private DevExpress.XtraBars.BarButtonItem btnBookBorrow;
     }
 }
