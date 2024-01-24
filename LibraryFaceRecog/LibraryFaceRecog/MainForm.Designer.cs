@@ -34,12 +34,13 @@
             this.btnLogout = new DevExpress.XtraBars.BarButtonItem();
             this.btnUserManagement = new DevExpress.XtraBars.BarButtonItem();
             this.btnBooksManagement = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBookBorrow = new DevExpress.XtraBars.BarButtonItem();
+            this.btnRegister = new DevExpress.XtraBars.BarButtonItem();
             this.rpgMenu = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgFunctions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
-            this.btnBookBorrow = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -53,9 +54,10 @@
             this.btnLogout,
             this.btnUserManagement,
             this.btnBooksManagement,
-            this.btnBookBorrow});
+            this.btnBookBorrow,
+            this.btnRegister});
             this.MainRibbon.Location = new System.Drawing.Point(0, 0);
-            this.MainRibbon.MaxItemId = 3;
+            this.MainRibbon.MaxItemId = 4;
             this.MainRibbon.Name = "MainRibbon";
             this.MainRibbon.PageHeaderItemLinks.Add(this.btnLogout);
             this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -91,6 +93,24 @@
             this.btnBooksManagement.Name = "btnBooksManagement";
             this.btnBooksManagement.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBooksManagement_ItemClick);
             // 
+            // btnBookBorrow
+            // 
+            this.btnBookBorrow.Caption = "Book Borrowing";
+            this.btnBookBorrow.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBookBorrow.Glyph")));
+            this.btnBookBorrow.Id = 2;
+            this.btnBookBorrow.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBookBorrow.LargeGlyph")));
+            this.btnBookBorrow.Name = "btnBookBorrow";
+            this.btnBookBorrow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBookBorrow_ItemClick);
+            // 
+            // btnRegister
+            // 
+            this.btnRegister.Caption = "Register";
+            this.btnRegister.Glyph = ((System.Drawing.Image)(resources.GetObject("btnRegister.Glyph")));
+            this.btnRegister.Id = 3;
+            this.btnRegister.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnRegister.LargeGlyph")));
+            this.btnRegister.Name = "btnRegister";
+            this.btnRegister.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegister_ItemClick);
+            // 
             // rpgMenu
             // 
             this.rpgMenu.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -101,9 +121,10 @@
             // 
             // rpgFunctions
             // 
-            this.rpgFunctions.ItemLinks.Add(this.btnUserManagement);
+            this.rpgFunctions.ItemLinks.Add(this.btnRegister);
             this.rpgFunctions.ItemLinks.Add(this.btnBooksManagement);
             this.rpgFunctions.ItemLinks.Add(this.btnBookBorrow);
+            this.rpgFunctions.ItemLinks.Add(this.btnUserManagement);
             this.rpgFunctions.Name = "rpgFunctions";
             this.rpgFunctions.Text = "Functions";
             // 
@@ -121,15 +142,6 @@
             this.documentManager.View = this.tabbedView1;
             this.documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
-            // 
-            // btnBookBorrow
-            // 
-            this.btnBookBorrow.Caption = "Book Borrowing";
-            this.btnBookBorrow.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBookBorrow.Glyph")));
-            this.btnBookBorrow.Id = 2;
-            this.btnBookBorrow.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBookBorrow.LargeGlyph")));
-            this.btnBookBorrow.Name = "btnBookBorrow";
-            this.btnBookBorrow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBookBorrow_ItemClick);
             // 
             // MainForm
             // 
@@ -166,5 +178,6 @@
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private DevExpress.XtraBars.BarButtonItem btnBooksManagement;
         private DevExpress.XtraBars.BarButtonItem btnBookBorrow;
+        private DevExpress.XtraBars.BarButtonItem btnRegister;
     }
 }

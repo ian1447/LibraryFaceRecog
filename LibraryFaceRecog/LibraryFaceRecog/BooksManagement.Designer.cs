@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BooksManagement));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.cmbType = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDeac = new DevExpress.XtraEditors.SimpleButton();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
             this.dtBooks = new DevExpress.XtraGrid.GridControl();
             this.gvBooks = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.section = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.call_no = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.acc_no = new DevExpress.XtraGrid.Columns.GridColumn();
             this.no_of_copies = new DevExpress.XtraGrid.Columns.GridColumn();
             this.author = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -48,18 +48,19 @@
             this.edition = new DevExpress.XtraGrid.Columns.GridColumn();
             this.cost_price = new DevExpress.XtraGrid.Columns.GridColumn();
             this.copyright_year = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnDeac = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cmbType = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
@@ -71,7 +72,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,6 +91,60 @@
             this.layoutControl1.Size = new System.Drawing.Size(1135, 575);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // cmbType
+            // 
+            this.cmbType.Location = new System.Drawing.Point(543, 12);
+            this.cmbType.Name = "cmbType";
+            this.cmbType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbType.Properties.Items.AddRange(new object[] {
+            "Bisu",
+            "Congressional"});
+            this.cmbType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.cmbType.Size = new System.Drawing.Size(176, 20);
+            this.cmbType.StyleController = this.layoutControl1;
+            this.cmbType.TabIndex = 11;
+            // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
+            this.btnRefresh.Location = new System.Drawing.Point(383, 12);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(116, 22);
+            this.btnRefresh.StyleController = this.layoutControl1;
+            this.btnRefresh.TabIndex = 10;
+            this.btnRefresh.Text = "Refresh";
+            // 
+            // btnDeac
+            // 
+            this.btnDeac.Image = ((System.Drawing.Image)(resources.GetObject("btnDeac.Image")));
+            this.btnDeac.Location = new System.Drawing.Point(253, 12);
+            this.btnDeac.Name = "btnDeac";
+            this.btnDeac.Size = new System.Drawing.Size(126, 22);
+            this.btnDeac.StyleController = this.layoutControl1;
+            this.btnDeac.TabIndex = 9;
+            this.btnDeac.Text = "Deactivate";
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
+            this.btnEdit.Location = new System.Drawing.Point(130, 12);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(119, 22);
+            this.btnEdit.StyleController = this.layoutControl1;
+            this.btnEdit.TabIndex = 8;
+            this.btnEdit.Text = "Edit Book";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
+            this.btnAdd.Location = new System.Drawing.Point(12, 12);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(114, 22);
+            this.btnAdd.StyleController = this.layoutControl1;
+            this.btnAdd.TabIndex = 7;
+            this.btnAdd.Text = "Add Book";
             // 
             // dtBooks
             // 
@@ -139,11 +193,6 @@
             this.section.Visible = true;
             this.section.VisibleIndex = 0;
             // 
-            // repositoryItemCheckEdit1
-            // 
-            this.repositoryItemCheckEdit1.AutoHeight = false;
-            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
-            // 
             // call_no
             // 
             this.call_no.Caption = "Call No.";
@@ -151,49 +200,6 @@
             this.call_no.Name = "call_no";
             this.call_no.Visible = true;
             this.call_no.VisibleIndex = 1;
-            // 
-            // layoutControlGroup1
-            // 
-            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.layoutControlGroup1.GroupBordersVisible = false;
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.emptySpaceItem2,
-            this.layoutControlGroup2,
-            this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.layoutControlItem4,
-            this.layoutControlItem5,
-            this.layoutControlItem6});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1135, 575);
-            this.layoutControlGroup1.TextVisible = false;
-            // 
-            // emptySpaceItem2
-            // 
-            this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(711, 0);
-            this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(404, 26);
-            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
-            // 
-            // layoutControlGroup2
-            // 
-            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 26);
-            this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(1115, 529);
-            this.layoutControlGroup2.Text = "Books";
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.dtBooks;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1091, 486);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
             // 
             // acc_no
             // 
@@ -259,15 +265,53 @@
             this.copyright_year.Visible = true;
             this.copyright_year.VisibleIndex = 9;
             // 
-            // btnAdd
+            // repositoryItemCheckEdit1
             // 
-            this.btnAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnAdd.Image")));
-            this.btnAdd.Location = new System.Drawing.Point(12, 12);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(114, 22);
-            this.btnAdd.StyleController = this.layoutControl1;
-            this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "Add Book";
+            this.repositoryItemCheckEdit1.AutoHeight = false;
+            this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // layoutControlGroup1
+            // 
+            this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.layoutControlGroup1.GroupBordersVisible = false;
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.emptySpaceItem2,
+            this.layoutControlGroup2,
+            this.layoutControlItem2,
+            this.layoutControlItem3,
+            this.layoutControlItem4,
+            this.layoutControlItem5,
+            this.layoutControlItem6});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "Root";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1135, 575);
+            this.layoutControlGroup1.TextVisible = false;
+            // 
+            // emptySpaceItem2
+            // 
+            this.emptySpaceItem2.AllowHotTrack = false;
+            this.emptySpaceItem2.Location = new System.Drawing.Point(711, 0);
+            this.emptySpaceItem2.Name = "emptySpaceItem2";
+            this.emptySpaceItem2.Size = new System.Drawing.Size(404, 26);
+            this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
+            // 
+            // layoutControlGroup2
+            // 
+            this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1});
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 26);
+            this.layoutControlGroup2.Name = "layoutControlGroup2";
+            this.layoutControlGroup2.Size = new System.Drawing.Size(1115, 529);
+            this.layoutControlGroup2.Text = "Books";
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.dtBooks;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(1091, 486);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
@@ -281,16 +325,6 @@
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
-            // btnEdit
-            // 
-            this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(130, 12);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(119, 22);
-            this.btnEdit.StyleController = this.layoutControl1;
-            this.btnEdit.TabIndex = 8;
-            this.btnEdit.Text = "Edit Book";
-            // 
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnEdit;
@@ -302,16 +336,6 @@
             this.layoutControlItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
-            // 
-            // btnDeac
-            // 
-            this.btnDeac.Image = ((System.Drawing.Image)(resources.GetObject("btnDeac.Image")));
-            this.btnDeac.Location = new System.Drawing.Point(253, 12);
-            this.btnDeac.Name = "btnDeac";
-            this.btnDeac.Size = new System.Drawing.Size(126, 22);
-            this.btnDeac.StyleController = this.layoutControl1;
-            this.btnDeac.TabIndex = 9;
-            this.btnDeac.Text = "Deactivate";
             // 
             // layoutControlItem4
             // 
@@ -325,16 +349,6 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
-            // btnRefresh
-            // 
-            this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(383, 12);
-            this.btnRefresh.Name = "btnRefresh";
-            this.btnRefresh.Size = new System.Drawing.Size(116, 22);
-            this.btnRefresh.StyleController = this.layoutControl1;
-            this.btnRefresh.TabIndex = 10;
-            this.btnRefresh.Text = "Refresh";
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.btnRefresh;
@@ -346,20 +360,6 @@
             this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
-            // 
-            // cmbType
-            // 
-            this.cmbType.Location = new System.Drawing.Point(543, 12);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbType.Properties.Items.AddRange(new object[] {
-            "Bisu",
-            "Congressional"});
-            this.cmbType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbType.Size = new System.Drawing.Size(176, 20);
-            this.cmbType.StyleController = this.layoutControl1;
-            this.cmbType.TabIndex = 11;
             // 
             // layoutControlItem6
             // 
@@ -385,6 +385,7 @@
             this.Text = "Books Management";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBooks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBooks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
@@ -396,7 +397,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             this.ResumeLayout(false);
 

@@ -59,7 +59,7 @@ namespace LibraryFaceRecog
         public static bool BookManagementFormIsOpen = false;
         private void btnBooksManagement_ItemClick(object sender, ItemClickEventArgs e)
         {
-             if (!BookManagementFormIsOpen)
+            if (!BookManagementFormIsOpen)
             {
                 BookManagementFormIsOpen = true;
                 BooksManagement bm = new BooksManagement();
@@ -81,9 +81,54 @@ namespace LibraryFaceRecog
             }
         }
 
+        bool IsBookBorrowingFormOpen = false;
         private void btnBookBorrow_ItemClick(object sender, ItemClickEventArgs e)
         {
+            if (!IsBookBorrowingFormOpen)
+            {
+                IsBookBorrowingFormOpen = true;
+                BookBorrowManagement bbm = new BookBorrowManagement();
+                bbm.MdiParent = this;
+                bbm.WindowState = FormWindowState.Maximized;
+                bbm.Show();
+            }
+            else
+            {
+                Form fc = Application.OpenForms["BookBorrowManagement"];
+                if (fc == null)
+                {
+                    BookBorrowManagement a1 = new BookBorrowManagement();
+                    a1.MdiParent = this;
+                    a1.Show();
+                }
+                else
+                    fc.Activate();
+            }
+        }
 
+        bool IsRegisterFormOpen = false;
+        private void btnRegister_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!IsRegisterFormOpen)
+            {
+                IsRegisterFormOpen = true;
+                RegisterForm rf = new RegisterForm();
+                rf.MdiParent = this;
+                rf.WindowState = FormWindowState.Maximized;
+                rf.Show();
+            }
+            else
+            {
+                Form fc = Application.OpenForms["RegisterForm"];
+                if (fc == null)
+                {
+                    RegisterForm a1 = new RegisterForm();
+                    a1.MdiParent = this;
+                    a1.Show();
+                }
+                else
+                    fc.Activate();
+            }
         }
         
     }
