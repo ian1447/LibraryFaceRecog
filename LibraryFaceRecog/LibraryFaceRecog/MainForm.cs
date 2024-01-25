@@ -116,17 +116,17 @@ namespace LibraryFaceRecog
                 if (!IsRegisterFormOpen)
                 {
                     IsRegisterFormOpen = true;
-                    RegisterForm rf = new RegisterForm();
-                    rf.MdiParent = this;
-                    rf.WindowState = FormWindowState.Maximized;
-                    rf.Show();
+                    RegisterFormManagement rfm = new RegisterFormManagement();
+                    rfm.MdiParent = this;
+                    rfm.WindowState = FormWindowState.Maximized;
+                    rfm.Show();
                 }
                 else
                 {
                     Form fc = Application.OpenForms["RegisterForm"];
                     if (fc == null)
                     {
-                        RegisterForm a1 = new RegisterForm();
+                        RegisterFormManagement a1 = new RegisterFormManagement();
                         a1.MdiParent = this;
                         a1.Show();
                     }
@@ -136,7 +136,7 @@ namespace LibraryFaceRecog
             }
             else
             {
-                RegisterForm rf = new RegisterForm();
+                RegisterFormManagement rf = new RegisterFormManagement();
                 rf.ShowDialog();
             }
         }
