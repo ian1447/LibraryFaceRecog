@@ -18,6 +18,8 @@ namespace LibraryFaceRecog
             InitializeComponent();
         }
 
+        bool isSuperAdmin = true;
+
         private void btnLogout_ItemClick(object sender, ItemClickEventArgs e)
         {
             LoginForm.Userlogout = true;
@@ -109,25 +111,33 @@ namespace LibraryFaceRecog
         bool IsRegisterFormOpen = false;
         private void btnRegister_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!IsRegisterFormOpen)
+            if (!isSuperAdmin)
             {
-                IsRegisterFormOpen = true;
-                RegisterForm rf = new RegisterForm();
-                rf.MdiParent = this;
-                rf.WindowState = FormWindowState.Maximized;
-                rf.Show();
+                if (!IsRegisterFormOpen)
+                {
+                    IsRegisterFormOpen = true;
+                    RegisterForm rf = new RegisterForm();
+                    rf.MdiParent = this;
+                    rf.WindowState = FormWindowState.Maximized;
+                    rf.Show();
+                }
+                else
+                {
+                    Form fc = Application.OpenForms["RegisterForm"];
+                    if (fc == null)
+                    {
+                        RegisterForm a1 = new RegisterForm();
+                        a1.MdiParent = this;
+                        a1.Show();
+                    }
+                    else
+                        fc.Activate();
+                }
             }
             else
             {
-                Form fc = Application.OpenForms["RegisterForm"];
-                if (fc == null)
-                {
-                    RegisterForm a1 = new RegisterForm();
-                    a1.MdiParent = this;
-                    a1.Show();
-                }
-                else
-                    fc.Activate();
+                RegisterForm rf = new RegisterForm();
+                rf.ShowDialog();
             }
         }
         
