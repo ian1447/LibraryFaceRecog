@@ -16,5 +16,11 @@ namespace LibraryFaceRecog
         {
             InitializeComponent();
         }
+
+        private void btnCapture_Click(object sender, EventArgs e)
+        {
+            CaptureImage ci = new CaptureImage();
+            ci.ShowDialog();
+        }
     }
 }
