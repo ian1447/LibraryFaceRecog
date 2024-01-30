@@ -18,7 +18,7 @@ namespace LibraryFaceRecog
             InitializeComponent();
         }
 
-        bool isSuperAdmin = true;
+        bool isSuperAdmin = false;
 
         private void btnLogout_ItemClick(object sender, ItemClickEventArgs e)
         {
@@ -138,6 +138,39 @@ namespace LibraryFaceRecog
             {
                 RegisterFormManagement rf = new RegisterFormManagement();
                 rf.ShowDialog();
+            }
+        }
+
+        bool IsEntranceManagementOpen = false;
+        private void btnEntry_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (!isSuperAdmin)
+            {
+                if (!IsEntranceManagementOpen)
+                {
+                    IsEntranceManagementOpen = true;
+                    EntranceManagementForm emf = new EntranceManagementForm();
+                    emf.MdiParent = this;
+                    emf.WindowState = FormWindowState.Maximized;
+                    emf.Show();
+                }
+                else
+                {
+                    Form fc = Application.OpenForms["EntranceManagementForm"];
+                    if (fc == null)
+                    {
+                        EntranceManagementForm a1 = new EntranceManagementForm();
+                        a1.MdiParent = this;
+                        a1.Show();
+                    }
+                    else
+                        fc.Activate();
+                }
+            }
+            else
+            {
+                EntranceManagementForm emf = new EntranceManagementForm();
+                emf.ShowDialog();
             }
         }
         

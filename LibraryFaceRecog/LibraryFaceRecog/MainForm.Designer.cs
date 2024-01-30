@@ -36,6 +36,7 @@
             this.btnBooksManagement = new DevExpress.XtraBars.BarButtonItem();
             this.btnBookBorrow = new DevExpress.XtraBars.BarButtonItem();
             this.btnRegister = new DevExpress.XtraBars.BarButtonItem();
+            this.btnEntry = new DevExpress.XtraBars.BarButtonItem();
             this.rpgMenu = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgFunctions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
@@ -55,9 +56,10 @@
             this.btnUserManagement,
             this.btnBooksManagement,
             this.btnBookBorrow,
-            this.btnRegister});
+            this.btnRegister,
+            this.btnEntry});
             this.MainRibbon.Location = new System.Drawing.Point(0, 0);
-            this.MainRibbon.MaxItemId = 4;
+            this.MainRibbon.MaxItemId = 5;
             this.MainRibbon.Name = "MainRibbon";
             this.MainRibbon.PageHeaderItemLinks.Add(this.btnLogout);
             this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -111,6 +113,15 @@
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegister_ItemClick);
             // 
+            // btnEntry
+            // 
+            this.btnEntry.Caption = "Entrance Management";
+            this.btnEntry.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEntry.Glyph")));
+            this.btnEntry.Id = 4;
+            this.btnEntry.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEntry.LargeGlyph")));
+            this.btnEntry.Name = "btnEntry";
+            this.btnEntry.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEntry_ItemClick);
+            // 
             // rpgMenu
             // 
             this.rpgMenu.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -123,6 +134,7 @@
             // 
             this.rpgFunctions.ItemLinks.Add(this.btnRegister);
             this.rpgFunctions.ItemLinks.Add(this.btnBooksManagement);
+            this.rpgFunctions.ItemLinks.Add(this.btnEntry);
             this.rpgFunctions.ItemLinks.Add(this.btnBookBorrow);
             this.rpgFunctions.ItemLinks.Add(this.btnUserManagement);
             this.rpgFunctions.Name = "rpgFunctions";
@@ -179,5 +191,6 @@
         private DevExpress.XtraBars.BarButtonItem btnBooksManagement;
         private DevExpress.XtraBars.BarButtonItem btnBookBorrow;
         private DevExpress.XtraBars.BarButtonItem btnRegister;
+        private DevExpress.XtraBars.BarButtonItem btnEntry;
     }
 }
