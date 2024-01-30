@@ -7,7 +7,6 @@ using System.Text;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using System.Windows.Forms;
 using System.Threading;
 using System.Text.RegularExpressions;
 using AForge.Video;
@@ -38,6 +37,9 @@ namespace LibraryFaceRecog
 
         private void CaptureImage_Load(object sender, EventArgs e)
         {
+            //System.IO.DirectoryInfo directory = new System.IO.DirectoryInfo(PublicVariables.ImageDir);
+            //foreach (System.IO.FileInfo file in directory.GetFiles()) file.Delete();
+
             CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);//constructor
             programFirstLoad = false;
             int cameraCounter = 0;
@@ -170,7 +172,11 @@ namespace LibraryFaceRecog
         {
             Msgbox.QuestionYesNo("Are you sure you want to close this form?");
             if (Msgbox.isYes)
+            {
+                if (CameraConnected)
+                    StopCamera();
                 this.Close();
+            }
         }
 
         private void btnCapture_Click(object sender, EventArgs e)
@@ -178,6 +184,9 @@ namespace LibraryFaceRecog
             peCapturedImage.Image = peLiveCapture.Image;
         }
 
-
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

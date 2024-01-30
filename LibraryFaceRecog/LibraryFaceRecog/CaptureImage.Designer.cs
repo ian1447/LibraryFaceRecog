@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CaptureImage));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.peLiveCapture = new System.Windows.Forms.PictureBox();
+            this.cmbResolution = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbCameraList = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -37,6 +39,7 @@
             this.peCapturedImage = new DevExpress.XtraEditors.PictureEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -44,16 +47,16 @@
             this.splitterItem1 = new DevExpress.XtraLayout.SplitterItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.cmbResolution = new DevExpress.XtraEditors.ComboBoxEdit();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.peLiveCapture = new System.Windows.Forms.PictureBox();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.peLiveCapture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbResolution.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCameraList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peCapturedImage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
@@ -61,10 +64,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbResolution.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peLiveCapture)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -84,6 +84,26 @@
             this.layoutControl1.Size = new System.Drawing.Size(770, 426);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // peLiveCapture
+            // 
+            this.peLiveCapture.Location = new System.Drawing.Point(24, 67);
+            this.peLiveCapture.Name = "peLiveCapture";
+            this.peLiveCapture.Size = new System.Drawing.Size(366, 335);
+            this.peLiveCapture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.peLiveCapture.TabIndex = 11;
+            this.peLiveCapture.TabStop = false;
+            // 
+            // cmbResolution
+            // 
+            this.cmbResolution.Location = new System.Drawing.Point(243, 12);
+            this.cmbResolution.Name = "cmbResolution";
+            this.cmbResolution.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbResolution.Size = new System.Drawing.Size(159, 20);
+            this.cmbResolution.StyleController = this.layoutControl1;
+            this.cmbResolution.TabIndex = 10;
+            this.cmbResolution.SelectedIndexChanged += new System.EventHandler(this.cmbResolution_SelectedIndexChanged);
             // 
             // cmbCameraList
             // 
@@ -117,6 +137,7 @@
             this.btnSave.StyleController = this.layoutControl1;
             this.btnSave.TabIndex = 7;
             this.btnSave.Text = "Save";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCapture
             // 
@@ -133,7 +154,7 @@
             // 
             this.peCapturedImage.Location = new System.Drawing.Point(423, 43);
             this.peCapturedImage.Name = "peCapturedImage";
-            this.peCapturedImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.peCapturedImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Zoom;
             this.peCapturedImage.Size = new System.Drawing.Size(323, 333);
             this.peCapturedImage.StyleController = this.layoutControl1;
             this.peCapturedImage.TabIndex = 5;
@@ -164,6 +185,15 @@
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(394, 382);
             this.layoutControlGroup2.Text = "Live Capture";
+            // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.peLiveCapture;
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(370, 339);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlGroup3
             // 
@@ -238,17 +268,6 @@
             this.layoutControlItem6.Text = "Camera: ";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(54, 13);
             // 
-            // cmbResolution
-            // 
-            this.cmbResolution.Location = new System.Drawing.Point(243, 12);
-            this.cmbResolution.Name = "cmbResolution";
-            this.cmbResolution.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbResolution.Size = new System.Drawing.Size(159, 20);
-            this.cmbResolution.StyleController = this.layoutControl1;
-            this.cmbResolution.TabIndex = 10;
-            this.cmbResolution.SelectedIndexChanged += new System.EventHandler(this.cmbResolution_SelectedIndexChanged);
-            // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.cmbResolution;
@@ -258,25 +277,9 @@
             this.layoutControlItem7.Text = "Resolution:";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(54, 13);
             // 
-            // peLiveCapture
-            // 
-            this.peLiveCapture.Location = new System.Drawing.Point(24, 67);
-            this.peLiveCapture.Name = "peLiveCapture";
-            this.peLiveCapture.Size = new System.Drawing.Size(366, 335);
-            this.peLiveCapture.TabIndex = 11;
-            this.peLiveCapture.TabStop = false;
-            // 
-            // layoutControlItem1
-            // 
-            this.layoutControlItem1.Control = this.peLiveCapture;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(370, 339);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
-            // 
             // CaptureImage
             // 
+            this.AcceptButton = this.btnCapture;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(770, 426);
@@ -290,10 +293,13 @@
             this.Load += new System.EventHandler(this.CaptureImage_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.peLiveCapture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cmbResolution.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCameraList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peCapturedImage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
@@ -301,10 +307,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitterItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbResolution.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peLiveCapture)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -314,7 +317,6 @@
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
-        private DevExpress.XtraEditors.PictureEdit peCapturedImage;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
@@ -330,6 +332,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private System.Windows.Forms.PictureBox peLiveCapture;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        public DevExpress.XtraEditors.PictureEdit peCapturedImage;
 
     }
 }
