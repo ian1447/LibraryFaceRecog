@@ -34,8 +34,8 @@
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
             this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
             this.btnRegister = new DevExpress.XtraEditors.SimpleButton();
-            this.dtBorrow = new DevExpress.XtraGrid.GridControl();
-            this.gvBorrow = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.dtRegistered = new DevExpress.XtraGrid.GridControl();
+            this.gvRegistered = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.name = new DevExpress.XtraGrid.Columns.GridColumn();
             this.course = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -57,8 +57,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtBorrow)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvBorrow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtRegistered)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvRegistered)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
@@ -77,7 +77,7 @@
             this.layoutControl1.Controls.Add(this.btnRefresh);
             this.layoutControl1.Controls.Add(this.btnEdit);
             this.layoutControl1.Controls.Add(this.btnRegister);
-            this.layoutControl1.Controls.Add(this.dtBorrow);
+            this.layoutControl1.Controls.Add(this.dtRegistered);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
@@ -95,65 +95,68 @@
             this.checkEdit1.Size = new System.Drawing.Size(127, 19);
             this.checkEdit1.StyleController = this.layoutControl1;
             this.checkEdit1.TabIndex = 13;
+            this.checkEdit1.Visible = false;
             // 
             // btnRefresh
             // 
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(188, 12);
+            this.btnRefresh.Location = new System.Drawing.Point(200, 12);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(111, 22);
             this.btnRefresh.StyleController = this.layoutControl1;
             this.btnRefresh.TabIndex = 12;
             this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnEdit
             // 
             this.btnEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnEdit.Image")));
-            this.btnEdit.Location = new System.Drawing.Point(97, 12);
+            this.btnEdit.Location = new System.Drawing.Point(109, 12);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(87, 22);
             this.btnEdit.StyleController = this.layoutControl1;
             this.btnEdit.TabIndex = 10;
             this.btnEdit.Text = "Edit";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnRegister
             // 
             this.btnRegister.Image = ((System.Drawing.Image)(resources.GetObject("btnRegister.Image")));
             this.btnRegister.Location = new System.Drawing.Point(12, 12);
             this.btnRegister.Name = "btnRegister";
-            this.btnRegister.Size = new System.Drawing.Size(81, 22);
+            this.btnRegister.Size = new System.Drawing.Size(93, 22);
             this.btnRegister.StyleController = this.layoutControl1;
             this.btnRegister.TabIndex = 9;
             this.btnRegister.Text = "Register";
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
-            // dtBorrow
+            // dtRegistered
             // 
-            this.dtBorrow.Location = new System.Drawing.Point(24, 74);
-            this.dtBorrow.MainView = this.gvBorrow;
-            this.dtBorrow.Name = "dtBorrow";
-            this.dtBorrow.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
+            this.dtRegistered.Location = new System.Drawing.Point(24, 74);
+            this.dtRegistered.MainView = this.gvRegistered;
+            this.dtRegistered.Name = "dtRegistered";
+            this.dtRegistered.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.dtBorrow.Size = new System.Drawing.Size(731, 471);
-            this.dtBorrow.TabIndex = 8;
-            this.dtBorrow.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvBorrow});
+            this.dtRegistered.Size = new System.Drawing.Size(731, 471);
+            this.dtRegistered.TabIndex = 8;
+            this.dtRegistered.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvRegistered});
             // 
-            // gvBorrow
+            // gvRegistered
             // 
-            this.gvBorrow.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvRegistered.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.id,
             this.name,
             this.course,
             this.year_and_section,
             this.added_on,
             this.sex});
-            this.gvBorrow.GridControl = this.dtBorrow;
-            this.gvBorrow.Name = "gvBorrow";
-            this.gvBorrow.OptionsBehavior.Editable = false;
-            this.gvBorrow.OptionsView.RowAutoHeight = true;
-            this.gvBorrow.OptionsView.ShowGroupPanel = false;
-            this.gvBorrow.OptionsView.ShowIndicator = false;
+            this.gvRegistered.GridControl = this.dtRegistered;
+            this.gvRegistered.Name = "gvRegistered";
+            this.gvRegistered.OptionsBehavior.Editable = false;
+            this.gvRegistered.OptionsView.RowAutoHeight = true;
+            this.gvRegistered.OptionsView.ShowGroupPanel = false;
+            this.gvRegistered.OptionsView.ShowIndicator = false;
             // 
             // id
             // 
@@ -226,9 +229,9 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(291, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(303, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(337, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(325, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // splitterItem1
@@ -242,8 +245,11 @@
             // 
             this.layoutControlItem2.Control = this.btnRegister;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem2.MaxSize = new System.Drawing.Size(97, 26);
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(97, 26);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(85, 26);
+            this.layoutControlItem2.Size = new System.Drawing.Size(97, 26);
+            this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -258,7 +264,7 @@
             // 
             // layoutControlItem1
             // 
-            this.layoutControlItem1.Control = this.dtBorrow;
+            this.layoutControlItem1.Control = this.dtRegistered;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
             this.layoutControlItem1.Size = new System.Drawing.Size(735, 475);
@@ -268,7 +274,7 @@
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.btnEdit;
-            this.layoutControlItem3.Location = new System.Drawing.Point(85, 0);
+            this.layoutControlItem3.Location = new System.Drawing.Point(97, 0);
             this.layoutControlItem3.MaxSize = new System.Drawing.Size(91, 26);
             this.layoutControlItem3.MinSize = new System.Drawing.Size(91, 26);
             this.layoutControlItem3.Name = "layoutControlItem3";
@@ -280,7 +286,7 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.btnRefresh;
-            this.layoutControlItem5.Location = new System.Drawing.Point(176, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(188, 0);
             this.layoutControlItem5.MaxSize = new System.Drawing.Size(115, 26);
             this.layoutControlItem5.MinSize = new System.Drawing.Size(115, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
@@ -300,6 +306,7 @@
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
+            this.layoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // bwGetDetails
             // 
@@ -321,8 +328,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dtBorrow)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvBorrow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtRegistered)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvRegistered)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
@@ -342,8 +349,8 @@
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraEditors.SimpleButton btnRegister;
-        private DevExpress.XtraGrid.GridControl dtBorrow;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvBorrow;
+        private DevExpress.XtraGrid.GridControl dtRegistered;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvRegistered;
         private DevExpress.XtraGrid.Columns.GridColumn id;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;

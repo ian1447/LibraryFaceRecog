@@ -20,6 +20,50 @@ namespace LibraryFaceRecog
             InitializeComponent();
         }
 
+        #region UTIL
+        bool loadingIsAlreadyShowing = false;
+        private void ShowLoading(string message)
+        {
+            try
+            {
+                foreach (Control c in this.Controls)
+                {
+                    c.Enabled = false;
+                }
+
+                if (!loadingIsAlreadyShowing)
+                {
+                    loadingIsAlreadyShowing = true;
+                    splashScreenManager1.ShowWaitForm();
+                }
+                splashScreenManager1.SetWaitFormDescription(message);
+            }
+            catch { }
+        }
+
+        private void HideLoading()
+        {
+            try
+            {
+                foreach (Control c in this.Controls)
+                {
+                    c.Enabled = true;
+                }
+
+                loadingIsAlreadyShowing = false;
+                splashScreenManager1.CloseWaitForm();
+            }
+            catch { }
+        }
+
+        #endregion
+
+        public bool IsAdd = true;
+        public int EditId;
+        private void RegisterForm_Load(object sender, EventArgs e)
+        {
+            btnSave.Text = !IsAdd? "Edit":"Add";
+        }
         private void btnCapture_Click(object sender, EventArgs e)
         {
             if (peCapturedImage.Image == null)
@@ -41,7 +85,8 @@ namespace LibraryFaceRecog
         }
 
         bool IsGood;
-        System.Drawing.Image _image;
+        MemoryStream ms = new MemoryStream();
+        byte[] img;
         private void btnSave_Click(object sender, EventArgs e)
         {
             IsGood = true;
@@ -77,23 +122,70 @@ namespace LibraryFaceRecog
 
             if (IsGood)
             {
-                MemoryStream ms = new MemoryStream();
-                byte[] img = ImageToByteArray(peCapturedImage.Image);
-                Register.RegisteredBorrowersAdd(txtFirstName.Text, txtMiddleInitial.Text, txtFamilyName.Text, cmbSex.Text, txtCourse.Text, txtYear.Text, txtSection.Text, img);
-                if (Register.RegisteredBorrowersAddSuccessful)
-                    Msgbox.Show("Entry Success");
+                img = ImageToByteArray(peCapturedImage.Image);
+                if (IsAdd)
+                {
+                    if (!bwSaveDetails.IsBusy)
+                    {
+                        ShowLoading("Saving Details...");
+                        bwSaveDetails.RunWorkerAsync();
+                    }
+                }
                 else
-                    Msgbox.Error(Register.RegisteredBorrowersAddErrorMessage);
+                {
+                    if (!bwEditDetails.IsBusy)
+                    {
+                        ShowLoading("Editing Details");
+                        bwEditDetails.RunWorkerAsync();
+                    }
+                    //Msgbox.Information("Feature to be implemented...");
+                    //this.Close();
+                }
             }
         }
         public byte[] ImageToByteArray(Image image)
         {
             using (MemoryStream ms = new MemoryStream())
             {
-                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png); // You can choose different image formats
+                image.Save(ms, System.Drawing.Imaging.ImageFormat.Png); 
                 return ms.ToArray();
             }
         }
 
+        private void bwSaveDetails_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Register.RegisteredBorrowersAdd(txtFirstName.Text, txtMiddleInitial.Text, txtFamilyName.Text, cmbSex.Text, txtCourse.Text, txtYear.Text, txtSection.Text, img);
+            bwSaveDetails.CancelAsync();
+        }
+
+        private void bwSaveDetails_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            HideLoading();
+            if (Register.RegisteredBorrowersAddSuccessful)
+            {
+                Msgbox.Information("Save Successfull");
+                this.Close();
+            }
+            else
+                Msgbox.Error(Register.RegisteredBorrowersAddErrorMessage);
+        }
+
+        private void bwEditDetails_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Register.RegisteredBorrowersEdit(txtFirstName.Text, txtMiddleInitial.Text, txtFamilyName.Text, cmbSex.Text, txtCourse.Text, txtYear.Text, txtSection.Text, img,EditId);
+            bwEditDetails.CancelAsync();
+        }
+
+        private void bwEditDetails_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            HideLoading();
+            if (Register.RegisteredBorrowersEditSuccessful)
+            {
+                Msgbox.Information("Edit Successfull");
+                this.Close();
+            }
+            else
+                Msgbox.Error(Register.RegisteredBorrowersEditErrorMessage);
+        }
     }
 }

@@ -10,7 +10,8 @@ namespace LibraryFaceRecog.Core
         public static string ProjectName = "Library Management System";
         public static string ProjectVersion = "v1.0.0";
 
-        public static string ConnectionString = "SERVER = 192.168.13.64; DATABASE = librarymanagement; Uid = system_admin; Pwd = Opn49fD23; PORT = 3306; AllowZeroDateTime = True;";
+        //public static string ConnectionString = "SERVER = 192.168.13.64; DATABASE = librarymanagement; Uid = system_admin; Pwd = Opn49fD23; PORT = 3306; AllowZeroDateTime = True;";
+        public static string ConnectionString = "SERVER = 192.168.254.124; DATABASE = librarymanagement; Uid = system_admin; Pwd = system_admin; PORT = 3306; AllowZeroDateTime = True;";
 
         #region Directory Settings
         public static string DefaultDirectory = Environment.CurrentDirectory;

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using LibraryFaceRecog.Dal;
 using LibraryFaceRecog.Core;
+using System.IO;
 
 namespace LibraryFaceRecog
 {
@@ -61,11 +62,11 @@ namespace LibraryFaceRecog
         {
             try
             {
-                if (gvBorrow.GetRowHandle(gvBorrow.FocusedRowHandle) >= 0)
+                if (gvRegistered.GetRowHandle(gvRegistered.FocusedRowHandle) >= 0)
                 {
-                    if (gvBorrow.SelectedRowsCount > 0)
+                    if (gvRegistered.SelectedRowsCount > 0)
                     {
-                        int selectedRowId = Convert.ToInt32(gvBorrow.GetRowCellValue(gvBorrow.FocusedRowHandle, "id"));
+                        int selectedRowId = Convert.ToInt32(gvRegistered.GetRowCellValue(gvRegistered.FocusedRowHandle, "id"));
                         return true;
                     }
                     else
@@ -75,12 +76,6 @@ namespace LibraryFaceRecog
                     return false;
             }
             catch { return false; }
-        }
-
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-            RegisterForm rf = new RegisterForm();
-            rf.ShowDialog();
         }
 
         DataTable BorrowersTable = new DataTable();
@@ -100,7 +95,7 @@ namespace LibraryFaceRecog
 
         private void bwGetDetails_DoWork(object sender, DoWorkEventArgs e)
         {
-            BorrowersTable = Register.GetRegisteredBorrowers();
+            BorrowersTable = Register.GetRegisteredBorrowers("Bisu");
             bwGetDetails.CancelAsync();
         }
 
@@ -108,9 +103,55 @@ namespace LibraryFaceRecog
         {
             HideLoading();
             if (Register.GetRegisteredBorrowersSuccessful)
-                dtBorrow.DataSource = BorrowersTable;
+                dtRegistered.DataSource = BorrowersTable;
             else
                 Msgbox.Error(Register.GetRegisteredBorrowersErrorMessage);
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void btnRegister_Click(object sender, EventArgs e)
+        {
+            RegisterForm rf = new RegisterForm();
+            rf.ShowDialog();
+            btnRefresh.PerformClick();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (SelectionPass())
+            {
+                var focusRowView = (DataRowView)gvRegistered.GetFocusedRow();
+                DataTable EditTable = BorrowersTable.AsEnumerable()
+                      .Where(row => row.Field<int>("id") == Convert.ToInt32(focusRowView.Row[0].ToString())).CopyToDataTable();
+                RegisterForm rf = new RegisterForm();
+                rf.EditId = Convert.ToInt32(focusRowView.Row[0].ToString());
+                rf.txtFirstName.Text = EditTable.Rows[0]["first_name"].ToString();
+                rf.txtMiddleInitial.Text = EditTable.Rows[0]["middle_name"].ToString();
+                rf.txtFamilyName.Text = EditTable.Rows[0]["last_name"].ToString();
+                rf.cmbSex.Text = EditTable.Rows[0]["sex"].ToString();
+                rf.txtCourse.Text = EditTable.Rows[0]["course"].ToString();
+                rf.txtSection.Text = EditTable.Rows[0]["section"].ToString();
+                rf.txtYear.Text = EditTable.Rows[0]["year"].ToString();
+                byte[] img = (byte[])EditTable.Rows[0]["image"];
+                MemoryStream ms = new MemoryStream(img);
+                rf.peCapturedImage.Image = Image.FromStream(ms);
+                rf.IsAdd = false;
+                rf.ShowDialog();
+                btnRefresh.PerformClick();
+            }
+            else
+                Msgbox.Exclamation("Please select a borrower to edit.");
+        }
+
+        //public Image byteArrayToImage(byte[] byteArrayIn)
+        //{
+        //    MemoryStream ms = new MemoryStream(byteArrayIn);
+        //    Image returnImage = Image.FromStream(ms);
+        //    return returnImage;
+        //}
     }
 }

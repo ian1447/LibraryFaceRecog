@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.peCapturedImage = new DevExpress.XtraEditors.PictureEdit();
             this.btnCapture = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -52,10 +53,13 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.peCapturedImage = new DevExpress.XtraEditors.PictureEdit();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
+            this.bwSaveDetails = new System.ComponentModel.BackgroundWorker();
+            this.bwEditDetails = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.peCapturedImage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSection.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCourse.Properties)).BeginInit();
@@ -75,7 +79,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peCapturedImage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,6 +103,15 @@
             this.layoutControl1.Size = new System.Drawing.Size(361, 491);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // peCapturedImage
+            // 
+            this.peCapturedImage.Location = new System.Drawing.Point(24, 215);
+            this.peCapturedImage.Name = "peCapturedImage";
+            this.peCapturedImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
+            this.peCapturedImage.Size = new System.Drawing.Size(313, 200);
+            this.peCapturedImage.StyleController = this.layoutControl1;
+            this.peCapturedImage.TabIndex = 14;
             // 
             // btnCapture
             // 
@@ -130,7 +142,7 @@
             this.btnSave.Size = new System.Drawing.Size(154, 22);
             this.btnSave.StyleController = this.layoutControl1;
             this.btnSave.TabIndex = 11;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "Add";
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // txtSection
@@ -163,15 +175,19 @@
             this.cmbSex.Name = "cmbSex";
             this.cmbSex.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.cmbSex.Properties.Items.AddRange(new object[] {
+            "Male",
+            "Female"});
+            this.cmbSex.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbSex.Size = new System.Drawing.Size(95, 20);
             this.cmbSex.StyleController = this.layoutControl1;
             this.cmbSex.TabIndex = 7;
             // 
             // txtFamilyName
             // 
-            this.txtFamilyName.Location = new System.Drawing.Point(111, 74);
+            this.txtFamilyName.Location = new System.Drawing.Point(168, 74);
             this.txtFamilyName.Name = "txtFamilyName";
-            this.txtFamilyName.Size = new System.Drawing.Size(238, 20);
+            this.txtFamilyName.Size = new System.Drawing.Size(181, 20);
             this.txtFamilyName.StyleController = this.layoutControl1;
             this.txtFamilyName.TabIndex = 6;
             // 
@@ -179,7 +195,7 @@
             // 
             this.txtMiddleInitial.Location = new System.Drawing.Point(12, 74);
             this.txtMiddleInitial.Name = "txtMiddleInitial";
-            this.txtMiddleInitial.Size = new System.Drawing.Size(95, 20);
+            this.txtMiddleInitial.Size = new System.Drawing.Size(152, 20);
             this.txtMiddleInitial.StyleController = this.layoutControl1;
             this.txtMiddleInitial.TabIndex = 5;
             // 
@@ -227,12 +243,12 @@
             this.layoutControlItem2.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem2.Control = this.txtMiddleInitial;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 43);
-            this.layoutControlItem2.MaxSize = new System.Drawing.Size(99, 43);
-            this.layoutControlItem2.MinSize = new System.Drawing.Size(99, 43);
+            this.layoutControlItem2.MaxSize = new System.Drawing.Size(156, 43);
+            this.layoutControlItem2.MinSize = new System.Drawing.Size(156, 43);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(99, 43);
+            this.layoutControlItem2.Size = new System.Drawing.Size(156, 43);
             this.layoutControlItem2.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem2.Text = "Middle Initial:*";
+            this.layoutControlItem2.Text = "Middle Name:*";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(95, 16);
             // 
@@ -241,9 +257,9 @@
             this.layoutControlItem3.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem3.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem3.Control = this.txtFamilyName;
-            this.layoutControlItem3.Location = new System.Drawing.Point(99, 43);
+            this.layoutControlItem3.Location = new System.Drawing.Point(156, 43);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(242, 43);
+            this.layoutControlItem3.Size = new System.Drawing.Size(185, 43);
             this.layoutControlItem3.Text = "Family Name: *";
             this.layoutControlItem3.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem3.TextSize = new System.Drawing.Size(95, 16);
@@ -344,15 +360,6 @@
             this.layoutControlItem10.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem10.TextVisible = false;
             // 
-            // peCapturedImage
-            // 
-            this.peCapturedImage.Location = new System.Drawing.Point(24, 215);
-            this.peCapturedImage.Name = "peCapturedImage";
-            this.peCapturedImage.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Squeeze;
-            this.peCapturedImage.Size = new System.Drawing.Size(313, 200);
-            this.peCapturedImage.StyleController = this.layoutControl1;
-            this.peCapturedImage.TabIndex = 14;
-            // 
             // layoutControlItem11
             // 
             this.layoutControlItem11.Control = this.peCapturedImage;
@@ -361,6 +368,18 @@
             this.layoutControlItem11.Size = new System.Drawing.Size(317, 204);
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
+            // 
+            // bwSaveDetails
+            // 
+            this.bwSaveDetails.WorkerSupportsCancellation = true;
+            this.bwSaveDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwSaveDetails_DoWork);
+            this.bwSaveDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwSaveDetails_RunWorkerCompleted);
+            // 
+            // bwEditDetails
+            // 
+            this.bwEditDetails.WorkerSupportsCancellation = true;
+            this.bwEditDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwEditDetails_DoWork);
+            this.bwEditDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwEditDetails_RunWorkerCompleted);
             // 
             // RegisterForm
             // 
@@ -372,8 +391,10 @@
             this.Name = "RegisterForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Registration";
+            this.Load += new System.EventHandler(this.RegisterForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.peCapturedImage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSection.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCourse.Properties)).EndInit();
@@ -393,7 +414,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.peCapturedImage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             this.ResumeLayout(false);
 
@@ -403,18 +423,11 @@
 
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
-        private DevExpress.XtraEditors.TextEdit txtFirstName;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraEditors.TextEdit txtFamilyName;
-        private DevExpress.XtraEditors.TextEdit txtMiddleInitial;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbSex;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraEditors.TextEdit txtCourse;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraEditors.TextEdit txtSection;
-        private DevExpress.XtraEditors.TextEdit txtYear;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
@@ -424,7 +437,17 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraEditors.SimpleButton btnCapture;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
-        private DevExpress.XtraEditors.PictureEdit peCapturedImage;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private System.ComponentModel.BackgroundWorker bwSaveDetails;
+        public DevExpress.XtraEditors.TextEdit txtFirstName;
+        public DevExpress.XtraEditors.TextEdit txtFamilyName;
+        public DevExpress.XtraEditors.TextEdit txtMiddleInitial;
+        public DevExpress.XtraEditors.ComboBoxEdit cmbSex;
+        public DevExpress.XtraEditors.TextEdit txtCourse;
+        public DevExpress.XtraEditors.TextEdit txtSection;
+        public DevExpress.XtraEditors.TextEdit txtYear;
+        public DevExpress.XtraEditors.PictureEdit peCapturedImage;
+        private System.ComponentModel.BackgroundWorker bwEditDetails;
     }
 }
