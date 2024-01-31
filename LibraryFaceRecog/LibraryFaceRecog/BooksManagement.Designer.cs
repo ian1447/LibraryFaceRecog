@@ -40,7 +40,8 @@
             this.id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.section = new DevExpress.XtraGrid.Columns.GridColumn();
             this.call_no = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.acc_no = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.account_no = new DevExpress.XtraGrid.Columns.GridColumn();
             this.no_of_copies = new DevExpress.XtraGrid.Columns.GridColumn();
             this.author = new DevExpress.XtraGrid.Columns.GridColumn();
             this.title = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -49,6 +50,7 @@
             this.cost_price = new DevExpress.XtraGrid.Columns.GridColumn();
             this.copyright_year = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
+            this.repositoryItemMarqueeProgressBar1 = new DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -58,12 +60,16 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
+            this.bwGetBooks = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBooks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBooks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMarqueeProgressBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
@@ -152,7 +158,9 @@
             this.dtBooks.MainView = this.gvBooks;
             this.dtBooks.Name = "dtBooks";
             this.dtBooks.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1});
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemMarqueeProgressBar1,
+            this.repositoryItemMemoEdit1});
             this.dtBooks.Size = new System.Drawing.Size(1087, 482);
             this.dtBooks.TabIndex = 6;
             this.dtBooks.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -164,7 +172,7 @@
             this.id,
             this.section,
             this.call_no,
-            this.acc_no,
+            this.account_no,
             this.no_of_copies,
             this.author,
             this.title,
@@ -189,6 +197,8 @@
             // 
             this.section.Caption = "Section";
             this.section.FieldName = "section";
+            this.section.MaxWidth = 75;
+            this.section.MinWidth = 75;
             this.section.Name = "section";
             this.section.Visible = true;
             this.section.VisibleIndex = 0;
@@ -196,50 +206,68 @@
             // call_no
             // 
             this.call_no.Caption = "Call No.";
+            this.call_no.ColumnEdit = this.repositoryItemMemoEdit1;
             this.call_no.FieldName = "call_no";
+            this.call_no.MaxWidth = 75;
+            this.call_no.MinWidth = 75;
             this.call_no.Name = "call_no";
             this.call_no.Visible = true;
             this.call_no.VisibleIndex = 1;
             // 
-            // acc_no
+            // repositoryItemMemoEdit1
             // 
-            this.acc_no.Caption = "Account No.";
-            this.acc_no.FieldName = "acc_no";
-            this.acc_no.Name = "acc_no";
-            this.acc_no.Visible = true;
-            this.acc_no.VisibleIndex = 2;
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
+            // account_no
+            // 
+            this.account_no.Caption = "Account No.";
+            this.account_no.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.account_no.FieldName = "account_no";
+            this.account_no.Name = "account_no";
+            this.account_no.Visible = true;
+            this.account_no.VisibleIndex = 2;
+            this.account_no.Width = 104;
             // 
             // no_of_copies
             // 
             this.no_of_copies.Caption = "No. of copies";
             this.no_of_copies.FieldName = "no_of_copies";
+            this.no_of_copies.MaxWidth = 80;
+            this.no_of_copies.MinWidth = 75;
             this.no_of_copies.Name = "no_of_copies";
             this.no_of_copies.Visible = true;
             this.no_of_copies.VisibleIndex = 3;
+            this.no_of_copies.Width = 80;
             // 
             // author
             // 
             this.author.Caption = "Author";
+            this.author.ColumnEdit = this.repositoryItemMemoEdit1;
             this.author.FieldName = "author";
             this.author.Name = "author";
             this.author.Visible = true;
             this.author.VisibleIndex = 4;
+            this.author.Width = 148;
             // 
             // title
             // 
             this.title.Caption = "Title";
+            this.title.ColumnEdit = this.repositoryItemMemoEdit1;
             this.title.FieldName = "title";
             this.title.Name = "title";
             this.title.Visible = true;
             this.title.VisibleIndex = 5;
+            this.title.Width = 203;
             // 
             // place_and_publisher
             // 
             this.place_and_publisher.Caption = "Place and Publisher";
+            this.place_and_publisher.ColumnEdit = this.repositoryItemMemoEdit1;
             this.place_and_publisher.FieldName = "place_and_publisher";
             this.place_and_publisher.Name = "place_and_publisher";
             this.place_and_publisher.Visible = true;
             this.place_and_publisher.VisibleIndex = 6;
+            this.place_and_publisher.Width = 127;
             // 
             // edition
             // 
@@ -248,27 +276,38 @@
             this.edition.Name = "edition";
             this.edition.Visible = true;
             this.edition.VisibleIndex = 7;
+            this.edition.Width = 42;
             // 
             // cost_price
             // 
             this.cost_price.Caption = "Cost Price";
             this.cost_price.FieldName = "cost_price";
+            this.cost_price.MaxWidth = 100;
+            this.cost_price.MinWidth = 100;
             this.cost_price.Name = "cost_price";
             this.cost_price.Visible = true;
             this.cost_price.VisibleIndex = 8;
+            this.cost_price.Width = 100;
             // 
             // copyright_year
             // 
             this.copyright_year.Caption = "Copyright Year";
             this.copyright_year.FieldName = "copyright_year";
+            this.copyright_year.MaxWidth = 80;
+            this.copyright_year.MinWidth = 80;
             this.copyright_year.Name = "copyright_year";
             this.copyright_year.Visible = true;
             this.copyright_year.VisibleIndex = 9;
+            this.copyright_year.Width = 80;
             // 
             // repositoryItemCheckEdit1
             // 
             this.repositoryItemCheckEdit1.AutoHeight = false;
             this.repositoryItemCheckEdit1.Name = "repositoryItemCheckEdit1";
+            // 
+            // repositoryItemMarqueeProgressBar1
+            // 
+            this.repositoryItemMarqueeProgressBar1.Name = "repositoryItemMarqueeProgressBar1";
             // 
             // layoutControlGroup1
             // 
@@ -375,6 +414,12 @@
             this.layoutControlItem6.Text = "Type: ";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(37, 14);
             // 
+            // bwGetBooks
+            // 
+            this.bwGetBooks.WorkerSupportsCancellation = true;
+            this.bwGetBooks.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetBooks_DoWork);
+            this.bwGetBooks.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetBooks_RunWorkerCompleted);
+            // 
             // BooksManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -383,12 +428,15 @@
             this.Controls.Add(this.layoutControl1);
             this.Name = "BooksManagement";
             this.Text = "Books Management";
+            this.Shown += new System.EventHandler(this.BooksManagement_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBooks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBooks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMarqueeProgressBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
@@ -415,7 +463,7 @@
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraGrid.Columns.GridColumn acc_no;
+        private DevExpress.XtraGrid.Columns.GridColumn account_no;
         private DevExpress.XtraGrid.Columns.GridColumn no_of_copies;
         private DevExpress.XtraGrid.Columns.GridColumn author;
         private DevExpress.XtraGrid.Columns.GridColumn title;
@@ -433,5 +481,9 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private System.ComponentModel.BackgroundWorker bwGetBooks;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMarqueeProgressBar repositoryItemMarqueeProgressBar1;
     }
 }

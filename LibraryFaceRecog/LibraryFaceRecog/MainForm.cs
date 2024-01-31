@@ -123,7 +123,7 @@ namespace LibraryFaceRecog
                 }
                 else
                 {
-                    Form fc = Application.OpenForms["RegisterForm"];
+                    Form fc = Application.OpenForms["RegisterFormManagement"];
                     if (fc == null)
                     {
                         RegisterFormManagement a1 = new RegisterFormManagement();
