@@ -121,6 +121,7 @@
             this.btnRefresh.StyleController = this.layoutControl1;
             this.btnRefresh.TabIndex = 10;
             this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnDeac
             // 
@@ -130,7 +131,7 @@
             this.btnDeac.Size = new System.Drawing.Size(126, 22);
             this.btnDeac.StyleController = this.layoutControl1;
             this.btnDeac.TabIndex = 9;
-            this.btnDeac.Text = "Deactivate";
+            this.btnDeac.Text = "Remove";
             // 
             // btnEdit
             // 
@@ -141,6 +142,7 @@
             this.btnEdit.StyleController = this.layoutControl1;
             this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "Edit Book";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // btnAdd
             // 
@@ -151,6 +153,7 @@
             this.btnAdd.StyleController = this.layoutControl1;
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Add Book";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // dtBooks
             // 
@@ -183,9 +186,11 @@
             this.gvBooks.GridControl = this.dtBooks;
             this.gvBooks.Name = "gvBooks";
             this.gvBooks.OptionsBehavior.Editable = false;
+            this.gvBooks.OptionsFind.AlwaysVisible = true;
             this.gvBooks.OptionsView.RowAutoHeight = true;
             this.gvBooks.OptionsView.ShowGroupPanel = false;
             this.gvBooks.OptionsView.ShowIndicator = false;
+            this.gvBooks.ColumnFilterChanged += new System.EventHandler(this.gvBooks_ColumnFilterChanged);
             // 
             // id
             // 

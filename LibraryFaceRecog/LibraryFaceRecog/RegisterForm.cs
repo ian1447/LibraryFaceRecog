@@ -90,7 +90,7 @@ namespace LibraryFaceRecog
         private void btnSave_Click(object sender, EventArgs e)
         {
             IsGood = true;
-            foreach (Control x in this.layoutControl1.Controls.OfType<TextEdit>().OrderBy(c => c.TabIndex))
+            foreach (Control x in this.layoutControl1.Controls)
             {
                 if (x is TextEdit)
                 {

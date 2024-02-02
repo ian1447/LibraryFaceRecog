@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
 using LibraryFaceRecog;
+using LibraryFaceRecog.Core;
 
 namespace LibraryFaceRecog
 {
@@ -19,6 +20,21 @@ namespace LibraryFaceRecog
         }
 
         bool isSuperAdmin = false;
+        private DateTime serverDateTime = new DateTime();
+        private int counterTimer = 0;
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            MainTimer.Start();
+        }
+
+        private void MainTimer_Tick(object sender, EventArgs e)
+        {
+            serverDateTime = DateTime.Now;
+            barStaticItemAccountType.Caption = "Account Privilege: " + PublicVariables.AccountType;
+            counterTimer++;
+            DateTime runningDateTime = serverDateTime.AddSeconds(counterTimer);
+            barStaticItemDateTime.Caption = "Server Data and Time: " + runningDateTime.ToLongDateString() + " | " + runningDateTime.ToLongTimeString();
+        }
 
         private void btnLogout_ItemClick(object sender, ItemClickEventArgs e)
         {

@@ -11,7 +11,7 @@ namespace LibraryFaceRecog.Core
         public static string ProjectVersion = "v1.0.0";
 
         //public static string ConnectionString = "SERVER = 192.168.13.64; DATABASE = librarymanagement; Uid = system_admin; Pwd = Opn49fD23; PORT = 3306; AllowZeroDateTime = True;";
-        public static string ConnectionString = "SERVER = 192.168.254.124; DATABASE = librarymanagement; Uid = system_admin; Pwd = system_admin; PORT = 3306; AllowZeroDateTime = True;";
+        public static string ConnectionString = "SERVER = 192.168.254.121; DATABASE = librarymanagement; Uid = system_admin; Pwd = system_admin; PORT = 3306; AllowZeroDateTime = True;";
 
         #region Directory Settings
         public static string DefaultDirectory = Environment.CurrentDirectory;
@@ -30,6 +30,8 @@ namespace LibraryFaceRecog.Core
         /// Add more if needed
         /// </summary>
         public static string UserName;
+
+        public static string AccountType { get; set; }
         #endregion
     }
 }

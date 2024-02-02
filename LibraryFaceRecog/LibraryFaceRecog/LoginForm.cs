@@ -152,6 +152,7 @@ namespace LibraryFaceRecog
                 if (UserData != null && UserData.Rows.Count > 0)
                 {
                     PublicVariables.UserName = txtUsername.Text;
+                    PublicVariables.AccountType = UserData.Rows[0]["privilege"].ToString();
                     MainForm mf = new MainForm();
                     this.Hide();
                     mf.ShowDialog();

@@ -62,7 +62,7 @@ namespace LibraryFaceRecog
         {
             try
             {
-                if (gvRegistered.GetRowHandle(gvRegistered.FocusedRowHandle) >= 0)
+                if (!gvRegistered.IsGroupRow(gvRegistered.FocusedRowHandle))
                 {
                     if (gvRegistered.SelectedRowsCount > 0)
                     {
@@ -103,7 +103,10 @@ namespace LibraryFaceRecog
         {
             HideLoading();
             if (Register.GetRegisteredBorrowersSuccessful)
+            {
                 dtRegistered.DataSource = BorrowersTable;
+
+            }
             else
                 Msgbox.Error(Register.GetRegisteredBorrowersErrorMessage);
         }

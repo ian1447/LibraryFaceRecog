@@ -61,7 +61,7 @@ namespace LibraryFaceRecog
         {
             try
             {
-                if (gvUsers.GetRowHandle(gvUsers.FocusedRowHandle) >= 0)
+                if (!gvUsers.IsGroupRow(gvUsers.FocusedRowHandle))
                 {
                     if (gvUsers.SelectedRowsCount > 0)
                     {

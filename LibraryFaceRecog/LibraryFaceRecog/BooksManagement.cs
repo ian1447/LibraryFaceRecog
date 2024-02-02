@@ -61,7 +61,7 @@ namespace LibraryFaceRecog
         {
             try
             {
-                if (gvBooks.GetRowHandle(gvBooks.FocusedRowHandle) >= 0)
+                if (!gvBooks.IsGroupRow(gvBooks.FocusedRowHandle))
                 {
                     if (gvBooks.SelectedRowsCount > 0)
                     {
@@ -78,6 +78,11 @@ namespace LibraryFaceRecog
         }
 
         private void BooksManagement_Shown(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
         {
             if (!bwGetBooks.IsBusy)
             {
@@ -99,9 +104,51 @@ namespace LibraryFaceRecog
             if (Books.GetBooksSuccessful)
             {
                 dtBooks.DataSource = BooksTable;
+                cmbType.Text = "Bisu";
             }
             else
                 Msgbox.Error(Books.GetBooksErrorMessage);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            AddBooksForm adf = new AddBooksForm();
+            adf.ShowDialog();
+            btnRefresh.PerformClick();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (SelectionPass())
+            {
+                var focusRowView = (DataRowView)gvBooks.GetFocusedRow();
+                AddBooksForm adf = new AddBooksForm();
+                adf.IsAdd = false;
+                adf.meTitle.Text = focusRowView.Row["title"].ToString();
+                adf.mePlaceandPublisher.Text = focusRowView.Row["place_and_publisher"].ToString();
+                adf.txtAccountNo.Text = focusRowView.Row["account_no"].ToString();
+                adf.txtAuthor.Text = focusRowView.Row["author"].ToString();
+                adf.txtCallNo.Text = focusRowView.Row["call_no"].ToString();
+                adf.txtCopyrightYear.Text = focusRowView.Row["copyright_year"].ToString();
+                adf.txtCost.Text = focusRowView.Row["edition"].ToString();
+                adf.txtNoofCopies.Text = focusRowView.Row["no_of_copies"].ToString();
+                adf.txtSection.Text = focusRowView.Row["section"].ToString();
+                adf._edit_id = Convert.ToInt32(focusRowView.Row["id"].ToString());
+                adf.ShowDialog();
+                btnRefresh.PerformClick();
+            }
+            else
+                Msgbox.Exclamation("Please select a book.");
+        }
+
+        private void gvBooks_ColumnFilterChanged(object sender, EventArgs e)
+        {
+            var focusRowView = (DataRowView)gvBooks.GetFocusedRow();
         }
     }
 }

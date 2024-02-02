@@ -37,11 +37,14 @@
             this.btnBookBorrow = new DevExpress.XtraBars.BarButtonItem();
             this.btnRegister = new DevExpress.XtraBars.BarButtonItem();
             this.btnEntry = new DevExpress.XtraBars.BarButtonItem();
+            this.barStaticItemAccountType = new DevExpress.XtraBars.BarStaticItem();
+            this.barStaticItemDateTime = new DevExpress.XtraBars.BarStaticItem();
             this.rpgMenu = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgFunctions = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonStatusBar = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.documentManager = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.MainTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).BeginInit();
@@ -57,9 +60,11 @@
             this.btnBooksManagement,
             this.btnBookBorrow,
             this.btnRegister,
-            this.btnEntry});
+            this.btnEntry,
+            this.barStaticItemAccountType,
+            this.barStaticItemDateTime});
             this.MainRibbon.Location = new System.Drawing.Point(0, 0);
-            this.MainRibbon.MaxItemId = 5;
+            this.MainRibbon.MaxItemId = 7;
             this.MainRibbon.Name = "MainRibbon";
             this.MainRibbon.PageHeaderItemLinks.Add(this.btnLogout);
             this.MainRibbon.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -122,6 +127,25 @@
             this.btnEntry.Name = "btnEntry";
             this.btnEntry.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEntry_ItemClick);
             // 
+            // barStaticItemAccountType
+            // 
+            this.barStaticItemAccountType.Caption = "Account Type:";
+            this.barStaticItemAccountType.Glyph = ((System.Drawing.Image)(resources.GetObject("barStaticItemAccountType.Glyph")));
+            this.barStaticItemAccountType.Id = 5;
+            this.barStaticItemAccountType.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barStaticItemAccountType.LargeGlyph")));
+            this.barStaticItemAccountType.Name = "barStaticItemAccountType";
+            this.barStaticItemAccountType.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // barStaticItemDateTime
+            // 
+            this.barStaticItemDateTime.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barStaticItemDateTime.Caption = "Time and Data:";
+            this.barStaticItemDateTime.Glyph = ((System.Drawing.Image)(resources.GetObject("barStaticItemDateTime.Glyph")));
+            this.barStaticItemDateTime.Id = 6;
+            this.barStaticItemDateTime.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barStaticItemDateTime.LargeGlyph")));
+            this.barStaticItemDateTime.Name = "barStaticItemDateTime";
+            this.barStaticItemDateTime.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
             // rpgMenu
             // 
             this.rpgMenu.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -142,6 +166,8 @@
             // 
             // ribbonStatusBar
             // 
+            this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemAccountType);
+            this.ribbonStatusBar.ItemLinks.Add(this.barStaticItemDateTime);
             this.ribbonStatusBar.Location = new System.Drawing.Point(0, 494);
             this.ribbonStatusBar.Name = "ribbonStatusBar";
             this.ribbonStatusBar.Ribbon = this.MainRibbon;
@@ -154,6 +180,11 @@
             this.documentManager.View = this.tabbedView1;
             this.documentManager.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
+            // 
+            // MainTimer
+            // 
+            this.MainTimer.Interval = 1000;
+            this.MainTimer.Tick += new System.EventHandler(this.MainTimer_Tick);
             // 
             // MainForm
             // 
@@ -170,6 +201,7 @@
             this.Text = "Library Management System";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.MainRibbon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedView1)).EndInit();
@@ -192,5 +224,8 @@
         private DevExpress.XtraBars.BarButtonItem btnBookBorrow;
         private DevExpress.XtraBars.BarButtonItem btnRegister;
         private DevExpress.XtraBars.BarButtonItem btnEntry;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemAccountType;
+        private DevExpress.XtraBars.BarStaticItem barStaticItemDateTime;
+        private System.Windows.Forms.Timer MainTimer;
     }
 }
