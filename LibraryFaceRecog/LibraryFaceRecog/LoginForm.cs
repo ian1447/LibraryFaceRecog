@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using LibraryFaceRecog.Core;
 using LibraryFaceRecog.Dal;
+using LibraryFaceRecog.Sop;
 
 namespace LibraryFaceRecog
 {
@@ -56,6 +57,10 @@ namespace LibraryFaceRecog
         }
 
         #endregion
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            PublicVariables.ConnectionString = Properties.Settings.Default.DBString.DecryptString();
+        }
 
         public static bool Userlogout = false;
         private void btnlogin_Click(object sender, EventArgs e)
@@ -128,7 +133,6 @@ namespace LibraryFaceRecog
             {
                 lblConnectionError.Visible = true;
                 txtPassword.Enabled = false;
-                txtUsername.Enabled = false;
                 btnlogin.Enabled = false;
                 btnShowPass.Enabled = false;
             }
@@ -173,6 +177,17 @@ namespace LibraryFaceRecog
                 Msgbox.Error(Login.LoginErrorMessage);
         }
         #endregion
+
+        private void txtUsername_EditValueChanged(object sender, EventArgs e)
+        {
+            btnChangeConn.Visible = txtUsername.Text == "Change"? true:false;
+        }
+
+        private void btnChangeConn_Click(object sender, EventArgs e)
+        {
+            DatabaseConnectionForm dcf = new DatabaseConnectionForm();
+            dcf.ShowDialog();
+        }
 
     }
 }

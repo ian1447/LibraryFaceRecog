@@ -55,6 +55,10 @@
     <Reference Include="DevExpress.XtraGrid.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="LibraryFaceRecog.Sop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Assemblies\LibraryFaceRecog.Sop.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -97,6 +101,12 @@
     </Compile>
     <Compile Include="CaptureImage.Designer.cs">
       <DependentUpon>CaptureImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseConnectionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DatabaseConnectionForm.Designer.cs">
+      <DependentUpon>DatabaseConnectionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="EntranceManagementForm.cs">
       <SubType>Form</SubType>
@@ -154,6 +164,9 @@
     <EmbeddedResource Include="CaptureImage.resx">
       <DependentUpon>CaptureImage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DatabaseConnectionForm.resx">
+      <DependentUpon>DatabaseConnectionForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EntranceManagementForm.resx">
       <DependentUpon>EntranceManagementForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -186,6 +199,7 @@
     <EmbeddedResource Include="WaitForm1.resx">
       <DependentUpon>WaitForm1.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

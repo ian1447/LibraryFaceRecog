@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -42,6 +43,7 @@
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwCheckConnection = new System.ComponentModel.BackgroundWorker();
             this.bwGetUserData = new System.ComponentModel.BackgroundWorker();
+            this.btnChangeConn = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
@@ -82,6 +84,7 @@
             this.txtUsername.Properties.Appearance.Options.UseFont = true;
             this.txtUsername.Size = new System.Drawing.Size(226, 24);
             this.txtUsername.TabIndex = 1;
+            this.txtUsername.EditValueChanged += new System.EventHandler(this.txtUsername_EditValueChanged);
             // 
             // labelControl4
             // 
@@ -166,12 +169,25 @@
             this.bwGetUserData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetUserData_DoWork);
             this.bwGetUserData.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetUserData_RunWorkerCompleted);
             // 
+            // btnChangeConn
+            // 
+            this.btnChangeConn.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeConn.Appearance.Options.UseFont = true;
+            this.btnChangeConn.Image = ((System.Drawing.Image)(resources.GetObject("btnChangeConn.Image")));
+            this.btnChangeConn.Location = new System.Drawing.Point(-1, 1);
+            this.btnChangeConn.Name = "btnChangeConn";
+            this.btnChangeConn.Size = new System.Drawing.Size(25, 22);
+            this.btnChangeConn.TabIndex = 10;
+            this.btnChangeConn.Visible = false;
+            this.btnChangeConn.Click += new System.EventHandler(this.btnChangeConn_Click);
+            // 
             // LoginForm
             // 
             this.AcceptButton = this.btnlogin;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(260, 413);
+            this.Controls.Add(this.btnChangeConn);
             this.Controls.Add(this.lblConnectionError);
             this.Controls.Add(this.btnShowPass);
             this.Controls.Add(this.lblInvalid);
@@ -189,6 +205,7 @@
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login ";
+            this.Load += new System.EventHandler(this.LoginForm_Load);
             this.Shown += new System.EventHandler(this.LoginForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
@@ -214,5 +231,6 @@
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private System.ComponentModel.BackgroundWorker bwCheckConnection;
         private System.ComponentModel.BackgroundWorker bwGetUserData;
+        private DevExpress.XtraEditors.SimpleButton btnChangeConn;
     }
 }
