@@ -16,5 +16,11 @@ namespace LibraryFaceRecog
         {
             InitializeComponent();
         }
+
+        private void btnBorrow_Click(object sender, EventArgs e)
+        {
+            BookBorrowForm bbf = new BookBorrowForm();
+            bbf.ShowDialog();
+        }
     }
 }

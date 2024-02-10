@@ -70,7 +70,8 @@ namespace LibraryFaceRecog
             {
                 CaptureImage ci = new CaptureImage();
                 ci.ShowDialog();
-                peCapturedImage.Image = ci.peCapturedImage.Image;
+                if (ci.peCapturedImage.Image != null)
+                    peCapturedImage.Image = ci.peCapturedImage.Image.Bitmap;
             }
             else
             {
@@ -79,7 +80,8 @@ namespace LibraryFaceRecog
                 {   
                     CaptureImage ci = new CaptureImage();
                     ci.ShowDialog();
-                    peCapturedImage.Image = ci.peCapturedImage.Image;
+                    if (ci.peCapturedImage.Image != null)
+                        peCapturedImage.Image = ci.peCapturedImage.Image.Bitmap;
                 }
             } 
         }
@@ -186,6 +188,13 @@ namespace LibraryFaceRecog
             }
             else
                 Msgbox.Error(Register.RegisteredBorrowersEditErrorMessage);
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Msgbox.QuestionYesNo("Are you sure you want to close this form?");
+            if (Msgbox.isYes)
+                this.Close();
         }
     }
 }

@@ -157,6 +157,7 @@
             this.btnBorrow.StyleController = this.layoutControl1;
             this.btnBorrow.TabIndex = 8;
             this.btnBorrow.Text = "Borrow";
+            this.btnBorrow.Click += new System.EventHandler(this.btnBorrow_Click);
             // 
             // dtBorrow
             // 
@@ -378,7 +379,7 @@
             this.ClientSize = new System.Drawing.Size(1241, 597);
             this.Controls.Add(this.layoutControl1);
             this.Name = "BookBorrowManagement";
-            this.Text = "BookBorrowManagement";
+            this.Text = "Book Borrowing Management";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chkShowUnreturned.Properties)).EndInit();

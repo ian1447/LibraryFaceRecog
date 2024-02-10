@@ -55,6 +55,21 @@
     <Reference Include="DevExpress.XtraGrid.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Emgu.CV">
+      <HintPath>..\Assemblies\ReferenceEmgu\References\Emgu.CV.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.GPU">
+      <HintPath>..\Assemblies\ReferenceEmgu\References\Emgu.CV.GPU.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.ML">
+      <HintPath>..\Assemblies\ReferenceEmgu\References\Emgu.CV.ML.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI">
+      <HintPath>..\Assemblies\ReferenceEmgu\References\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.Util">
+      <HintPath>..\Assemblies\ReferenceEmgu\References\Emgu.Util.dll</HintPath>
+    </Reference>
     <Reference Include="LibraryFaceRecog.Sop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Assemblies\LibraryFaceRecog.Sop.dll</HintPath>
@@ -84,11 +99,23 @@
     <Compile Include="AddBooksForm.Designer.cs">
       <DependentUpon>AddBooksForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookBorrowForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookBorrowForm.Designer.cs">
+      <DependentUpon>BookBorrowForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BookBorrowManagement.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="BookBorrowManagement.Designer.cs">
       <DependentUpon>BookBorrowManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BookSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookSearchForm.Designer.cs">
+      <DependentUpon>BookSearchForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BooksManagement.cs">
       <SubType>Form</SubType>
@@ -155,8 +182,14 @@
     <EmbeddedResource Include="AddBooksForm.resx">
       <DependentUpon>AddBooksForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BookBorrowForm.resx">
+      <DependentUpon>BookBorrowForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BookBorrowManagement.resx">
       <DependentUpon>BookBorrowManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookSearchForm.resx">
+      <DependentUpon>BookSearchForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BooksManagement.resx">
       <DependentUpon>BooksManagement.cs</DependentUpon>
@@ -222,6 +255,9 @@
       <Project>{B8ADD3E8-2FAB-4EE3-818C-6DF696910AF7}</Project>
       <Name>LibraryFaceRecog.Dal</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BisuHaarcascade.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

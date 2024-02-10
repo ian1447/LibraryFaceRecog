@@ -110,5 +110,33 @@ namespace LibraryFaceRecog.Dal
                 BookEditErrorMessage = ex.Message + "\nFunction : Edit Book";
             }
         }
+
+        public static string SearchBooksErrorMessage;
+        public static bool SearchBooksSuccessful;
+        public static DataTable SearchBooks(string _title)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(ConnectionString()))
+                {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand("sp_books_search", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("_title", _title));
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                    adp.Fill(dt);
+                    con.Close();
+                    SearchBooksSuccessful = true;
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                SearchBooksSuccessful = false;
+                SearchBooksErrorMessage = ex.Message + "\nFunction : Search Books";
+                return null;
+            }
+        }
     }
 }
