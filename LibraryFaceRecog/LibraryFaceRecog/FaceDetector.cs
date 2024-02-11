@@ -33,9 +33,6 @@ namespace LibraryFaceRecog
         List<Image<Gray, byte>> trainingImages = new List<Image<Gray, byte>>();
         List<string> labels = new List<string>();
         List<string> Users = new List<string>();
-        int Numlabels, t;
-        string name, names, errm;
-
         string filename = (Application.StartupPath + "\\Faces") + "/Faces.txt";
         DataTable RegisteredUsers = new DataTable();
         int Count = 0;
@@ -82,7 +79,8 @@ namespace LibraryFaceRecog
         private FilterInfoCollection CaptureDevice; // list of webcam
         private VideoCaptureDevice FinalFrame;
         private bool CameraConnected;
-        private bool programFirstLoad, HasDetection;
+        private bool programFirstLoad;
+        public int RegisteredUserId;
         private void FaceDetector_Shown(object sender, EventArgs e)
         {
            // faceDetected = new HaarCascade("BisuHaarcascade.xml");
@@ -101,14 +99,13 @@ namespace LibraryFaceRecog
                 CameraConnected = false;
                 Msgbox.QuestionWarning("No camera detected!\nDo you still want to continue?");
                 if (Msgbox.isYes)
-                    btnCapture.Enabled = false;
+                    btnSelect.Enabled = false;
                 else
                     this.Dispose();
             }
             else
             {
                 cmbCameraList.SelectedIndex = 0;
-                // cmbCameraList.Enabled = false;
                 CameraConnected = true;
                 StartCamera();
             }
@@ -145,7 +142,7 @@ namespace LibraryFaceRecog
                     TrainedFace = result.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
                     //CaptureImage.Image = TrainedFace;
                     trainingImages.Add(TrainedFace);
-                    labels.Add(row[1].ToString());
+                    labels.Add(row[0].ToString());
                     File.WriteAllText(filename, trainingImages.ToArray().Length.ToString() + ",");
                     for (int i = 1; i < trainingImages.ToArray().Length + 1; i++)
                     {
@@ -166,8 +163,10 @@ namespace LibraryFaceRecog
             Application.Idle += new EventHandler(FrameProcedure);
         }
 
+
         public void FrameProcedure(object sender, EventArgs e)
         {
+            DataTable ForName = new DataTable();
             if (CameraConnected)
             {
                 Users.Add("");
@@ -182,15 +181,14 @@ namespace LibraryFaceRecog
                     {
                         MCvTermCriteria termCriterias = new MCvTermCriteria(Count, 0.001);
                         EigenObjectRecognizer recognizer = new EigenObjectRecognizer(trainingImages.ToArray(), labels.ToArray(), 1500, ref termCriterias);
-                        Msgbox.Information(recognizer.Recognize(result).ToString());
-                        //Frame.Draw(name, ref font, new Point(f.rect.X - 2, f.rect.Y - 2), new Bgr(Color.Red));
+                        RegisteredUserId = Convert.ToInt32(recognizer.Recognize(result).ToString());
+                        ForName = RegisteredUsers.AsEnumerable().Where(row => row.Field<int>("id") == Convert.ToInt32(recognizer.Recognize(result).ToString())).CopyToDataTable();
+                        lblName.Text = ForName.Rows[0][4].ToString();
+                        CaptureImage.Image = Frame;
+                        btnSelect.Enabled = true;
                     }
-                    ////Users[t - 1] = name;
-                    //Users.Add("");
                 }
-                btnCapture.Enabled = faceDetectedNow[0].Count() > 0 ? true : false;
                 CameraBox.Image = Frame;
-                names = "";
             }
         }
 
@@ -220,8 +218,7 @@ namespace LibraryFaceRecog
             {
                 cmbResolution.Properties.Items.Clear();
                 //load all camera capabilities:
-                FinalFrame = new VideoCaptureDevice(CaptureDevice[cmbCameraList.SelectedIndex].MonikerString);// specified web cam and its filter moniker string
-                //FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);// click button event is fired, 
+                FinalFrame = new VideoCaptureDevice(CaptureDevice[cmbCameraList.SelectedIndex].MonikerString);
 
                 int a = FinalFrame.VideoCapabilities.Length, resCount = 0;
                 for (int i = 0; i < FinalFrame.VideoCapabilities.Length; i++)
@@ -241,16 +238,19 @@ namespace LibraryFaceRecog
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
-            Image<Bgr, Byte> Frame = (Emgu.CV.Image<Emgu.CV.Structure.Bgr, byte>)CaptureImage.Image;
-            grayFace = Frame.Convert<Gray, Byte>();
-            MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 100));
-            if (faceDetectedNow[0].Count() < 1)
+            //Image<Bgr, Byte> Frame = (Emgu.CV.Image<Emgu.CV.Structure.Bgr, byte>)CaptureImage.Image;
+            //grayFace = Frame.Convert<Gray, Byte>();
+            //MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 100));
+            //if (faceDetectedNow[0].Count() < 1)
+            //{
+            //    Msgbox.Information("Cannot Close");
+            //}
+            //else
+            Msgbox.QuestionYesNo("Are you sure you want to select " + lblName.Text + " as borrower?");
+            if (Msgbox.isYes)
             {
-                Msgbox.Information("Cannot Close");
-            }
-            else
-            {
-                btnCapture.Enabled = faceDetectedNow[0].Count() > 0 ? true : false;
+                if (CameraConnected)
+                    StopCamera();
                 this.Close();
             }
         }

@@ -34,8 +34,6 @@
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.btnSelect = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.btnCapture = new DevExpress.XtraEditors.SimpleButton();
-            this.lblBorrower = new DevExpress.XtraEditors.LabelControl();
             this.CaptureImage = new Emgu.CV.UI.ImageBox();
             this.cmbResolution = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbCameraList = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -49,10 +47,10 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.lblName = new DevExpress.XtraEditors.LabelControl();
+            this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CaptureImage)).BeginInit();
@@ -68,18 +66,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.lblName);
             this.layoutControl1.Controls.Add(this.btnSelect);
             this.layoutControl1.Controls.Add(this.btnCancel);
-            this.layoutControl1.Controls.Add(this.btnCapture);
-            this.layoutControl1.Controls.Add(this.lblBorrower);
             this.layoutControl1.Controls.Add(this.CaptureImage);
             this.layoutControl1.Controls.Add(this.cmbResolution);
             this.layoutControl1.Controls.Add(this.cmbCameraList);
@@ -95,10 +91,11 @@
             // 
             // btnSelect
             // 
+            this.btnSelect.Enabled = false;
             this.btnSelect.Image = ((System.Drawing.Image)(resources.GetObject("btnSelect.Image")));
-            this.btnSelect.Location = new System.Drawing.Point(711, 321);
+            this.btnSelect.Location = new System.Drawing.Point(591, 324);
             this.btnSelect.Name = "btnSelect";
-            this.btnSelect.Size = new System.Drawing.Size(140, 22);
+            this.btnSelect.Size = new System.Drawing.Size(231, 22);
             this.btnSelect.StyleController = this.layoutControl1;
             this.btnSelect.TabIndex = 9;
             this.btnSelect.Text = "Select as Borrower";
@@ -107,32 +104,13 @@
             // btnCancel
             // 
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(855, 321);
+            this.btnCancel.Location = new System.Drawing.Point(826, 324);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(144, 22);
+            this.btnCancel.Size = new System.Drawing.Size(173, 22);
             this.btnCancel.StyleController = this.layoutControl1;
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnCapture
-            // 
-            this.btnCapture.Image = ((System.Drawing.Image)(resources.GetObject("btnCapture.Image")));
-            this.btnCapture.Location = new System.Drawing.Point(591, 321);
-            this.btnCapture.Name = "btnCapture";
-            this.btnCapture.Size = new System.Drawing.Size(116, 22);
-            this.btnCapture.StyleController = this.layoutControl1;
-            this.btnCapture.TabIndex = 7;
-            this.btnCapture.Text = "Capture";
-            // 
-            // lblBorrower
-            // 
-            this.lblBorrower.Location = new System.Drawing.Point(591, 304);
-            this.lblBorrower.Name = "lblBorrower";
-            this.lblBorrower.Size = new System.Drawing.Size(3, 13);
-            this.lblBorrower.StyleController = this.layoutControl1;
-            this.lblBorrower.TabIndex = 6;
-            this.lblBorrower.Text = " ";
             // 
             // CaptureImage
             // 
@@ -194,9 +172,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(567, 347);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(567, 350);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(436, 215);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(436, 212);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // simpleSeparator1
@@ -248,13 +226,12 @@
             // 
             this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem4,
-            this.layoutControlItem5,
-            this.layoutControlItem6,
             this.layoutControlItem7,
-            this.layoutControlItem8});
+            this.layoutControlItem8,
+            this.layoutControlItem9});
             this.layoutControlGroup3.Location = new System.Drawing.Point(567, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(436, 347);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(436, 350);
             this.layoutControlGroup3.Text = "Captured Image";
             // 
             // layoutControlItem4
@@ -269,35 +246,14 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
-            // layoutControlItem5
-            // 
-            this.layoutControlItem5.Control = this.lblBorrower;
-            this.layoutControlItem5.Location = new System.Drawing.Point(0, 261);
-            this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(412, 17);
-            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem5.TextVisible = false;
-            // 
-            // layoutControlItem6
-            // 
-            this.layoutControlItem6.Control = this.btnCapture;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 278);
-            this.layoutControlItem6.MaxSize = new System.Drawing.Size(120, 26);
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(120, 26);
-            this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(120, 26);
-            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem6.TextVisible = false;
-            // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.btnCancel;
-            this.layoutControlItem7.Location = new System.Drawing.Point(264, 278);
-            this.layoutControlItem7.MaxSize = new System.Drawing.Size(148, 26);
-            this.layoutControlItem7.MinSize = new System.Drawing.Size(148, 26);
+            this.layoutControlItem7.Location = new System.Drawing.Point(235, 281);
+            this.layoutControlItem7.MaxSize = new System.Drawing.Size(177, 26);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(177, 26);
             this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(148, 26);
+            this.layoutControlItem7.Size = new System.Drawing.Size(177, 26);
             this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
@@ -305,14 +261,33 @@
             // layoutControlItem8
             // 
             this.layoutControlItem8.Control = this.btnSelect;
-            this.layoutControlItem8.Location = new System.Drawing.Point(120, 278);
-            this.layoutControlItem8.MaxSize = new System.Drawing.Size(144, 26);
-            this.layoutControlItem8.MinSize = new System.Drawing.Size(144, 26);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 281);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(235, 26);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(235, 26);
             this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(144, 26);
+            this.layoutControlItem8.Size = new System.Drawing.Size(235, 26);
             this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem8.TextVisible = false;
+            // 
+            // lblName
+            // 
+            this.lblName.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblName.Location = new System.Drawing.Point(591, 304);
+            this.lblName.Name = "lblName";
+            this.lblName.Size = new System.Drawing.Size(4, 16);
+            this.lblName.StyleController = this.layoutControl1;
+            this.lblName.TabIndex = 10;
+            this.lblName.Text = " ";
+            // 
+            // layoutControlItem9
+            // 
+            this.layoutControlItem9.Control = this.lblName;
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 261);
+            this.layoutControlItem9.Name = "layoutControlItem9";
+            this.layoutControlItem9.Size = new System.Drawing.Size(412, 20);
+            this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem9.TextVisible = false;
             // 
             // FaceDetector
             // 
@@ -341,10 +316,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -366,13 +340,11 @@
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
         private Emgu.CV.UI.ImageBox CaptureImage;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
-        private DevExpress.XtraEditors.LabelControl lblBorrower;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.SimpleButton btnSelect;
         private DevExpress.XtraEditors.SimpleButton btnCancel;
-        private DevExpress.XtraEditors.SimpleButton btnCapture;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
+        public DevExpress.XtraEditors.LabelControl lblName;
     }
 }
