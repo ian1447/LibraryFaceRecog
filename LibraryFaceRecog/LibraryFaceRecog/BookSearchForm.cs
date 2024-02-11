@@ -77,6 +77,8 @@ namespace LibraryFaceRecog
             catch { return false; }
         }
 
+        public string BookTitle;
+        public int BookId;
         DataTable BooksTable = new DataTable();
         private void btnSearch_Click(object sender, EventArgs e)
         {
@@ -107,7 +109,25 @@ namespace LibraryFaceRecog
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            if (SelectionPass())
+            {
+                var focusRowView = (DataRowView)gvBooks.GetFocusedRow();
+                BookId = Convert.ToInt32(focusRowView.Row[0].ToString());
+                BookTitle = focusRowView.Row[6].ToString();
+                this.Close();
+            }
+            else
+                Msgbox.Exclamation("Nothing to select.");
+        }
 
+        private void gvBooks_FocusedRowChanged(object sender, DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventArgs e)
+        {
+            if (SelectionPass())
+            {
+                var focusRowView = (DataRowView)gvBooks.GetFocusedRow();
+                BookId = Convert.ToInt32(focusRowView.Row[0].ToString());
+                BookTitle = focusRowView.Row[6].ToString();
+            }
         }
     }
 }

@@ -35,8 +35,9 @@
             this.dtBooks = new DevExpress.XtraGrid.GridControl();
             this.gvBooks = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.title = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.author = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
+            this.title = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
             this.txtSearch = new DevExpress.XtraEditors.TextEdit();
@@ -49,7 +50,6 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetBooks = new System.ComponentModel.BackgroundWorker();
-            this.author = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtBooks)).BeginInit();
@@ -128,12 +128,26 @@
             this.gvBooks.OptionsView.RowAutoHeight = true;
             this.gvBooks.OptionsView.ShowGroupPanel = false;
             this.gvBooks.OptionsView.ShowIndicator = false;
+            this.gvBooks.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvBooks_FocusedRowChanged);
             // 
             // id
             // 
             this.id.Caption = "id";
             this.id.FieldName = "id";
             this.id.Name = "id";
+            // 
+            // author
+            // 
+            this.author.Caption = "Author";
+            this.author.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.author.FieldName = "author";
+            this.author.Name = "author";
+            this.author.Visible = true;
+            this.author.VisibleIndex = 0;
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // title
             // 
@@ -143,10 +157,6 @@
             this.title.Name = "title";
             this.title.Visible = true;
             this.title.VisibleIndex = 1;
-            // 
-            // repositoryItemMemoEdit1
-            // 
-            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
             // 
             // repositoryItemCheckEdit1
             // 
@@ -256,15 +266,6 @@
             this.bwGetBooks.WorkerSupportsCancellation = true;
             this.bwGetBooks.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetBooks_DoWork);
             this.bwGetBooks.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetBooks_RunWorkerCompleted);
-            // 
-            // author
-            // 
-            this.author.Caption = "Author";
-            this.author.ColumnEdit = this.repositoryItemMemoEdit1;
-            this.author.FieldName = "author";
-            this.author.Name = "author";
-            this.author.Visible = true;
-            this.author.VisibleIndex = 0;
             // 
             // BookSearchForm
             // 

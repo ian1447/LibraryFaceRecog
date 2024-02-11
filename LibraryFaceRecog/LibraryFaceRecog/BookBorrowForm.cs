@@ -23,6 +23,14 @@ namespace LibraryFaceRecog
         {
             BookSearchForm bsf = new BookSearchForm();
             bsf.ShowDialog();
+            if (string.IsNullOrEmpty(bsf.BookTitle))
+                txtBookTitle.Text = bsf.BookTitle;
+        }
+
+        private void btnLoadCamera_Click(object sender, EventArgs e)
+        {
+            FaceDetector fd = new FaceDetector();
+            fd.ShowDialog();
         }
     }
 }

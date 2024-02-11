@@ -254,7 +254,21 @@ namespace LibraryFaceRecog
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+
+            //Frame = camera.QueryFrame().Resize(800, 720, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+
+            //Image<Bgr, Byte> Frame = (Emgu.CV.Image<Emgu.CV.Structure.Bgr, byte>)peCapturedImage.Image;
+            //grayFace = Frame.Convert<Gray, Byte>();
+            //MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 100));
+            //if (faceDetectedNow[0].Count() < 1)
+            //{
+            //    Msgbox.Information("Cannot Close");
+            //}
+            //else
+            //{
+            //    btnCapture.Enabled = faceDetectedNow[0].Count() > 0 ? true : false;
             this.Close();
+            //}
         }
 
     }
