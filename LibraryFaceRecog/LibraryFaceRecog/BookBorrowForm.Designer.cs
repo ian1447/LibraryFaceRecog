@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookBorrowForm));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnSelect = new DevExpress.XtraEditors.SimpleButton();
             this.meBookTitle = new DevExpress.XtraEditors.MemoEdit();
             this.txtCourse = new DevExpress.XtraEditors.TextEdit();
             this.txtSection = new DevExpress.XtraEditors.TextEdit();
@@ -47,11 +48,13 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetBorrowerDetails = new System.ComponentModel.BackgroundWorker();
+            this.bwSaveBorrower = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.meBookTitle.Properties)).BeginInit();
@@ -68,6 +71,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
@@ -75,6 +79,7 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnSelect);
             this.layoutControl1.Controls.Add(this.meBookTitle);
             this.layoutControl1.Controls.Add(this.txtCourse);
             this.layoutControl1.Controls.Add(this.txtSection);
@@ -93,6 +98,17 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // btnSelect
+            // 
+            this.btnSelect.Image = ((System.Drawing.Image)(resources.GetObject("btnSelect.Image")));
+            this.btnSelect.Location = new System.Drawing.Point(189, 297);
+            this.btnSelect.Name = "btnSelect";
+            this.btnSelect.Size = new System.Drawing.Size(161, 22);
+            this.btnSelect.StyleController = this.layoutControl1;
+            this.btnSelect.TabIndex = 15;
+            this.btnSelect.Text = "Select Manually";
+            this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
+            // 
             // meBookTitle
             // 
             this.meBookTitle.Location = new System.Drawing.Point(12, 31);
@@ -106,6 +122,7 @@
             // 
             // txtCourse
             // 
+            this.txtCourse.Enabled = false;
             this.txtCourse.Location = new System.Drawing.Point(24, 230);
             this.txtCourse.Name = "txtCourse";
             this.txtCourse.Properties.ReadOnly = true;
@@ -115,6 +132,8 @@
             // 
             // txtSection
             // 
+            this.txtSection.Enabled = false;
+            this.txtSection.EnterMoveNextControl = true;
             this.txtSection.Location = new System.Drawing.Point(24, 273);
             this.txtSection.Name = "txtSection";
             this.txtSection.Properties.ReadOnly = true;
@@ -124,6 +143,7 @@
             // 
             // txtYear
             // 
+            this.txtYear.Enabled = false;
             this.txtYear.Location = new System.Drawing.Point(189, 230);
             this.txtYear.Name = "txtYear";
             this.txtYear.Properties.ReadOnly = true;
@@ -133,6 +153,7 @@
             // 
             // txtSex
             // 
+            this.txtSex.Enabled = false;
             this.txtSex.Location = new System.Drawing.Point(24, 187);
             this.txtSex.Name = "txtSex";
             this.txtSex.Properties.ReadOnly = true;
@@ -142,6 +163,7 @@
             // 
             // txtBorrowerName
             // 
+            this.txtBorrowerName.Enabled = false;
             this.txtBorrowerName.Location = new System.Drawing.Point(24, 144);
             this.txtBorrowerName.Name = "txtBorrowerName";
             this.txtBorrowerName.Properties.ReadOnly = true;
@@ -154,7 +176,7 @@
             this.btnLoadCamera.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadCamera.Image")));
             this.btnLoadCamera.Location = new System.Drawing.Point(24, 297);
             this.btnLoadCamera.Name = "btnLoadCamera";
-            this.btnLoadCamera.Size = new System.Drawing.Size(326, 22);
+            this.btnLoadCamera.Size = new System.Drawing.Size(161, 22);
             this.btnLoadCamera.StyleController = this.layoutControl1;
             this.btnLoadCamera.TabIndex = 7;
             this.btnLoadCamera.Text = "Face Detection";
@@ -204,7 +226,8 @@
             this.layoutControlItem6,
             this.layoutControlItem8,
             this.layoutControlItem9,
-            this.layoutControlItem7});
+            this.layoutControlItem7,
+            this.layoutControlItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 82);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(354, 241);
@@ -215,7 +238,7 @@
             this.layoutControlItem4.Control = this.btnLoadCamera;
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 172);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(330, 26);
+            this.layoutControlItem4.Size = new System.Drawing.Size(165, 26);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem4.TextVisible = false;
             // 
@@ -279,6 +302,15 @@
             this.layoutControlItem7.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem7.TextSize = new System.Drawing.Size(95, 16);
             // 
+            // layoutControlItem1
+            // 
+            this.layoutControlItem1.Control = this.btnSelect;
+            this.layoutControlItem1.Location = new System.Drawing.Point(165, 172);
+            this.layoutControlItem1.Name = "layoutControlItem1";
+            this.layoutControlItem1.Size = new System.Drawing.Size(165, 26);
+            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem1.TextVisible = false;
+            // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.btnSave;
@@ -321,6 +353,12 @@
             this.bwGetBorrowerDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetBorrowerDetails_DoWork);
             this.bwGetBorrowerDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetBorrowerDetails_RunWorkerCompleted);
             // 
+            // bwSaveBorrower
+            // 
+            this.bwSaveBorrower.WorkerSupportsCancellation = true;
+            this.bwSaveBorrower.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwSaveBorrower_DoWork);
+            this.bwSaveBorrower.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwSaveBorrower_RunWorkerCompleted);
+            // 
             // BookBorrowForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,6 +385,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
@@ -379,5 +418,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private System.ComponentModel.BackgroundWorker bwGetBorrowerDetails;
+        private DevExpress.XtraEditors.SimpleButton btnSelect;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private System.ComponentModel.BackgroundWorker bwSaveBorrower;
     }
 }

@@ -9,6 +9,9 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using LibraryFaceRecog.Core;
 using LibraryFaceRecog.Dal;
+using LibraryFaceRecog.Sop;
+using LibraryFaceRecog.Reports;
+using DevExpress.XtraReports.UI;
 
 namespace LibraryFaceRecog
 {
@@ -59,6 +62,7 @@ namespace LibraryFaceRecog
 
         DataTable BorrowersTable = new DataTable();
         int bookid, BorrowerId;
+        string barcode;
         private void txtBookTitle_Click(object sender, EventArgs e)
         {
             bool OpenSearchGood = true;
@@ -151,9 +155,26 @@ namespace LibraryFaceRecog
 
             if (IsGood)
             {
-                Msgbox.Information("Saved");
-                this.Close();
+                barcode = (bookid.ToString() + GetRandom() + BorrowerId.ToString() + GetRandom() + DateTime.Now.ToString()).EncryptString().Substring(0, 10);
+                if (!bwSaveBorrower.IsBusy)
+                {
+                    ShowLoading("Generating Barcode and saving...");
+                    bwSaveBorrower.RunWorkerAsync();
+                }
             }
+        }
+
+        public string GetRandom()
+        {
+            Random res = new Random();
+            String str = "abcdefghijklmnopqrstuvwxyz";
+            String ran = "";
+            for (int i = 0; i < 2; i++)
+            {
+                int x = res.Next(26);
+                ran = ran + str[x];
+            }
+            return ran;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -161,6 +182,46 @@ namespace LibraryFaceRecog
             Msgbox.QuestionYesNo("Are you sure you want to close this form?");
             if (Msgbox.isYes)
                 this.Close();
+        }
+
+        private void btnSelect_Click(object sender, EventArgs e)
+        {
+            BookBorrowerSearchForm bbsf = new BookBorrowerSearchForm();
+            bbsf.ShowDialog();
+            if (bbsf.BorrowerId > 0)
+            {
+                BorrowerId = bbsf.BorrowerId;
+                txtBorrowerName.Text =bbsf.lblName.Text;
+                if (!bwGetBorrowerDetails.IsBusy)
+                {
+                    ShowLoading("Loading Data...");
+                    bwGetBorrowerDetails.RunWorkerAsync();
+                }
+            }
+        }
+
+        private void bwSaveBorrower_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Borrower.BorrowBook(bookid,BorrowerId,barcode);
+            bwSaveBorrower.CancelAsync();
+        }
+
+        private void bwSaveBorrower_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            HideLoading();
+            if (Borrower.BorrowBookSuccessful)
+            {
+                Msgbox.Information("Barcode for return is:\n\n" + barcode);
+                ReturnForm rf = new ReturnForm();
+                rf.lblDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
+                rf.lblBookTitle.Text = meBookTitle.Text;
+                rf.lblBorrower.Text = txtBorrowerName.Text;
+                rf.xrBarCode.Text = barcode;
+                rf.ShowPreviewDialog();
+                this.Close();
+            }
+            else
+                Msgbox.Error(Borrower.BorrowBookErrorMessage);
         }
     }
 }

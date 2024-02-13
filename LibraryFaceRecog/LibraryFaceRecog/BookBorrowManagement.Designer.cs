@@ -39,9 +39,10 @@
             this.dtBorrow = new DevExpress.XtraGrid.GridControl();
             this.gvBorrow = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.id = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.barcode = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.book_name = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.title = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.author = new DevExpress.XtraGrid.Columns.GridColumn();
             this.borrower = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.barcode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.borrowed_on = new DevExpress.XtraGrid.Columns.GridColumn();
             this.returned_on = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
@@ -57,6 +58,9 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
+            this.bwGetBorrowedDetails = new System.ComponentModel.BackgroundWorker();
+            this.repositoryItemMemoEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chkShowUnreturned.Properties)).BeginInit();
@@ -76,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -127,6 +132,7 @@
             this.btnRefresh.StyleController = this.layoutControl1;
             this.btnRefresh.TabIndex = 11;
             this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnStudentLogs
             // 
@@ -165,7 +171,8 @@
             this.dtBorrow.MainView = this.gvBorrow;
             this.dtBorrow.Name = "dtBorrow";
             this.dtBorrow.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemCheckEdit1});
+            this.repositoryItemCheckEdit1,
+            this.repositoryItemMemoEdit1});
             this.dtBorrow.Size = new System.Drawing.Size(1193, 499);
             this.dtBorrow.TabIndex = 7;
             this.dtBorrow.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -175,9 +182,10 @@
             // 
             this.gvBorrow.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.id,
-            this.barcode,
-            this.book_name,
+            this.title,
+            this.author,
             this.borrower,
+            this.barcode,
             this.borrowed_on,
             this.returned_on});
             this.gvBorrow.GridControl = this.dtBorrow;
@@ -193,21 +201,22 @@
             this.id.FieldName = "id";
             this.id.Name = "id";
             // 
-            // barcode
+            // title
             // 
-            this.barcode.Caption = "Barcode";
-            this.barcode.FieldName = "barcode";
-            this.barcode.Name = "barcode";
-            this.barcode.Visible = true;
-            this.barcode.VisibleIndex = 1;
+            this.title.Caption = "Book Name";
+            this.title.ColumnEdit = this.repositoryItemMemoEdit1;
+            this.title.FieldName = "title";
+            this.title.Name = "title";
+            this.title.Visible = true;
+            this.title.VisibleIndex = 1;
             // 
-            // book_name
+            // author
             // 
-            this.book_name.Caption = "Book Name";
-            this.book_name.FieldName = "book_name";
-            this.book_name.Name = "book_name";
-            this.book_name.Visible = true;
-            this.book_name.VisibleIndex = 0;
+            this.author.Caption = "Author";
+            this.author.FieldName = "author";
+            this.author.Name = "author";
+            this.author.Visible = true;
+            this.author.VisibleIndex = 0;
             // 
             // borrower
             // 
@@ -217,13 +226,21 @@
             this.borrower.Visible = true;
             this.borrower.VisibleIndex = 2;
             // 
+            // barcode
+            // 
+            this.barcode.Caption = "Barcode";
+            this.barcode.FieldName = "barcode";
+            this.barcode.Name = "barcode";
+            this.barcode.Visible = true;
+            this.barcode.VisibleIndex = 3;
+            // 
             // borrowed_on
             // 
             this.borrowed_on.Caption = "Borrowed On";
             this.borrowed_on.FieldName = "borrowed_on";
             this.borrowed_on.Name = "borrowed_on";
             this.borrowed_on.Visible = true;
-            this.borrowed_on.VisibleIndex = 3;
+            this.borrowed_on.VisibleIndex = 4;
             // 
             // returned_on
             // 
@@ -231,7 +248,7 @@
             this.returned_on.FieldName = "returned_on";
             this.returned_on.Name = "returned_on";
             this.returned_on.Visible = true;
-            this.returned_on.VisibleIndex = 4;
+            this.returned_on.VisibleIndex = 5;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -351,6 +368,7 @@
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.Text = "Type: ";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(37, 14);
+            this.layoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
             // 
             // layoutControlItem7
             // 
@@ -372,6 +390,16 @@
             this.emptySpaceItem1.Size = new System.Drawing.Size(354, 455);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
+            // bwGetBorrowedDetails
+            // 
+            this.bwGetBorrowedDetails.WorkerSupportsCancellation = true;
+            this.bwGetBorrowedDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetBorrowedDetails_DoWork);
+            this.bwGetBorrowedDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetBorrowedDetails_RunWorkerCompleted);
+            // 
+            // repositoryItemMemoEdit1
+            // 
+            this.repositoryItemMemoEdit1.Name = "repositoryItemMemoEdit1";
+            // 
             // BookBorrowManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,6 +408,7 @@
             this.Controls.Add(this.layoutControl1);
             this.Name = "BookBorrowManagement";
             this.Text = "Book Borrowing Management";
+            this.Shown += new System.EventHandler(this.BookBorrowManagement_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chkShowUnreturned.Properties)).EndInit();
@@ -399,6 +428,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -413,7 +443,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn id;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckEdit1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
-        private DevExpress.XtraGrid.Columns.GridColumn book_name;
+        private DevExpress.XtraGrid.Columns.GridColumn title;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraLayout.SplitterItem splitterItem1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
@@ -433,5 +463,9 @@
         private DevExpress.XtraGrid.Columns.GridColumn borrower;
         private DevExpress.XtraGrid.Columns.GridColumn borrowed_on;
         private DevExpress.XtraGrid.Columns.GridColumn returned_on;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private System.ComponentModel.BackgroundWorker bwGetBorrowedDetails;
+        private DevExpress.XtraGrid.Columns.GridColumn author;
+        private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
     }
 }
