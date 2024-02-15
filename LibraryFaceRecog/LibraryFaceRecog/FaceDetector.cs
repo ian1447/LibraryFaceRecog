@@ -81,10 +81,12 @@ namespace LibraryFaceRecog
         private bool CameraConnected;
         private bool programFirstLoad;
         public int RegisteredUserId;
+        public bool ForReturn = false;
         private void FaceDetector_Shown(object sender, EventArgs e)
         {
            // faceDetected = new HaarCascade("BisuHaarcascade.xml");
             ShowLoading("Loading Dependencies...");
+            btnSelect.Text = ForReturn? "Selecct as Returner":"Select as Borrower";
             faceDetected = new HaarCascade("BisuHaarcascade.xml");
             CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);//constructor
             programFirstLoad = false;
@@ -238,6 +240,7 @@ namespace LibraryFaceRecog
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            string type = btnSelect.Text == "Select as Borrower" ? "Borrower" : "Returner";
             //Image<Bgr, Byte> Frame = (Emgu.CV.Image<Emgu.CV.Structure.Bgr, byte>)CaptureImage.Image;
             //grayFace = Frame.Convert<Gray, Byte>();
             //MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 100));
@@ -246,7 +249,7 @@ namespace LibraryFaceRecog
             //    Msgbox.Information("Cannot Close");
             //}
             //else
-            Msgbox.QuestionYesNo("Are you sure you want to select " + lblName.Text + " as borrower?");
+            Msgbox.QuestionYesNo("Are you sure you want to select " + lblName.Text + " as " + type + "?");
             if (Msgbox.isYes)
             {
                 if (CameraConnected)

@@ -108,6 +108,12 @@
     <Compile Include="AddBooksForm.Designer.cs">
       <DependentUpon>AddBooksForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="BookBorrowedSearchForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookBorrowedSearchForm.Designer.cs">
+      <DependentUpon>BookBorrowedSearchForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="BookBorrowForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +125,12 @@
     </Compile>
     <Compile Include="BookBorrowManagement.Designer.cs">
       <DependentUpon>BookBorrowManagement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BookReturnForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BookReturnForm.Designer.cs">
+      <DependentUpon>BookReturnForm.cs</DependentUpon>
     </Compile>
     <Compile Include="BookSearchForm.cs">
       <SubType>Form</SubType>
@@ -209,11 +221,17 @@
     <EmbeddedResource Include="AddBooksForm.resx">
       <DependentUpon>AddBooksForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="BookBorrowedSearchForm.resx">
+      <DependentUpon>BookBorrowedSearchForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BookBorrowForm.resx">
       <DependentUpon>BookBorrowForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BookBorrowManagement.resx">
       <DependentUpon>BookBorrowManagement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BookReturnForm.resx">
+      <DependentUpon>BookReturnForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="BookSearchForm.resx">
       <DependentUpon>BookSearchForm.cs</DependentUpon>

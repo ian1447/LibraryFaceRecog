@@ -120,5 +120,11 @@ namespace LibraryFaceRecog
         {
             LoadData();
         }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            BookReturnForm bbf = new BookReturnForm();
+            bbf.ShowDialog();
+        }
     }
 }
