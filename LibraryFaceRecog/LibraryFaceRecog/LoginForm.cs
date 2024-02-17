@@ -59,7 +59,7 @@ namespace LibraryFaceRecog
         #endregion
         private void LoginForm_Load(object sender, EventArgs e)
         {
-            PublicVariables.ConnectionString = Properties.Settings.Default.DBString.DecryptString();
+            PublicVariables.ConnectionString = !string.IsNullOrEmpty(Properties.Settings.Default.DBString)? Properties.Settings.Default.DBString.DecryptString(): null;
         }
 
         public static bool Userlogout = false;
@@ -156,7 +156,7 @@ namespace LibraryFaceRecog
                 if (UserData != null && UserData.Rows.Count > 0)
                 {
                     PublicVariables.UserName = txtUsername.Text;
-                    PublicVariables.AccountType = UserData.Rows[0]["privilege"].ToString();
+                    PublicVariables.AccountType = UserData.Rows[0]["privilege"].ToString() == "super-admin"? "Bisu":UserData.Rows[0]["privilege"].ToString();
                     MainForm mf = new MainForm();
                     this.Hide();
                     mf.ShowDialog();

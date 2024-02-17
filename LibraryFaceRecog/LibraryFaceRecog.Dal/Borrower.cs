@@ -17,7 +17,7 @@ namespace LibraryFaceRecog.Dal
 
         public static string GetBorrowedBooksErrorMessage;
         public static bool GetBorrowedBooksSuccessful;
-        public static DataTable GetBorrowedBooks()
+        public static DataTable GetBorrowedBooks(DateTime _date_from, DateTime _date_to)
         {
             DataTable dt = new DataTable();
             try
@@ -27,6 +27,9 @@ namespace LibraryFaceRecog.Dal
                     con.Open();
                     MySqlCommand cmd = new MySqlCommand("sp_book_borrow_get", con);
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("_type", PublicVariables.AccountType));
+                    cmd.Parameters.Add(new MySqlParameter("_date_from", _date_from));
+                    cmd.Parameters.Add(new MySqlParameter("_date_to", _date_to));
                     MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
                     adp.Fill(dt);
                     con.Close();

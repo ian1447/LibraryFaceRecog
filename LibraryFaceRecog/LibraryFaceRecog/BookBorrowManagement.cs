@@ -77,24 +77,49 @@ namespace LibraryFaceRecog
             catch { return false; }
         }
 
+        int BorrowerId = 0;
+        bool firstload = true;
         private void BookBorrowManagement_Shown(object sender, EventArgs e)
         {
+            pnlDates.Location = new Point(
+                   this.ClientSize.Width / 2 - pnlDates.Size.Width / 2,
+                   this.ClientSize.Height / 3 - pnlDates.Size.Height / 2);
+            datePeriod.Columns.Add("Period", typeof(string));
+            datePeriod.Rows.Add("Today's Record");
+            datePeriod.Rows.Add("This Week's Record");
+            datePeriod.Rows.Add("This Month's Record");
+            datePeriod.Rows.Add("All Records");
+            datePeriod.Rows.Add("Pick a date..");
+            luePeriod.Properties.DataSource = datePeriod;
+            luePeriod.Properties.DisplayMember = "Period";
+            luePeriod.Properties.ValueMember = "Period";
+            luePeriod.EditValue = "Today's Record";
+            if (!bwGetBorrower.IsBusy)
+            {
+                ShowLoading("Loading Data...");
+                bwGetBorrower.RunWorkerAsync();
+            }
+            firstload = false;
             LoadData();
         }
 
         private void LoadData()
         {
-            if (!bwGetBorrowedDetails.IsBusy)
+            if (!firstload)
             {
-                ShowLoading("Loading data...");
-                bwGetBorrowedDetails.RunWorkerAsync();
+                if (!bwGetBorrowedDetails.IsBusy)
+                {
+                    ShowLoading("Loading data...");
+                    bwGetBorrowedDetails.RunWorkerAsync();
+                }
             }
         }
 
         DataTable BorrowedDetails = new DataTable();
+        DataTable datePeriod = new DataTable();
         private void bwGetBorrowedDetails_DoWork(object sender, DoWorkEventArgs e)
         {
-            BorrowedDetails = Borrower.GetBorrowedBooks();
+            BorrowedDetails = Borrower.GetBorrowedBooks(dateFrom,dateTo);
             bwGetBorrowedDetails.CancelAsync();
         }
 
@@ -125,6 +150,111 @@ namespace LibraryFaceRecog
         {
             BookReturnForm bbf = new BookReturnForm();
             bbf.ShowDialog();
+        }
+
+        DataTable BorrowerTable = new DataTable();
+        private void bwGetBorrower_DoWork(object sender, DoWorkEventArgs e)
+        {
+            BorrowerTable = Register.GetRegisteredBorrowers(PublicVariables.AccountType);
+            bwGetBorrower.CancelAsync();
+        }
+
+        private void bwGetBorrower_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            HideLoading();
+            if (Register.GetRegisteredBorrowersSuccessful)
+            {
+                lueBorrower.Properties.DataSource = BorrowerTable;
+                lueBorrower.Properties.DisplayMember = "name";
+                lueBorrower.Properties.ValueMember = "id";
+            }
+            else
+                Msgbox.Error(Register.GetRegisteredBorrowersErrorMessage);
+        }
+
+        private void lueBorrower_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+                lueBorrower.EditValue = null;
+        }
+
+        DataTable FilteredTable = new DataTable();
+        private void lueBorrower_EditValueChanged(object sender, EventArgs e)
+        {
+            BorrowerId = lueBorrower.EditValue != null ? Convert.ToInt32(lueBorrower.EditValue.ToString()) : 0;
+            if (BorrowerId != 0)
+            {
+                FilteredTable = BorrowedDetails.AsEnumerable()
+                          .Where(row => row.Field<int>("borrower_id") == BorrowerId).CopyToDataTable();
+                dtBorrow.DataSource = FilteredTable;
+            }
+            else
+                dtBorrow.DataSource = BorrowedDetails;
+        }
+
+        DateTime baseDate = DateTime.Now;
+        DateTime dateFrom = new DateTime();
+        DateTime dateTo = new DateTime();
+        private void luePeriod_EditValueChanged(object sender, EventArgs e)
+        {
+            pnlDates.Visible = luePeriod.Text.Equals("Pick a date..") ? true : false;
+            layoutControlGroup1.Enabled = luePeriod.Text == "Pick a date.." ? false : true;
+            luePeriod.Properties.DisplayMember = "Period";
+
+            if (luePeriod.Text.Equals("Today's Record"))
+            {
+                dtpTo.EditValue = DateTime.Now;
+                dtpFrom.EditValue = DateTime.Now;
+
+                dateFrom = DateTime.Now;
+                dateTo = DateTime.Now;
+                LoadData();
+            }
+            else if (luePeriod.Text.Equals("This Week's Record"))
+            {
+                dtpFrom.EditValue = baseDate.AddDays(-(int)baseDate.DayOfWeek);
+                dtpTo.EditValue = Convert.ToDateTime(dtpFrom.EditValue).AddDays(7).AddSeconds(-1);
+
+                dateFrom = baseDate.AddDays(-(int)baseDate.DayOfWeek);
+                dateTo = Convert.ToDateTime(dtpFrom.EditValue).AddDays(7).AddSeconds(-1);
+                LoadData();
+            }
+            else if (luePeriod.Text.Equals("This Month's Record"))
+            {
+                dtpFrom.EditValue = baseDate.AddDays(1 - baseDate.Day);
+                dtpTo.EditValue = Convert.ToDateTime(dtpFrom.EditValue).AddMonths(1).AddSeconds(-1);
+
+                dateFrom = baseDate.AddDays(1 - baseDate.Day);
+                dateTo = Convert.ToDateTime(dtpFrom.EditValue).AddMonths(1).AddSeconds(-1);
+                LoadData();
+            }
+            else if (luePeriod.Text.Equals("All Records"))
+            {
+                dtpFrom.EditValue = baseDate.AddYears(-100);
+                dtpTo.EditValue = Convert.ToDateTime(dtpFrom.EditValue).AddYears(100);
+
+                dateFrom = baseDate.AddYears(-100);
+                dateTo = Convert.ToDateTime(dtpFrom.EditValue).AddYears(100);
+                LoadData();
+            }
+            else
+            {
+                dtpTo.EditValue = DateTime.Now;
+                dtpFrom.EditValue = DateTime.Now;
+
+                dateFrom = DateTime.Now;
+                dateTo = DateTime.Now;
+                layoutControlGroup1.Enabled = false;
+            }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            dateFrom = Convert.ToDateTime(dtpFrom.EditValue);
+            dateTo = Convert.ToDateTime(dtpTo.EditValue);
+            LoadData();
+            pnlDates.Visible = false;
+            layoutControlGroup1.Enabled = true;
         }
     }
 }

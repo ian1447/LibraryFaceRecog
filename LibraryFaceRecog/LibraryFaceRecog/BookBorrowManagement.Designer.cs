@@ -30,10 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookBorrowManagement));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.chkShowUnreturned = new DevExpress.XtraEditors.CheckEdit();
-            this.cmbType = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.luePeriod = new DevExpress.XtraEditors.LookUpEdit();
+            this.lueBorrower = new DevExpress.XtraEditors.LookUpEdit();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
-            this.btnStudentLogs = new DevExpress.XtraEditors.SimpleButton();
             this.btnReturn = new DevExpress.XtraEditors.SimpleButton();
             this.btnBorrow = new DevExpress.XtraEditors.SimpleButton();
             this.dtBorrow = new DevExpress.XtraGrid.GridControl();
@@ -54,17 +53,25 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetBorrowedDetails = new System.ComponentModel.BackgroundWorker();
+            this.bwGetBorrower = new System.ComponentModel.BackgroundWorker();
+            this.pnlDates = new DevExpress.XtraEditors.PanelControl();
+            this.labelControl8 = new DevExpress.XtraEditors.LabelControl();
+            this.btnSearch = new DevExpress.XtraEditors.SimpleButton();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
+            this.dtpTo = new DevExpress.XtraEditors.DateEdit();
+            this.dtpFrom = new DevExpress.XtraEditors.DateEdit();
+            this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chkShowUnreturned.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luePeriod.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueBorrower.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBorrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBorrow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).BeginInit();
@@ -76,19 +83,25 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDates)).BeginInit();
+            this.pnlDates.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.chkShowUnreturned);
-            this.layoutControl1.Controls.Add(this.cmbType);
+            this.layoutControl1.Controls.Add(this.btnPrint);
+            this.layoutControl1.Controls.Add(this.luePeriod);
+            this.layoutControl1.Controls.Add(this.lueBorrower);
             this.layoutControl1.Controls.Add(this.btnRefresh);
-            this.layoutControl1.Controls.Add(this.btnStudentLogs);
             this.layoutControl1.Controls.Add(this.btnReturn);
             this.layoutControl1.Controls.Add(this.btnBorrow);
             this.layoutControl1.Controls.Add(this.dtBorrow);
@@ -100,49 +113,43 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // chkShowUnreturned
+            // luePeriod
             // 
-            this.chkShowUnreturned.Location = new System.Drawing.Point(1116, 12);
-            this.chkShowUnreturned.Name = "chkShowUnreturned";
-            this.chkShowUnreturned.Properties.Caption = "Show Unreturned";
-            this.chkShowUnreturned.Size = new System.Drawing.Size(113, 19);
-            this.chkShowUnreturned.StyleController = this.layoutControl1;
-            this.chkShowUnreturned.TabIndex = 13;
-            // 
-            // cmbType
-            // 
-            this.cmbType.Location = new System.Drawing.Point(514, 12);
-            this.cmbType.Name = "cmbType";
-            this.cmbType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.luePeriod.Location = new System.Drawing.Point(631, 12);
+            this.luePeriod.Name = "luePeriod";
+            this.luePeriod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cmbType.Properties.Items.AddRange(new object[] {
-            "Bisu",
-            "Congessional"});
-            this.cmbType.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cmbType.Size = new System.Drawing.Size(140, 20);
-            this.cmbType.StyleController = this.layoutControl1;
-            this.cmbType.TabIndex = 12;
+            this.luePeriod.Size = new System.Drawing.Size(160, 20);
+            this.luePeriod.StyleController = this.layoutControl1;
+            this.luePeriod.TabIndex = 16;
+            this.luePeriod.EditValueChanged += new System.EventHandler(this.luePeriod_EditValueChanged);
+            // 
+            // lueBorrower
+            // 
+            this.lueBorrower.Location = new System.Drawing.Point(409, 12);
+            this.lueBorrower.Name = "lueBorrower";
+            this.lueBorrower.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Delete)});
+            this.lueBorrower.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("name", "Borrower Name")});
+            this.lueBorrower.Properties.NullText = "All";
+            this.lueBorrower.Size = new System.Drawing.Size(166, 20);
+            this.lueBorrower.StyleController = this.layoutControl1;
+            this.lueBorrower.TabIndex = 15;
+            this.lueBorrower.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lueBorrower_ButtonClick);
+            this.lueBorrower.EditValueChanged += new System.EventHandler(this.lueBorrower_EditValueChanged);
             // 
             // btnRefresh
             // 
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(365, 12);
+            this.btnRefresh.Location = new System.Drawing.Point(199, 12);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(105, 22);
             this.btnRefresh.StyleController = this.layoutControl1;
             this.btnRefresh.TabIndex = 11;
             this.btnRefresh.Text = "Refresh";
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
-            // 
-            // btnStudentLogs
-            // 
-            this.btnStudentLogs.Image = ((System.Drawing.Image)(resources.GetObject("btnStudentLogs.Image")));
-            this.btnStudentLogs.Location = new System.Drawing.Point(199, 12);
-            this.btnStudentLogs.Name = "btnStudentLogs";
-            this.btnStudentLogs.Size = new System.Drawing.Size(162, 22);
-            this.btnStudentLogs.StyleController = this.layoutControl1;
-            this.btnStudentLogs.TabIndex = 10;
-            this.btnStudentLogs.Text = "Student Borrow Logs";
             // 
             // btnReturn
             // 
@@ -270,9 +277,9 @@
             this.layoutControlGroup2,
             this.layoutControlItem2,
             this.layoutControlItem3,
-            this.layoutControlItem4,
             this.layoutControlItem5,
             this.layoutControlItem6,
+            this.layoutControlItem4,
             this.layoutControlItem7});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
@@ -282,9 +289,9 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(646, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(783, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(458, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(300, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // splitterItem1
@@ -336,22 +343,10 @@
             this.layoutControlItem3.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem3.TextVisible = false;
             // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.Control = this.btnStudentLogs;
-            this.layoutControlItem4.Location = new System.Drawing.Point(187, 0);
-            this.layoutControlItem4.MaxSize = new System.Drawing.Size(166, 26);
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(166, 26);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(166, 26);
-            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem4.TextVisible = false;
-            // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.btnRefresh;
-            this.layoutControlItem5.Location = new System.Drawing.Point(353, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(187, 0);
             this.layoutControlItem5.MaxSize = new System.Drawing.Size(109, 26);
             this.layoutControlItem5.MinSize = new System.Drawing.Size(109, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
@@ -364,28 +359,31 @@
             // 
             this.layoutControlItem6.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem6.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem6.Control = this.cmbType;
-            this.layoutControlItem6.Location = new System.Drawing.Point(462, 0);
-            this.layoutControlItem6.MaxSize = new System.Drawing.Size(184, 26);
-            this.layoutControlItem6.MinSize = new System.Drawing.Size(184, 26);
+            this.layoutControlItem6.Control = this.lueBorrower;
+            this.layoutControlItem6.Location = new System.Drawing.Point(296, 0);
+            this.layoutControlItem6.MaxSize = new System.Drawing.Size(271, 26);
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(271, 26);
             this.layoutControlItem6.Name = "layoutControlItem6";
-            this.layoutControlItem6.Size = new System.Drawing.Size(184, 26);
+            this.layoutControlItem6.Size = new System.Drawing.Size(271, 26);
             this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem6.Text = "Type: ";
-            this.layoutControlItem6.TextSize = new System.Drawing.Size(37, 14);
-            this.layoutControlItem6.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+            this.layoutControlItem6.Text = "Borrower Name:";
+            this.layoutControlItem6.TextSize = new System.Drawing.Size(98, 14);
             // 
-            // layoutControlItem7
+            // layoutControlItem4
             // 
-            this.layoutControlItem7.Control = this.chkShowUnreturned;
-            this.layoutControlItem7.Location = new System.Drawing.Point(1104, 0);
-            this.layoutControlItem7.MaxSize = new System.Drawing.Size(117, 26);
-            this.layoutControlItem7.MinSize = new System.Drawing.Size(117, 26);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(117, 26);
-            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextVisible = false;
+            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem4.Control = this.luePeriod;
+            this.layoutControlItem4.Location = new System.Drawing.Point(567, 0);
+            this.layoutControlItem4.MaxSize = new System.Drawing.Size(216, 26);
+            this.layoutControlItem4.MinSize = new System.Drawing.Size(216, 26);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(216, 26);
+            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem4.Text = "Period: ";
+            this.layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(47, 14);
+            this.layoutControlItem4.TextToControlDistance = 5;
             // 
             // emptySpaceItem1
             // 
@@ -401,19 +399,138 @@
             this.bwGetBorrowedDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetBorrowedDetails_DoWork);
             this.bwGetBorrowedDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetBorrowedDetails_RunWorkerCompleted);
             // 
+            // bwGetBorrower
+            // 
+            this.bwGetBorrower.WorkerSupportsCancellation = true;
+            this.bwGetBorrower.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetBorrower_DoWork);
+            this.bwGetBorrower.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetBorrower_RunWorkerCompleted);
+            // 
+            // pnlDates
+            // 
+            this.pnlDates.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.pnlDates.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.pnlDates.Appearance.Options.UseBackColor = true;
+            this.pnlDates.Appearance.Options.UseFont = true;
+            this.pnlDates.Controls.Add(this.labelControl8);
+            this.pnlDates.Controls.Add(this.btnSearch);
+            this.pnlDates.Controls.Add(this.labelControl6);
+            this.pnlDates.Controls.Add(this.dtpTo);
+            this.pnlDates.Controls.Add(this.dtpFrom);
+            this.pnlDates.Location = new System.Drawing.Point(1247, 15);
+            this.pnlDates.Name = "pnlDates";
+            this.pnlDates.Size = new System.Drawing.Size(413, 59);
+            this.pnlDates.TabIndex = 381;
+            this.pnlDates.Visible = false;
+            // 
+            // labelControl8
+            // 
+            this.labelControl8.Appearance.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl8.Location = new System.Drawing.Point(14, 6);
+            this.labelControl8.Name = "labelControl8";
+            this.labelControl8.Size = new System.Drawing.Size(32, 13);
+            this.labelControl8.TabIndex = 370;
+            this.labelControl8.Text = "From :";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Appearance.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Appearance.Options.UseFont = true;
+            this.btnSearch.Image = ((System.Drawing.Image)(resources.GetObject("btnSearch.Image")));
+            this.btnSearch.Location = new System.Drawing.Point(326, 23);
+            this.btnSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 27);
+            this.btnSearch.TabIndex = 365;
+            this.btnSearch.Text = "Load";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl6.Location = new System.Drawing.Point(174, 6);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(19, 13);
+            this.labelControl6.TabIndex = 369;
+            this.labelControl6.Text = "To :";
+            // 
+            // dtpTo
+            // 
+            this.dtpTo.EditValue = null;
+            this.dtpTo.Location = new System.Drawing.Point(170, 26);
+            this.dtpTo.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpTo.Name = "dtpTo";
+            this.dtpTo.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.dtpTo.Properties.Appearance.Options.UseFont = true;
+            this.dtpTo.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpTo.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpTo.Properties.DisplayFormat.FormatString = "MMM. dd, yyyy";
+            this.dtpTo.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtpTo.Properties.EditFormat.FormatString = "MMM. dd, yyyy";
+            this.dtpTo.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtpTo.Properties.Mask.EditMask = "MMM. dd, yyyy";
+            this.dtpTo.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.dtpTo.Size = new System.Drawing.Size(148, 24);
+            this.dtpTo.TabIndex = 364;
+            // 
+            // dtpFrom
+            // 
+            this.dtpFrom.EditValue = null;
+            this.dtpFrom.Location = new System.Drawing.Point(14, 26);
+            this.dtpFrom.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Properties.Appearance.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.dtpFrom.Properties.Appearance.Options.UseFont = true;
+            this.dtpFrom.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpFrom.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.dtpFrom.Properties.DisplayFormat.FormatString = "MMM. dd, yyyy";
+            this.dtpFrom.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtpFrom.Properties.EditFormat.FormatString = "MMM. dd, yyyy";
+            this.dtpFrom.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
+            this.dtpFrom.Properties.Mask.EditMask = "MMM. dd, yyyy";
+            this.dtpFrom.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
+            this.dtpFrom.Size = new System.Drawing.Size(148, 24);
+            this.dtpFrom.TabIndex = 362;
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.Location = new System.Drawing.Point(1095, 12);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(134, 22);
+            this.btnPrint.StyleController = this.layoutControl1;
+            this.btnPrint.TabIndex = 17;
+            this.btnPrint.Text = "Print Report";
+            // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.btnPrint;
+            this.layoutControlItem7.Location = new System.Drawing.Point(1083, 0);
+            this.layoutControlItem7.MaxSize = new System.Drawing.Size(138, 26);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(138, 26);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(138, 26);
+            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
+            // 
             // BookBorrowManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 597);
+            this.Controls.Add(this.pnlDates);
             this.Controls.Add(this.layoutControl1);
             this.Name = "BookBorrowManagement";
             this.Text = "Book Borrowing Management";
             this.Shown += new System.EventHandler(this.BookBorrowManagement_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chkShowUnreturned.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cmbType.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.luePeriod.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueBorrower.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtBorrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBorrow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemMemoEdit1)).EndInit();
@@ -425,11 +542,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pnlDates)).EndInit();
+            this.pnlDates.ResumeLayout(false);
+            this.pnlDates.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -452,14 +576,8 @@
         private DevExpress.XtraEditors.SimpleButton btnBorrow;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraEditors.SimpleButton btnStudentLogs;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.SimpleButton btnRefresh;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
-        private DevExpress.XtraEditors.ComboBoxEdit cmbType;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
-        private DevExpress.XtraEditors.CheckEdit chkShowUnreturned;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraGrid.Columns.GridColumn barcode;
         private DevExpress.XtraGrid.Columns.GridColumn borrower;
         private DevExpress.XtraGrid.Columns.GridColumn borrowed_on;
@@ -468,5 +586,18 @@
         private System.ComponentModel.BackgroundWorker bwGetBorrowedDetails;
         private DevExpress.XtraGrid.Columns.GridColumn author;
         private DevExpress.XtraEditors.Repository.RepositoryItemMemoEdit repositoryItemMemoEdit1;
+        private System.ComponentModel.BackgroundWorker bwGetBorrower;
+        private DevExpress.XtraEditors.LookUpEdit lueBorrower;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
+        private DevExpress.XtraEditors.LookUpEdit luePeriod;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraEditors.PanelControl pnlDates;
+        private DevExpress.XtraEditors.LabelControl labelControl8;
+        private DevExpress.XtraEditors.SimpleButton btnSearch;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
+        private DevExpress.XtraEditors.DateEdit dtpTo;
+        private DevExpress.XtraEditors.DateEdit dtpFrom;
+        private DevExpress.XtraEditors.SimpleButton btnPrint;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
     }
 }
