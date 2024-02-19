@@ -99,6 +99,28 @@ namespace LibraryFaceRecog.Dal
             }
         }
 
-
+        public static string ReturnBookErrorMessage;
+        public static bool ReturnBookSuccessful;
+        public static void ReturnBook(string _barcode)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(ConnectionString()))
+                {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand("sp_return_book", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("_barcode", _barcode));
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    ReturnBookSuccessful = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                ReturnBookSuccessful = false;
+                ReturnBookErrorMessage = ex.Message + "\nFunction : Return Book";
+            }
+        }
     }
 }

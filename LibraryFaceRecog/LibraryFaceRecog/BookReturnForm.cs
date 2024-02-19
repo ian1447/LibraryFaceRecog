@@ -83,5 +83,32 @@ namespace LibraryFaceRecog
             else
                 Msgbox.Exclamation("Please select a returner or scan a barcode");
         }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            if (!bwReturnBook.IsBusy)
+            {
+                ShowLoading("Returning Book...");
+                bwReturnBook.RunWorkerAsync();
+            }
+        }
+
+        private void bwReturnBook_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Borrower.ReturnBook(txtBarcode.Text);
+            bwReturnBook.CancelAsync();
+        }
+
+        private void bwReturnBook_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            HideLoading();
+            if (Borrower.ReturnBookSuccessful)
+            {
+                Msgbox.Information("Book Successfully returned...");
+                this.Close();
+            }
+            else
+                Msgbox.Error(Borrower.ReturnBookErrorMessage);
+        }
     }
 }

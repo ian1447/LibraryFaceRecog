@@ -51,6 +51,7 @@
             this.btnOpen = new DevExpress.XtraEditors.SimpleButton();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetBorrowerDetails = new System.ComponentModel.BackgroundWorker();
+            this.bwReturnBook = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtBarcode.Properties)).BeginInit();
@@ -117,6 +118,7 @@
             this.btnReturn.StyleController = this.layoutControl1;
             this.btnReturn.TabIndex = 8;
             this.btnReturn.Text = "Return";
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // txtBarcode
             // 
@@ -291,6 +293,12 @@
             // 
             this.bwGetBorrowerDetails.WorkerSupportsCancellation = true;
             // 
+            // bwReturnBook
+            // 
+            this.bwReturnBook.WorkerSupportsCancellation = true;
+            this.bwReturnBook.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwReturnBook_DoWork);
+            this.bwReturnBook.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwReturnBook_RunWorkerCompleted);
+            // 
             // BookReturnForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,5 +354,6 @@
         private DevExpress.XtraEditors.SimpleButton btnOpen;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private System.ComponentModel.BackgroundWorker bwGetBorrowerDetails;
+        private System.ComponentModel.BackgroundWorker bwReturnBook;
     }
 }

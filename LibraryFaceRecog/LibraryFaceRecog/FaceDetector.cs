@@ -23,7 +23,7 @@ namespace LibraryFaceRecog
             InitializeComponent();
         }
         #region variablesfordetection
-        MCvFont font = new MCvFont(Emgu.CV.CvEnum.FONT.CV_FONT_HERSHEY_TRIPLEX, 0.6d, 0.6d);
+       // MCvFont font = new MCvFont(Emgu.CV.CvEnum.FONT.CV_FONT_HERSHEY_TRIPLEX, 0.6d, 0.6d);
         HaarCascade faceDetected;
         Image<Bgr, Byte> Frame;
         Emgu.CV.Capture camera;
@@ -84,32 +84,40 @@ namespace LibraryFaceRecog
         public bool ForReturn = false;
         private void FaceDetector_Shown(object sender, EventArgs e)
         {
-           // faceDetected = new HaarCascade("BisuHaarcascade.xml");
-            ShowLoading("Loading Dependencies...");
-            btnSelect.Text = ForReturn? "Selecct as Returner":"Select as Borrower";
-            faceDetected = new HaarCascade("BisuHaarcascade.xml");
-            CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);//constructor
-            programFirstLoad = false;
-            int cameraCounter = 0;
-            foreach (FilterInfo Device in CaptureDevice)
+            try
             {
-                cmbCameraList.Properties.Items.Add(Device.Name);
-                cameraCounter++;
-            }
-            if (cameraCounter.Equals(0))
-            {
-                CameraConnected = false;
-                Msgbox.QuestionWarning("No camera detected!\nDo you still want to continue?");
-                if (Msgbox.isYes)
-                    btnSelect.Enabled = false;
+                // faceDetected = new HaarCascade("BisuHaarcascade.xml");
+                ShowLoading("Loading Dependencies...");
+                btnSelect.Text = ForReturn ? "Select as Returner" : "Select as Borrower";
+                faceDetected = new HaarCascade("BisuHaarcascade.xml");
+                CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);//constructor
+                programFirstLoad = false;
+                int cameraCounter = 0;
+                foreach (FilterInfo Device in CaptureDevice)
+                {
+                    cmbCameraList.Properties.Items.Add(Device.Name);
+                    cameraCounter++;
+                }
+                if (cameraCounter.Equals(0))
+                {
+                    HideLoading();
+                    CameraConnected = false;
+                    Msgbox.QuestionWarning("No camera detected!\nDo you still want to continue?");
+                    if (Msgbox.isYes)
+                        btnSelect.Enabled = false;
+                    else
+                        this.Dispose();
+                }
                 else
-                    this.Dispose();
+                {
+                    cmbCameraList.SelectedIndex = 0;
+                    CameraConnected = true;
+                    StartCamera();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                cmbCameraList.SelectedIndex = 0;
-                CameraConnected = true;
-                StartCamera();
+                Msgbox.Error(ex.Message);
             }
 
             programFirstLoad = true;
@@ -121,7 +129,7 @@ namespace LibraryFaceRecog
             }
             RegisteredUsers = Register.GetRegisteredBorrowers("Bisu");
             foreach (DataRow row in RegisteredUsers.Rows)
-            {
+            {   
                 Count += 1;
                 byte[] img = (byte[])row["image"];
                 MemoryStream ms = new MemoryStream(img);

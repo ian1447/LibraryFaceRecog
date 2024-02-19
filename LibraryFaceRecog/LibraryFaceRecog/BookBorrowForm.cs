@@ -114,11 +114,18 @@ namespace LibraryFaceRecog
             DataTable FinalData = new DataTable();
             if (Register.GetRegisteredBorrowersSuccessful)
             {
-                FinalData = BorrowersTable.AsEnumerable().Where(row => row.Field<int>("id") == BorrowerId).CopyToDataTable();
-                txtCourse.Text = FinalData.Rows[0]["course"].ToString();
-                txtSection.Text = FinalData.Rows[0]["section"].ToString();
-                txtSex.Text = FinalData.Rows[0]["sex"].ToString();
-                txtYear.Text = FinalData.Rows[0]["year"].ToString();
+                try
+                {
+                    FinalData = BorrowersTable.AsEnumerable().Where(row => row.Field<int>("id") == BorrowerId).CopyToDataTable();
+                    txtCourse.Text = FinalData.Rows[0]["course"].ToString();
+                    txtSection.Text = FinalData.Rows[0]["section"].ToString();
+                    txtSex.Text = FinalData.Rows[0]["sex"].ToString();
+                    txtYear.Text = FinalData.Rows[0]["year"].ToString();
+                }
+                catch
+                {
+                    Msgbox.Exclamation("No one was selected...");
+                }
             }
             else
                 Msgbox.Error(Register.GetRegisteredBorrowersErrorMessage);

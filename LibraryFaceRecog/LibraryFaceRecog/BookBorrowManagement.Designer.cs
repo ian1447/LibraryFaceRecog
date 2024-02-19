@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookBorrowManagement));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.luePeriod = new DevExpress.XtraEditors.LookUpEdit();
             this.lueBorrower = new DevExpress.XtraEditors.LookUpEdit();
             this.btnRefresh = new DevExpress.XtraEditors.SimpleButton();
@@ -56,6 +57,7 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetBorrowedDetails = new System.ComponentModel.BackgroundWorker();
@@ -66,8 +68,6 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.dtpTo = new DevExpress.XtraEditors.DateEdit();
             this.dtpFrom = new DevExpress.XtraEditors.DateEdit();
-            this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.luePeriod.Properties)).BeginInit();
@@ -86,6 +86,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDates)).BeginInit();
             this.pnlDates.SuspendLayout();
@@ -93,7 +94,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -112,6 +112,16 @@
             this.layoutControl1.Size = new System.Drawing.Size(1241, 597);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // btnPrint
+            // 
+            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
+            this.btnPrint.Location = new System.Drawing.Point(1095, 12);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(134, 22);
+            this.btnPrint.StyleController = this.layoutControl1;
+            this.btnPrint.TabIndex = 17;
+            this.btnPrint.Text = "Print Report";
             // 
             // luePeriod
             // 
@@ -385,6 +395,18 @@
             this.layoutControlItem4.TextSize = new System.Drawing.Size(47, 14);
             this.layoutControlItem4.TextToControlDistance = 5;
             // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.btnPrint;
+            this.layoutControlItem7.Location = new System.Drawing.Point(1083, 0);
+            this.layoutControlItem7.MaxSize = new System.Drawing.Size(138, 26);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(138, 26);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Size = new System.Drawing.Size(138, 26);
+            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextVisible = false;
+            // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
@@ -495,28 +517,6 @@
             this.dtpFrom.Size = new System.Drawing.Size(148, 24);
             this.dtpFrom.TabIndex = 362;
             // 
-            // btnPrint
-            // 
-            this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
-            this.btnPrint.Location = new System.Drawing.Point(1095, 12);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(134, 22);
-            this.btnPrint.StyleController = this.layoutControl1;
-            this.btnPrint.TabIndex = 17;
-            this.btnPrint.Text = "Print Report";
-            // 
-            // layoutControlItem7
-            // 
-            this.layoutControlItem7.Control = this.btnPrint;
-            this.layoutControlItem7.Location = new System.Drawing.Point(1083, 0);
-            this.layoutControlItem7.MaxSize = new System.Drawing.Size(138, 26);
-            this.layoutControlItem7.MinSize = new System.Drawing.Size(138, 26);
-            this.layoutControlItem7.Name = "layoutControlItem7";
-            this.layoutControlItem7.Size = new System.Drawing.Size(138, 26);
-            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem7.TextVisible = false;
-            // 
             // BookBorrowManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -545,6 +545,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDates)).EndInit();
             this.pnlDates.ResumeLayout(false);
@@ -553,7 +554,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dtpTo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpFrom.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             this.ResumeLayout(false);
 
         }
