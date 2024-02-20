@@ -25,6 +25,10 @@ namespace LibraryFaceRecog
         private void MainForm_Load(object sender, EventArgs e)
         {
             MainTimer.Start();
+            if(PublicVariables.IsSuperAdmin != 1)
+            {
+                btnUserManagement.Visibility = BarItemVisibility.Never;
+            }
         }
 
         private void MainTimer_Tick(object sender, EventArgs e)
@@ -102,26 +106,27 @@ namespace LibraryFaceRecog
         bool IsBookBorrowingFormOpen = false;
         private void btnBookBorrow_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!IsBookBorrowingFormOpen)
-            {
-                IsBookBorrowingFormOpen = true;
-                BookBorrowManagement bbm = new BookBorrowManagement();
-                bbm.MdiParent = this;
-                bbm.WindowState = FormWindowState.Maximized;
-                bbm.Show();
-            }
-            else
-            {
-                Form fc = Application.OpenForms["BookBorrowManagement"];
-                if (fc == null)
-                {
-                    BookBorrowManagement a1 = new BookBorrowManagement();
-                    a1.MdiParent = this;
-                    a1.Show();
-                }
-                else
-                    fc.Activate();
-            }
+            //if (!IsBookBorrowingFormOpen)
+            //{
+            //    IsBookBorrowingFormOpen = true;
+            //    BookBorrowManagement bbm = new BookBorrowManagement();
+            //    bbm.MdiParent = this;
+            //    bbm.WindowState = FormWindowState.Maximized;
+            //    bbm.Show();
+            //}
+            //else
+            //{
+            //    Form fc = Application.OpenForms["BookBorrowManagement"];
+            //    if (fc == null)
+            //    {
+            //        BookBorrowManagement a1 = new BookBorrowManagement();
+            //        a1.MdiParent = this;
+            //        a1.Show();
+            //    }
+            //    else
+            //        fc.Activate();
+            //}
+            Msgbox.Information("To be implemented.");
         }
 
         bool IsRegisterFormOpen = false;
@@ -160,34 +165,35 @@ namespace LibraryFaceRecog
         bool IsEntranceManagementOpen = false;
         private void btnEntry_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (!isSuperAdmin)
-            {
-                if (!IsEntranceManagementOpen)
-                {
-                    IsEntranceManagementOpen = true;
-                    EntranceManagementForm emf = new EntranceManagementForm();
-                    emf.MdiParent = this;
-                    emf.WindowState = FormWindowState.Maximized;
-                    emf.Show();
-                }
-                else
-                {
-                    Form fc = Application.OpenForms["EntranceManagementForm"];
-                    if (fc == null)
-                    {
-                        EntranceManagementForm a1 = new EntranceManagementForm();
-                        a1.MdiParent = this;
-                        a1.Show();
-                    }
-                    else
-                        fc.Activate();
-                }
-            }
-            else
-            {
-                EntranceManagementForm emf = new EntranceManagementForm();
-                emf.ShowDialog();
-            }
+            //if (!isSuperAdmin)
+            //{
+            //    if (!IsEntranceManagementOpen)
+            //    {
+            //        IsEntranceManagementOpen = true;
+            //        EntranceManagementForm emf = new EntranceManagementForm();
+            //        emf.MdiParent = this;
+            //        emf.WindowState = FormWindowState.Maximized;
+            //        emf.Show();
+            //    }
+            //    else
+            //    {
+            //        Form fc = Application.OpenForms["EntranceManagementForm"];
+            //        if (fc == null)
+            //        {
+            //            EntranceManagementForm a1 = new EntranceManagementForm();
+            //            a1.MdiParent = this;
+            //            a1.Show();
+            //        }
+            //        else
+            //            fc.Activate();
+            //    }
+            //}
+            //else
+            //{
+            //    EntranceManagementForm emf = new EntranceManagementForm();
+            //    emf.ShowDialog();
+            //}
+            Msgbox.Information("To be implemented.");
         }
         
     }

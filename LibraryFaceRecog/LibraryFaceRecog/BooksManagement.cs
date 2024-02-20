@@ -94,17 +94,20 @@ namespace LibraryFaceRecog
         DataTable BooksTable = new DataTable();
         private void bwGetBooks_DoWork(object sender, DoWorkEventArgs e)
         {
-            BooksTable = Books.GetBooks("Bisu");
+            BooksTable = Books.GetBooks(PublicVariables.AccountType);
             bwGetBooks.CancelAsync();
         }
 
+        DataTable ActiveTable = new DataTable();
         private void bwGetBooks_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             HideLoading();
             if (Books.GetBooksSuccessful)
             {
-                dtBooks.DataSource = BooksTable;
-                cmbType.Text = "Bisu";
+                ActiveTable = BooksTable.AsEnumerable()
+                    .Where(row => row.Field<Boolean>("is_active") == true).Count() > 0 ? BooksTable.AsEnumerable()
+                    .Where(row => row.Field<Boolean>("is_active") == true).CopyToDataTable() : new DataTable();
+                dtBooks.DataSource = ActiveTable;
             }
             else
                 Msgbox.Error(Books.GetBooksErrorMessage);
@@ -149,6 +152,45 @@ namespace LibraryFaceRecog
         private void gvBooks_ColumnFilterChanged(object sender, EventArgs e)
         {
             var focusRowView = (DataRowView)gvBooks.GetFocusedRow();
+        }
+
+        int deac_id = 0;
+        private void btnDeac_Click(object sender, EventArgs e)
+        {
+            if (SelectionPass())
+            {
+                var focusRowView = (DataRowView)gvBooks.GetFocusedRow();
+                Msgbox.QuestionYesNo("Are you sure you want to deactivate '" + focusRowView.Row["title"].ToString()+"'");
+                if (Msgbox.isYes)
+                {
+                    deac_id = Convert.ToInt32(focusRowView.Row["id"].ToString());
+                    if (!bwDeac.IsBusy)
+                    {
+                        ShowLoading("Deactivating Book...");
+                        bwDeac.RunWorkerAsync();
+                    }
+                }
+            }
+            else
+                Msgbox.Exclamation("Please select a book.");
+        }
+
+        private void bwDeac_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Books.BookDeac(deac_id);
+            bwDeac.CancelAsync();
+        }
+
+        private void bwDeac_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            HideLoading();
+            if (Books.BookDeacSuccessful)
+            {
+                Msgbox.Information("Book Deactivated");
+                btnRefresh.PerformClick();
+            }
+            else
+                Msgbox.Error(Books.BookDeacErrorMessage);
         }
     }
 }

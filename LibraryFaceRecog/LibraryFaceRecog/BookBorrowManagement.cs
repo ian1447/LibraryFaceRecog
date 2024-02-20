@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using LibraryFaceRecog.Core;
 using LibraryFaceRecog.Dal;
+using LibraryFaceRecog.Reports;
+using DevExpress.XtraReports.UI;
 
 namespace LibraryFaceRecog
 {
@@ -255,6 +257,31 @@ namespace LibraryFaceRecog
             LoadData();
             pnlDates.Visible = false;
             layoutControlGroup1.Enabled = true;
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            if (gvBorrow.RowCount > 0)
+            {
+                if (PublicVariables.AccountType == "Bisu")
+                {
+                    BisuBookBorrowReport bbr = new BisuBookBorrowReport();
+                    bbr.DataMember = "CustomSqlQuery";
+                    bbr.DataSource = dtBorrow.DataSource;
+                    bbr.lblDate.Text = "Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
+                    bbr.ShowPreviewDialog();
+                }
+                else
+                {
+                    CongressionalBookBorrowReport cbr = new CongressionalBookBorrowReport();
+                    cbr.DataMember = "CustomSqlQuery";
+                    cbr.DataSource = dtBorrow.DataSource;
+                    cbr.lblDate.Text = "Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
+                    cbr.ShowPreviewDialog();
+                }
+            }
+            else
+                Msgbox.Information("Nothing to print ");
         }
     }
 }

@@ -111,6 +111,30 @@ namespace LibraryFaceRecog.Dal
             }
         }
 
+        public static string BookDeacErrorMessage;
+        public static bool BookDeacSuccessful;
+        public static void BookDeac(int _id)
+        {
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(ConnectionString()))
+                {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand("sp_book_deac", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("_id", _id));
+                    cmd.ExecuteNonQuery();
+                    con.Close();
+                    BookDeacSuccessful = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                BookDeacSuccessful = false;
+                BookDeacErrorMessage = ex.Message + "\nFunction : Deac Book";
+            }
+        }
+
         public static string SearchBooksErrorMessage;
         public static bool SearchBooksSuccessful;
         public static DataTable SearchBooks(string _title)

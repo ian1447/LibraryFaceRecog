@@ -193,6 +193,7 @@
             this.ClientSize = new System.Drawing.Size(962, 525);
             this.Controls.Add(this.ribbonStatusBar);
             this.Controls.Add(this.MainRibbon);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "MainForm";
             this.Ribbon = this.MainRibbon;

@@ -157,6 +157,7 @@ namespace LibraryFaceRecog
                 {
                     PublicVariables.UserName = txtUsername.Text;
                     PublicVariables.AccountType = UserData.Rows[0]["privilege"].ToString() == "super-admin"? "Bisu":UserData.Rows[0]["privilege"].ToString();
+                    PublicVariables.IsSuperAdmin = UserData.Rows[0]["privilege"].ToString() == "super-admin" ? 1 : 0;
                     MainForm mf = new MainForm();
                     this.Hide();
                     mf.ShowDialog();

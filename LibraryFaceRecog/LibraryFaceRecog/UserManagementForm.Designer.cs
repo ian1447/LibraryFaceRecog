@@ -155,8 +155,8 @@
             this.cmbPrivilege.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cmbPrivilege.Properties.Items.AddRange(new object[] {
-            "Bisu-Admin",
-            "Congressional-Admin"});
+            "Bisu",
+            "Congressional"});
             this.cmbPrivilege.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
             this.cmbPrivilege.Size = new System.Drawing.Size(281, 20);
             this.cmbPrivilege.StyleController = this.layoutControl1;

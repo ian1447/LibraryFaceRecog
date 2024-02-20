@@ -128,7 +128,7 @@ namespace LibraryFaceRecog
 
         private void bwSaveDetails_DoWork(object sender, DoWorkEventArgs e)
         {
-            Books.BooksAdd(meTitle.Text, txtAuthor.Text, mePlaceandPublisher.Text, txtSection.Text, txtCallNo.Text, txtAccountNo.Text, Convert.ToInt32(txtNoofCopies.Text), txtEdition.Text, cost, txtCopyrightYear.Text, "Bisu");
+            Books.BooksAdd(meTitle.Text, txtAuthor.Text, mePlaceandPublisher.Text, txtSection.Text, txtCallNo.Text, txtAccountNo.Text, Convert.ToInt32(txtNoofCopies.Text), txtEdition.Text, cost, txtCopyrightYear.Text, PublicVariables.AccountType);
             bwSaveDetails.CancelAsync();
         }
 

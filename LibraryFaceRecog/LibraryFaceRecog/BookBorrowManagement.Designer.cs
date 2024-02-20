@@ -122,6 +122,7 @@
             this.btnPrint.StyleController = this.layoutControl1;
             this.btnPrint.TabIndex = 17;
             this.btnPrint.Text = "Print Report";
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // luePeriod
             // 

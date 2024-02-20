@@ -32,6 +32,8 @@ namespace LibraryFaceRecog.Core
         public static string UserName;
 
         public static string AccountType { get; set; }
+
+        public static int IsSuperAdmin { get; set; } 
         #endregion
     }
 }

@@ -64,6 +64,7 @@ namespace LibraryFaceRecog.Dal
                     cmd.Parameters.Add("_image", MySqlDbType.Blob);
                     cmd.Parameters["_image"].Value = _image;
                     //cmd.Parameters.Add(new MySqlParameter("_image", _image), MySqlDbType.Blob);
+                    cmd.Parameters.Add(new MySqlParameter("_type", PublicVariables.AccountType));
                     cmd.ExecuteNonQuery();
                     con.Close();
                     RegisteredBorrowersAddSuccessful = true;

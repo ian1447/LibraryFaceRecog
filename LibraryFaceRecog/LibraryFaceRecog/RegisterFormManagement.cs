@@ -95,7 +95,7 @@ namespace LibraryFaceRecog
 
         private void bwGetDetails_DoWork(object sender, DoWorkEventArgs e)
         {
-            BorrowersTable = Register.GetRegisteredBorrowers("Bisu");
+            BorrowersTable = Register.GetRegisteredBorrowers(PublicVariables.AccountType);
             bwGetDetails.CancelAsync();
         }
 
@@ -119,6 +119,15 @@ namespace LibraryFaceRecog
         private void btnRegister_Click(object sender, EventArgs e)
         {
             RegisterForm rf = new RegisterForm();
+            if (PublicVariables.AccountType == "Congressional")
+            {
+                rf.txtCourse.Text = "N/A";
+                rf.txtCourse.Properties.ReadOnly = true;
+                rf.txtSection.Text = "N/A";
+                rf.txtSection.Properties.ReadOnly = true;
+                rf.txtYear.Text = "N/A";
+                rf.txtYear.Properties.ReadOnly = true;
+            }
             rf.ShowDialog();
             btnRefresh.PerformClick();
         }
@@ -143,6 +152,12 @@ namespace LibraryFaceRecog
                 MemoryStream ms = new MemoryStream(img);
                 rf.peCapturedImage.Image = Image.FromStream(ms);
                 rf.IsAdd = false;
+                if (PublicVariables.AccountType == "Congressional")
+                {
+                    rf.txtCourse.Properties.ReadOnly = true;
+                    rf.txtSection.Properties.ReadOnly = true;
+                    rf.txtYear.Properties.ReadOnly = true;
+                }
                 rf.ShowDialog();
                 btnRefresh.PerformClick();
             }
