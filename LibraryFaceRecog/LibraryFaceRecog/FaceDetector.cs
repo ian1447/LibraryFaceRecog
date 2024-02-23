@@ -13,6 +13,8 @@ using System.IO;
 using LibraryFaceRecog.Core;
 using LibraryFaceRecog.Dal;
 using AForge.Video.DirectShow;
+using AForge.Video;
+using System.Diagnostics;
 
 namespace LibraryFaceRecog
 {
@@ -23,13 +25,10 @@ namespace LibraryFaceRecog
             InitializeComponent();
         }
         #region variablesfordetection
-       // MCvFont font = new MCvFont(Emgu.CV.CvEnum.FONT.CV_FONT_HERSHEY_TRIPLEX, 0.6d, 0.6d);
-        Image<Bgr, Byte> Frame;
-        Emgu.CV.Capture camera;
-        string filename = (Application.StartupPath + "\\Recognize") + "/Faces.txt";
+        string filename = (Application.StartupPath + "\\Recognize") + "/log.txt";
+        string knownpath = (Application.StartupPath + "\\Recognize\\");
         string ImagePath = (Application.StartupPath + "\\Recognize\\images\\");
         DataTable RegisteredUsers = new DataTable();
-        int Count = 0;
         #endregion
 
         #region UTIL
@@ -121,30 +120,46 @@ namespace LibraryFaceRecog
             RegisteredUsers = Register.GetRegisteredBorrowers(PublicVariables.AccountType);
             foreach (DataRow row in RegisteredUsers.Rows)
             {
-                byte[] img = (byte[])RegisteredUsers.Rows[0]["image"];
+                byte[] img = (byte[])row["image"];
                 MemoryStream ms = new MemoryStream(img);
                 System.Drawing.Image GoodImage = System.Drawing.Image.FromStream(ms);
-                GoodImage.Save(ImagePath+row[0].ToString(), System.Drawing.Imaging.ImageFormat.Jpeg);
+                GoodImage.Save(ImagePath+row[0].ToString()+".jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             }
             HideLoading();
         }
 
         private void StartCamera()
         {
-            camera = new Emgu.CV.Capture();
-            camera.QueryFrame();
-            Application.Idle += new EventHandler(FrameProcedure);
+            try
+            {
+                if (!string.IsNullOrEmpty(cmbCameraList.Text))
+                {
+                    if (cmbResolution.SelectedIndex > -1)
+                    {
+                        FinalFrame = new VideoCaptureDevice(CaptureDevice[cmbCameraList.SelectedIndex].MonikerString);// specified web cam and its filter moniker string
+                        FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);// click button event is fired, 
+                        //FinalFrame.DesiredFrameSize = new System.Drawing.Size(1920, 1080);
+                        FinalFrame.VideoResolution = FinalFrame.VideoCapabilities[cmbResolution.SelectedIndex];
+                        FinalFrame.Start();
+                        CameraConnected = true;
+                    }
+                }
+            }
+            catch
+            {
+                Msgbox.Error("Unknown error in using the camera. \nPlease attached the camera to the unit.");
+                this.Dispose();
+            }
         }
 
-
-        public void FrameProcedure(object sender, EventArgs e)
+        private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            DataTable ForName = new DataTable();
-            if (CameraConnected)
+            try
             {
-                Frame = camera.QueryFrame().Resize(800, 720, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-                CameraBox.Image = Frame;
+                Bitmap cameraImage = (Bitmap)eventArgs.Frame.Clone();// clone the bitmap
+                CameraBox.Image = cameraImage;
             }
+            catch { }
         }
 
         private void RestartCamera()
@@ -160,8 +175,8 @@ namespace LibraryFaceRecog
         {
             try
             {
-                camera = new Emgu.CV.Capture();
-                camera.Dispose();
+                if (FinalFrame.IsRunning)
+                    FinalFrame.Stop();
                 CameraConnected = false;
             }
             catch (Exception ex) { Msgbox.Error(ex.Message); }
@@ -194,6 +209,26 @@ namespace LibraryFaceRecog
         private void btnSelect_Click(object sender, EventArgs e)
         {
             string type = btnSelect.Text == "Select as Borrower" ? "Borrower" : "Returner";
+
+            Process facerecog = new Process()
+            {
+                StartInfo = new ProcessStartInfo(PublicVariables.DefaultDirectory + "\\Recognize\\Recognize.exe")
+                {
+                    WorkingDirectory = PublicVariables.DefaultDirectory + "\\Recognize"
+                }
+            };
+            facerecog.StartInfo.FileName = PublicVariables.DefaultDirectory + "\\Recognize\\Recognize.exe";
+            facerecog.Start();
+            facerecog.WaitForExit();
+            StreamReader sr = new StreamReader(filename);
+            string line = sr.ReadLine();
+            if (line.All(char.IsDigit))
+            {
+                RegisteredUserId = Convert.ToInt32(line);
+                DataTable Borrower = RegisteredUsers.AsEnumerable()
+                      .Where(row => row.Field<int>("id") == RegisteredUserId).CopyToDataTable();
+                lblName.Text = Borrower.Rows[0]["name"].ToString();
+            }
             Msgbox.QuestionYesNo("Are you sure you want to select " + lblName.Text + " as " + type + "?");
             if (Msgbox.isYes)
             {
@@ -230,8 +265,9 @@ namespace LibraryFaceRecog
 
         private void btnCapture_Click(object sender, EventArgs e)
         {
-            CaptureImage.Image = CameraBox.Image;
-            CaptureImage.Image.Bitmap.Save(ImagePath + "known.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            CapturedImage.Image = CameraBox.Image;
+            CapturedImage.Image.Save(knownpath + "known.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            btnSelect.Enabled = true;
         }
 
     }

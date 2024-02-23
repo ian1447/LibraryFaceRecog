@@ -248,7 +248,13 @@ namespace LibraryFaceRecog
         private void btnSelect_Click(object sender, EventArgs e)
         {
             //Process.Start(PublicVariables.DefaultDirectory + "\\Recognize\\Recognize.exe");
-            Process facerecog = new Process();
+            Process facerecog = new Process()
+            {
+                StartInfo = new ProcessStartInfo(PublicVariables.DefaultDirectory + "\\Recognize\\Recognize.exe")
+                {
+                    WorkingDirectory =  PublicVariables.DefaultDirectory + "\\Recognize"
+                }
+                };
             facerecog.StartInfo.FileName = PublicVariables.DefaultDirectory + "\\Recognize\\Recognize.exe";
             facerecog.Start();
             facerecog.WaitForExit();
