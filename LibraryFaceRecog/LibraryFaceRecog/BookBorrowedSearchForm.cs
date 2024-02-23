@@ -107,12 +107,15 @@ namespace LibraryFaceRecog
                 Msgbox.Error(Borrower.GetBorrowedBooksbyBorrowerErrorMessage);
         }
 
+        public string booktitle, bookauthor;
         private void btnSelect_Click(object sender, EventArgs e)
         {
             if (SelectionPass())
             {
                 var focusRowView = (DataRowView)gvBorrowedBooks.GetFocusedRow();
-                barcode = focusRowView.Row[1].ToString();
+                barcode = focusRowView.Row["barcode"].ToString();
+                booktitle = focusRowView.Row["title"].ToString();
+                bookauthor = focusRowView.Row["author"].ToString();
                 this.Close();
             }
             else
@@ -131,7 +134,7 @@ namespace LibraryFaceRecog
             if (SelectionPass())
             {
                 var focusRowView = (DataRowView)gvBorrowedBooks.GetFocusedRow();
-                lblBarcode.Text = "Barcode: " + focusRowView.Row[1].ToString();
+                lblBarcode.Text = "Barcode: " + focusRowView.Row["barcode"].ToString();
             }
         }
     }

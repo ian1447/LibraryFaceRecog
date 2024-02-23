@@ -140,6 +140,24 @@
         IjxB8Ph/fceYhPoHAkQRj5PgdPMAAAAASUVORK5CYII=
 </value>
   </data>
+  <data name="btnCapture.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACV0RVh0VGl0
+        bGUARnVsbDtTdGFja2VkO1NwbGluZTtBcmVhO0NoYXJ0OweYvLAAAAK6SURBVDhPZdL7T1JhGAfw889Z
+        Wa4112WrlulPrZtpmiEKgYBaGWo6FDNv5CVFSQ837/NWKmqpLRV0tbUFpCIeDhe5fHvfF8VaP3zOc3jH
+        9+E5z4GrM6yMEXjdQS0zte0nllDTllTdSjmgbXHg1dtFpqp5YYzT6OaQAJLIJVX/kzgGxJkEFLXT4FT1
+        s+wwFI4hGI4SMYisRlkV2efkWSB0Kk66yKunwJXVzbAGGts24fqruqC2kkqoj+/VVmeKGIlBpp0ER8eg
+        46gsTlh2/Ay/fYAhlw+DlPMAJqcPA5s+GL/tMQp+i00krZoAJ9NOsXGU5i3wrgMY1nfRvkqsedH6hdpF
+        y4oXzUSnfQKTXVoMV2ZDIA0kz8fBlVZNIkafZ3ATJvIrrSRMgzTwZtmLpiUP09vThvX3pfC77BhVXYFA
+        9lBUMQqu+OUEorEESkwbMG7sJUPLHuhJSL/kRuOiG30GHb6PahH+wSO8bcSwIhN+8QiFmpHTBp31avR8
+        /olGhwcNJETpFtzo6m6Dy6xCaMsA8UstgutNsMsunjagY0SicYypr2KuWQrDBx6N007oZnfQ3aGHs78E
+        IgkFll4g4KiEuFIDq/QC9oUI8pR2cAWkS/gojhFlJoSv77DanovJ8msYV12G01jEAsK8GsJHJYQ5OQIL
+        5bBI0rF3GEbuMyu4fJUdIfJO7fJLENcayIh6RlxtIOFqEqhAYF4D4VMZaaCAMCMDX3QGv/0hPJBbwOUp
+        bOyd2koyYJNmsPGsxedhLk6HWXIO5qdnGRrin6RhiOAL0+D1hXCvhAeXK7eyv6aHHHj2g/9w74cIWk/9
+        2qNEHAQiuCslDe7LLBCCURySrZ6gG/YHkugXU8jifEKYiGCf7OCOZAhcTqHJmlNgQnbBAG4TWY/7kZXf
+        j1t5Rubmo76UG7knenH9IdVr/QP9Jj7ZfsRDswAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="btnCancel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACN0RVh0VGl0
@@ -162,4 +180,7 @@
         8j91kUbX3K/WKgAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="bwEntranceLogsAdd.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>194, 17</value>
+  </metadata>
 </root>

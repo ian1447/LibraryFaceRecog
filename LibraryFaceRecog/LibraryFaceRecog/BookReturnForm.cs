@@ -78,6 +78,8 @@ namespace LibraryFaceRecog
                 BookBorrowedSearchForm bbsf = new BookBorrowedSearchForm();
                 bbsf.borrowerid = BorrowerId;
                 bbsf.ShowDialog();
+                txtBookAuthor.Text = bbsf.bookauthor;
+                meBookTitle.Text = bbsf.booktitle;
                 txtBarcode.Text = bbsf.barcode;
             }
             else
@@ -109,6 +111,19 @@ namespace LibraryFaceRecog
             }
             else
                 Msgbox.Error(Borrower.ReturnBookErrorMessage);
+        }
+
+        private void btnScanBarcode_Click(object sender, EventArgs e)
+        {
+            ScanBarcodeForm sbf = new ScanBarcodeForm();
+            sbf.ShowDialog();
+            if (sbf.TransactionIsSuccessfull)
+            {
+                txtBarcode.Text = sbf.Barcode;
+                txtBookAuthor.Text = sbf.BorrowDetails.Rows[0]["author"].ToString();
+                txtBorrowerName.Text = sbf.BorrowDetails.Rows[0]["name"].ToString();
+                meBookTitle.Text = sbf.BorrowDetails.Rows[0]["title"].ToString();
+            }
         }
     }
 }

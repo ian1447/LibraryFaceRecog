@@ -42,6 +42,8 @@
             this.year_and_section = new DevExpress.XtraGrid.Columns.GridColumn();
             this.date = new DevExpress.XtraGrid.Columns.GridColumn();
             this.time = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.course = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.sex = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -59,6 +61,8 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.dtpTo = new DevExpress.XtraEditors.DateEdit();
             this.dtpFrom = new DevExpress.XtraEditors.DateEdit();
+            this.bwGetEntranceLogs = new System.ComponentModel.BackgroundWorker();
+            this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.luePeriod.Properties)).BeginInit();
@@ -110,6 +114,7 @@
             this.luePeriod.Size = new System.Drawing.Size(210, 20);
             this.luePeriod.StyleController = this.layoutControl1;
             this.luePeriod.TabIndex = 12;
+            this.luePeriod.Closed += new DevExpress.XtraEditors.Controls.ClosedEventHandler(this.luePeriod_Closed);
             this.luePeriod.EditValueChanged += new System.EventHandler(this.luePeriod_EditValueChanged);
             // 
             // searchLookUpEdit1View
@@ -138,6 +143,7 @@
             this.btnRefresh.StyleController = this.layoutControl1;
             this.btnRefresh.TabIndex = 10;
             this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
             // btnEntrance
             // 
@@ -169,7 +175,9 @@
             this.name,
             this.year_and_section,
             this.date,
-            this.time});
+            this.time,
+            this.course,
+            this.sex});
             this.gvLogs.GridControl = this.dtLogs;
             this.gvLogs.Name = "gvLogs";
             this.gvLogs.OptionsBehavior.Editable = false;
@@ -197,7 +205,7 @@
             this.year_and_section.FieldName = "year_and_section";
             this.year_and_section.Name = "year_and_section";
             this.year_and_section.Visible = true;
-            this.year_and_section.VisibleIndex = 1;
+            this.year_and_section.VisibleIndex = 3;
             // 
             // date
             // 
@@ -205,7 +213,7 @@
             this.date.FieldName = "date";
             this.date.Name = "date";
             this.date.Visible = true;
-            this.date.VisibleIndex = 2;
+            this.date.VisibleIndex = 4;
             // 
             // time
             // 
@@ -213,7 +221,23 @@
             this.time.FieldName = "time";
             this.time.Name = "time";
             this.time.Visible = true;
-            this.time.VisibleIndex = 3;
+            this.time.VisibleIndex = 5;
+            // 
+            // course
+            // 
+            this.course.Caption = "Course";
+            this.course.FieldName = "course";
+            this.course.Name = "course";
+            this.course.Visible = true;
+            this.course.VisibleIndex = 2;
+            // 
+            // sex
+            // 
+            this.sex.Caption = "Sex";
+            this.sex.FieldName = "sex";
+            this.sex.Name = "sex";
+            this.sex.Visible = true;
+            this.sex.VisibleIndex = 1;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -366,6 +390,7 @@
             this.btnSearch.Size = new System.Drawing.Size(75, 27);
             this.btnSearch.TabIndex = 365;
             this.btnSearch.Text = "Load";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // labelControl6
             // 
@@ -417,6 +442,12 @@
             this.dtpFrom.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.dtpFrom.Size = new System.Drawing.Size(148, 24);
             this.dtpFrom.TabIndex = 362;
+            // 
+            // bwGetEntranceLogs
+            // 
+            this.bwGetEntranceLogs.WorkerSupportsCancellation = true;
+            this.bwGetEntranceLogs.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetEntranceLogs_DoWork);
+            this.bwGetEntranceLogs.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetEntranceLogs_RunWorkerCompleted);
             // 
             // EntranceManagementForm
             // 
@@ -488,5 +519,9 @@
         private DevExpress.XtraEditors.LabelControl labelControl6;
         private DevExpress.XtraEditors.DateEdit dtpTo;
         private DevExpress.XtraEditors.DateEdit dtpFrom;
+        private System.ComponentModel.BackgroundWorker bwGetEntranceLogs;
+        private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraGrid.Columns.GridColumn course;
+        private DevExpress.XtraGrid.Columns.GridColumn sex;
     }
 }

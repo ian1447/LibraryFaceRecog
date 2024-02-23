@@ -98,6 +98,7 @@
             this.btnScanBarcode.StyleController = this.layoutControl1;
             this.btnScanBarcode.TabIndex = 10;
             this.btnScanBarcode.Text = "Scan Barcode";
+            this.btnScanBarcode.Click += new System.EventHandler(this.btnScanBarcode_Click);
             // 
             // btnCancel
             // 

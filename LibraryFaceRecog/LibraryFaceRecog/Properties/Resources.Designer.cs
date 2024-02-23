@@ -89,5 +89,25 @@ namespace LibraryFaceRecog.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pbxBarcodeImage_EditValue {
+            get {
+                object obj = ResourceManager.GetObject("pbxBarcodeImage_EditValue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pbxLoading_EditValue {
+            get {
+                object obj = ResourceManager.GetObject("pbxLoading_EditValue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

@@ -205,7 +205,8 @@
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
             this.emptySpaceItem1.Location = new System.Drawing.Point(618, 352);
-            this.emptySpaceItem1.MinSize = new System.Drawing.Size(104, 24);
+            this.emptySpaceItem1.MaxSize = new System.Drawing.Size(436, 214);
+            this.emptySpaceItem1.MinSize = new System.Drawing.Size(436, 214);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
             this.emptySpaceItem1.Size = new System.Drawing.Size(436, 214);
             this.emptySpaceItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
@@ -351,8 +352,10 @@
             // 
             this.emptySpaceItem3.AllowHotTrack = false;
             this.emptySpaceItem3.Location = new System.Drawing.Point(452, 0);
+            this.emptySpaceItem3.MinSize = new System.Drawing.Size(104, 24);
             this.emptySpaceItem3.Name = "emptySpaceItem3";
             this.emptySpaceItem3.Size = new System.Drawing.Size(162, 24);
+            this.emptySpaceItem3.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.emptySpaceItem3.TextSize = new System.Drawing.Size(0, 0);
             // 
             // FaceDetector

@@ -229,6 +229,7 @@ namespace LibraryFaceRecog
                       .Where(row => row.Field<int>("id") == RegisteredUserId).CopyToDataTable();
                 lblName.Text = Borrower.Rows[0]["name"].ToString();
             }
+            this.Focus();
             Msgbox.QuestionYesNo("Are you sure you want to select " + lblName.Text + " as " + type + "?");
             if (Msgbox.isYes)
             {

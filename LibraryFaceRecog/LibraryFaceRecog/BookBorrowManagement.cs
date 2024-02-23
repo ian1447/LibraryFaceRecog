@@ -186,8 +186,9 @@ namespace LibraryFaceRecog
             BorrowerId = lueBorrower.EditValue != null ? Convert.ToInt32(lueBorrower.EditValue.ToString()) : 0;
             if (BorrowerId != 0)
             {
-                FilteredTable = BorrowedDetails.AsEnumerable()
-                          .Where(row => row.Field<int>("borrower_id") == BorrowerId).CopyToDataTable();
+                FilteredTable =  BorrowedDetails.AsEnumerable()
+                          .Where(row => row.Field<int>("borrower_id") == BorrowerId).Count() > 0? BorrowedDetails.AsEnumerable()
+                          .Where(row => row.Field<int>("borrower_id") == BorrowerId).CopyToDataTable() : new DataTable();
                 dtBorrow.DataSource = FilteredTable;
             }
             else
@@ -239,15 +240,6 @@ namespace LibraryFaceRecog
                 dateTo = Convert.ToDateTime(dtpFrom.EditValue).AddYears(100);
                 LoadData();
             }
-            else
-            {
-                dtpTo.EditValue = DateTime.Now;
-                dtpFrom.EditValue = DateTime.Now;
-
-                dateFrom = DateTime.Now;
-                dateTo = DateTime.Now;
-                layoutControlGroup1.Enabled = false;
-            }
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
@@ -282,6 +274,19 @@ namespace LibraryFaceRecog
             }
             else
                 Msgbox.Information("Nothing to print ");
+        }
+
+        private void luePeriod_Closed(object sender, DevExpress.XtraEditors.Controls.ClosedEventArgs e)
+        {
+            if (luePeriod.Text == "Pick a date..")
+            {
+                dtpTo.EditValue = DateTime.Now;
+                dtpFrom.EditValue = DateTime.Now;
+
+                dateFrom = DateTime.Now;
+                dateTo = DateTime.Now;
+                layoutControlGroup1.Enabled = false;
+            }
         }
     }
 }

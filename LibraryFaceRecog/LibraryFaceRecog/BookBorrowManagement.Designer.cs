@@ -133,6 +133,7 @@
             this.luePeriod.Size = new System.Drawing.Size(160, 20);
             this.luePeriod.StyleController = this.layoutControl1;
             this.luePeriod.TabIndex = 16;
+            this.luePeriod.Closed += new DevExpress.XtraEditors.Controls.ClosedEventHandler(this.luePeriod_Closed);
             this.luePeriod.EditValueChanged += new System.EventHandler(this.luePeriod_EditValueChanged);
             // 
             // lueBorrower

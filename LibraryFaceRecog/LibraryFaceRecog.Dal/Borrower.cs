@@ -73,6 +73,34 @@ namespace LibraryFaceRecog.Dal
             }
         }
 
+        public static string GetBorrowedBooksbyBarcodeErrorMessage;
+        public static bool GetBorrowedBooksbyBarcodeSuccessful;
+        public static DataTable GetBorrowedBooksbyBarcode(string _barcode)
+        {
+            DataTable dt = new DataTable();
+            try
+            {
+                using (MySqlConnection con = new MySqlConnection(ConnectionString()))
+                {
+                    con.Open();
+                    MySqlCommand cmd = new MySqlCommand("sp_book_borrow_barcode_get", con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("_barcode", _barcode));
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                    adp.Fill(dt);
+                    con.Close();
+                    GetBorrowedBooksbyBarcodeSuccessful = true;
+                    return dt;
+                }
+            }
+            catch (Exception ex)
+            {
+                GetBorrowedBooksbyBarcodeSuccessful = false;
+                GetBorrowedBooksbyBarcodeErrorMessage = ex.Message + "\nFunction : Get Borrowed Books through barcode";
+                return null;
+            }
+        }
+
         public static string BorrowBookErrorMessage;
         public static bool BorrowBookSuccessful;
         public static void BorrowBook(int _book_id, int _borrower_id, string _barcode)
