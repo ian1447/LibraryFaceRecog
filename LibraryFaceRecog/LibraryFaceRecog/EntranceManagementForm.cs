@@ -7,6 +7,8 @@ using System.Text;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using LibraryFaceRecog.Dal;
+using LibraryFaceRecog.Core;
 
 namespace LibraryFaceRecog
 {
@@ -84,6 +86,23 @@ namespace LibraryFaceRecog
 
                 dateFrom = baseDate.AddYears(-10);
                 dateTo = Convert.ToDateTime(dtpFrom.EditValue).AddYears(10);
+            }
+        }
+
+        private void btnEntrance_Click(object sender, EventArgs e)
+        {
+            EntranceFaceDetector efd = new EntranceFaceDetector();
+            efd.ShowDialog();
+            if (!string.IsNullOrEmpty(efd.lblName.Text))
+            {
+                string test = "";
+                //BorrowerId = efd.RegisteredUserId;
+                //txtBorrowerName.Text = efd.lblName.Text;
+                //if (!bwGetBorrowerDetails.IsBusy)
+                //{
+                //    ShowLoading("Loading Data...");
+                //    bwGetBorrowerDetails.RunWorkerAsync();
+                //}
             }
         }
     }

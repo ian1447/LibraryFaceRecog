@@ -194,6 +194,12 @@
     <Compile Include="CaptureImage.Designer.cs">
       <DependentUpon>CaptureImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="EntranceFaceDetector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntranceFaceDetector.Designer.cs">
+      <DependentUpon>EntranceFaceDetector.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseConnectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +300,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CaptureImage.resx">
       <DependentUpon>CaptureImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntranceFaceDetector.resx">
+      <DependentUpon>EntranceFaceDetector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DatabaseConnectionForm.resx">
       <DependentUpon>DatabaseConnectionForm.cs</DependentUpon>

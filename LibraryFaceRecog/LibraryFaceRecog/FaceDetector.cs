@@ -86,6 +86,7 @@ namespace LibraryFaceRecog
         {
             try
             {
+                File.WriteAllText(filename, String.Empty);
                 // faceDetected = new HaarCascade("BisuHaarcascade.xml");
                 ShowLoading("Loading Dependencies...");
                 btnSelect.Text = ForReturn ? "Select as Returner" : "Select as Borrower";
@@ -121,15 +122,17 @@ namespace LibraryFaceRecog
             }
 
             programFirstLoad = true;
-            File.WriteAllText(filename, String.Empty);
             string ImagePath = (Application.StartupPath + "\\Faces");
             foreach (string imageFileName in Directory.GetFiles(ImagePath, "*.jpg"))
             {
                 File.Delete(imageFileName);
             }
-            RegisteredUsers = Register.GetRegisteredBorrowers("Bisu");
+            RegisteredUsers = Register.GetRegisteredBorrowers(PublicVariables.AccountType);
+            string borrower_ids = "";
             foreach (DataRow row in RegisteredUsers.Rows)
-            {   
+            {
+                borrower_ids = borrower_ids + row[0].ToString() + ",";
+                File.WriteAllText(filename, row[0].ToString() + ",");
                 Count += 1;
                 byte[] img = (byte[])row["image"];
                 MemoryStream ms = new MemoryStream(img);
@@ -139,25 +142,24 @@ namespace LibraryFaceRecog
                 Image<Bgr, Byte> Frame = (Emgu.CV.Image<Emgu.CV.Structure.Bgr, byte>)dbimage;
                 grayFace = Frame.Convert<Gray, Byte>();
                 // grayFace = camera.QueryGrayFrame().Resize(800, 720, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-                MCvAvgComp[][] DetectedFaces = grayFace.DetectHaarCascade(faceDetected, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 100));
+                MCvAvgComp[][] DetectedFaces = grayFace.DetectHaarCascade(faceDetected, 1.1, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 90));
                 foreach (MCvAvgComp f in DetectedFaces[0])
                 {
-                    result = Frame.Copy(f.rect).Convert<Gray, Byte>().Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+                    result = Frame.Copy(f.rect).Convert<Gray, Byte>().Resize(100, 90, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
                     TrainedFace = Frame.Copy(f.rect).Convert<Gray, byte>();
                    // CaptureImage.Image = TrainedFace;
                     break;
                 }
                 if (DetectedFaces[0].Count() > 0)
                 {
-                    TrainedFace = result.Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+                    TrainedFace = result.Resize(100, 90, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
                     //CaptureImage.Image = TrainedFace;
                     trainingImages.Add(TrainedFace);
                     labels.Add(row[0].ToString());
-                    File.WriteAllText(filename, trainingImages.ToArray().Length.ToString() + ",");
                     for (int i = 1; i < trainingImages.ToArray().Length + 1; i++)
                     {
                         trainingImages.ToArray()[i - 1].Save(Application.StartupPath + "/Faces/face" + i + ".jpg");
-                        File.AppendAllText(filename, labels.ToArray()[i - 1] + ",");
+                       // File.AppendAllText(filename, labels.ToArray()[i - 1] + ",");
                     }
                 }
                 else
@@ -182,18 +184,22 @@ namespace LibraryFaceRecog
                 Users.Add("");
                 Frame = camera.QueryFrame().Resize(800, 720, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
                 grayFace = Frame.Convert<Gray, Byte>();
-                MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 100));
+                MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.1, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 90));
                 foreach (MCvAvgComp f in faceDetectedNow[0])
                 {
-                    result = Frame.Copy(f.rect).Convert<Gray, Byte>().Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
+                    result = Frame.Copy(f.rect).Convert<Gray, Byte>().Resize(100, 90, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
                     Frame.Draw(f.rect, new Bgr(Color.Green), 3);
                     if (trainingImages.ToArray().Length != 0)
                     {
                         MCvTermCriteria termCriterias = new MCvTermCriteria(Count, 0.001);
-                        EigenObjectRecognizer recognizer = new EigenObjectRecognizer(trainingImages.ToArray(), labels.ToArray(), 1500, ref termCriterias);
-                        RegisteredUserId = Convert.ToInt32(recognizer.Recognize(result).ToString());
-                        ForName = RegisteredUsers.AsEnumerable().Where(row => row.Field<int>("id") == Convert.ToInt32(recognizer.Recognize(result).ToString())).CopyToDataTable();
-                        lblName.Text = ForName.Rows[0][4].ToString();
+                        EigenObjectRecognizer recognizer = new EigenObjectRecognizer(trainingImages.ToArray(), labels.ToArray(),1000, ref termCriterias);
+                       // Msgbox.Information(recognizer.Recognize(result).ToString());
+                        if (recognizer.Recognize(result).ToString() != "")
+                        {
+                            RegisteredUserId = Convert.ToInt32(recognizer.Recognize(result).ToString());
+                            ForName = RegisteredUsers.AsEnumerable().Where(row => row.Field<int>("id") == Convert.ToInt32(recognizer.Recognize(result).ToString())).CopyToDataTable();
+                            lblName.Text = ForName.Rows[0][4].ToString();
+                        }
                         CaptureImage.Image = Frame;
                         btnSelect.Enabled = true;
                     }

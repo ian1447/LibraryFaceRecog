@@ -148,6 +148,7 @@
             this.btnEntrance.StyleController = this.layoutControl1;
             this.btnEntrance.TabIndex = 9;
             this.btnEntrance.Text = "Entrace";
+            this.btnEntrance.Click += new System.EventHandler(this.btnEntrance_Click);
             // 
             // dtLogs
             // 

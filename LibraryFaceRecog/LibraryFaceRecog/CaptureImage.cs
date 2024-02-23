@@ -140,7 +140,7 @@ namespace LibraryFaceRecog
                 Users.Add("");
                 Frame = camera.QueryFrame().Resize(800, 720, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
                 grayFace = Frame.Convert<Gray, Byte>();
-                MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 100));
+                MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.1, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 90));
                 btnCapture.Enabled = faceDetectedNow[0].Count() > 0?true:false;
                 CameraBox.Image = Frame;
                 names = "";

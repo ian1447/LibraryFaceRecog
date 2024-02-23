@@ -104,7 +104,7 @@ namespace LibraryFaceRecog
 
         private void bwGetBorrowerDetails_DoWork(object sender, DoWorkEventArgs e)
         {
-            BorrowersTable = Register.GetRegisteredBorrowers("Bisu");
+            BorrowersTable = Register.GetRegisteredBorrowers(PublicVariables.AccountType);
             bwGetBorrowerDetails.CancelAsync();
         }
 
