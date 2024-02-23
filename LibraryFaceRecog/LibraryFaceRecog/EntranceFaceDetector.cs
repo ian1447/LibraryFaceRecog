@@ -89,8 +89,6 @@ namespace LibraryFaceRecog
             {
                 // faceDetected = new HaarCascade("BisuHaarcascade.xml");
                 ShowLoading("Loading Dependencies...");
-               // btnSelect.Text = ForReturn ? "Select as Returner" : "Select as Borrower";
-                faceDetected = new HaarCascade("BisuHaarcascade.xml");
                 CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);//constructor
                 programFirstLoad = false;
                 int cameraCounter = 0;
@@ -122,8 +120,8 @@ namespace LibraryFaceRecog
             }
 
             programFirstLoad = true;
-            File.WriteAllText(filename, String.Empty);
-            string ImagePath = (Application.StartupPath + "\\Faces");
+            File.WriteAllText("\\Recognize\\log.txt", String.Empty);
+            string ImagePath = (Application.StartupPath + "\\Recognize\\images");
             foreach (string imageFileName in Directory.GetFiles(ImagePath, "*.jpg"))
             {
                 File.Delete(imageFileName);

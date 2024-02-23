@@ -70,8 +70,8 @@ namespace LibraryFaceRecog
             {
                 CaptureImage ci = new CaptureImage();
                 ci.ShowDialog();
-                if (ci.peCapturedImage.Image != null)
-                    peCapturedImage.Image = ci.peCapturedImage.Image.Bitmap;
+                if (ci.CapturedImage.Image != null)
+                    peCapturedImage.Image = ci.CapturedImage.Image;
             }
             else
             {
@@ -80,8 +80,8 @@ namespace LibraryFaceRecog
                 {   
                     CaptureImage ci = new CaptureImage();
                     ci.ShowDialog();
-                    if (ci.peCapturedImage.Image != null)
-                        peCapturedImage.Image = ci.peCapturedImage.Image.Bitmap;
+                    if (ci.CapturedImage.Image != null)
+                        peCapturedImage.Image = ci.CapturedImage.Image;
                 }
             } 
         }

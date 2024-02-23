@@ -28,11 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CaptureImage));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.peCapturedImage = new Emgu.CV.UI.ImageBox();
-            this.CameraBox = new Emgu.CV.UI.ImageBox();
+            this.peCameraBox = new System.Windows.Forms.PictureBox();
+            this.CapturedImage = new System.Windows.Forms.PictureBox();
             this.cmbResolution = new DevExpress.XtraEditors.ComboBoxEdit();
             this.cmbCameraList = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
@@ -40,7 +39,7 @@
             this.btnCapture = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.CameraBox = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.lciCapture = new DevExpress.XtraLayout.LayoutControlItem();
@@ -54,13 +53,13 @@
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.peCapturedImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CameraBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peCameraBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CapturedImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbResolution.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCameraList.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciCapture)).BeginInit();
@@ -75,8 +74,8 @@
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.peCapturedImage);
-            this.layoutControl1.Controls.Add(this.CameraBox);
+            this.layoutControl1.Controls.Add(this.peCameraBox);
+            this.layoutControl1.Controls.Add(this.CapturedImage);
             this.layoutControl1.Controls.Add(this.cmbResolution);
             this.layoutControl1.Controls.Add(this.cmbCameraList);
             this.layoutControl1.Controls.Add(this.btnCancel);
@@ -91,24 +90,23 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // peCapturedImage
+            // peCameraBox
             // 
-            this.peCapturedImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.peCapturedImage.Location = new System.Drawing.Point(494, 43);
-            this.peCapturedImage.Name = "peCapturedImage";
-            this.peCapturedImage.Size = new System.Drawing.Size(323, 333);
-            this.peCapturedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.peCapturedImage.TabIndex = 2;
-            this.peCapturedImage.TabStop = false;
+            this.peCameraBox.Location = new System.Drawing.Point(24, 67);
+            this.peCameraBox.Name = "peCameraBox";
+            this.peCameraBox.Size = new System.Drawing.Size(435, 449);
+            this.peCameraBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.peCameraBox.TabIndex = 12;
+            this.peCameraBox.TabStop = false;
             // 
-            // CameraBox
+            // CapturedImage
             // 
-            this.CameraBox.Location = new System.Drawing.Point(24, 67);
-            this.CameraBox.Name = "CameraBox";
-            this.CameraBox.Size = new System.Drawing.Size(435, 449);
-            this.CameraBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.CameraBox.TabIndex = 2;
-            this.CameraBox.TabStop = false;
+            this.CapturedImage.Location = new System.Drawing.Point(494, 43);
+            this.CapturedImage.Name = "CapturedImage";
+            this.CapturedImage.Size = new System.Drawing.Size(323, 333);
+            this.CapturedImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.CapturedImage.TabIndex = 11;
+            this.CapturedImage.TabStop = false;
             // 
             // cmbResolution
             // 
@@ -157,7 +155,6 @@
             // 
             // btnCapture
             // 
-            this.btnCapture.Enabled = false;
             this.btnCapture.Image = ((System.Drawing.Image)(resources.GetObject("btnCapture.Image")));
             this.btnCapture.Location = new System.Drawing.Point(482, 392);
             this.btnCapture.Name = "btnCapture";
@@ -190,20 +187,22 @@
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1});
+            this.CameraBox});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 24);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(463, 496);
             this.layoutControlGroup2.Text = "Live Capture";
             // 
-            // layoutControlItem1
+            // CameraBox
             // 
-            this.layoutControlItem1.Control = this.CameraBox;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(439, 453);
-            this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem1.TextVisible = false;
+            this.CameraBox.Control = this.peCameraBox;
+            this.CameraBox.Location = new System.Drawing.Point(0, 0);
+            this.CameraBox.MinSize = new System.Drawing.Size(104, 24);
+            this.CameraBox.Name = "CameraBox";
+            this.CameraBox.Size = new System.Drawing.Size(439, 453);
+            this.CameraBox.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.CameraBox.TextSize = new System.Drawing.Size(0, 0);
+            this.CameraBox.TextVisible = false;
             // 
             // layoutControlGroup3
             // 
@@ -216,7 +215,7 @@
             // 
             // layoutControlItem2
             // 
-            this.layoutControlItem2.Control = this.peCapturedImage;
+            this.layoutControlItem2.Control = this.CapturedImage;
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.MaxSize = new System.Drawing.Size(327, 337);
             this.layoutControlItem2.MinSize = new System.Drawing.Size(327, 337);
@@ -266,8 +265,10 @@
             // 
             this.layoutControlItem6.Control = this.cmbCameraList;
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem6.MinSize = new System.Drawing.Size(111, 24);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(206, 24);
+            this.layoutControlItem6.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem6.Text = "Camera: ";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(54, 13);
             // 
@@ -275,8 +276,10 @@
             // 
             this.layoutControlItem7.Control = this.cmbResolution;
             this.layoutControlItem7.Location = new System.Drawing.Point(206, 0);
+            this.layoutControlItem7.MinSize = new System.Drawing.Size(111, 24);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(262, 24);
+            this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem7.Text = "Resolution:";
             this.layoutControlItem7.TextSize = new System.Drawing.Size(54, 13);
             // 
@@ -319,13 +322,13 @@
             this.Shown += new System.EventHandler(this.CaptureImage_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.peCapturedImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.CameraBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.peCameraBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CapturedImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbResolution.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cmbCameraList.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.CameraBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lciCapture)).EndInit();
@@ -356,14 +359,14 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private DevExpress.XtraEditors.ComboBoxEdit cmbResolution;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
-        private Emgu.CV.UI.ImageBox CameraBox;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem2;
         private DevExpress.XtraLayout.SplitterItem splitterItem2;
         private DevExpress.XtraLayout.SimpleSeparator simpleSeparator1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
-        public Emgu.CV.UI.ImageBox peCapturedImage;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private System.Windows.Forms.PictureBox peCameraBox;
+        private DevExpress.XtraLayout.LayoutControlItem CameraBox;
+        public System.Windows.Forms.PictureBox CapturedImage;
 
     }
 }

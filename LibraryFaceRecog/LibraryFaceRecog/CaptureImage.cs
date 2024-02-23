@@ -28,17 +28,6 @@ namespace LibraryFaceRecog
     public partial class CaptureImage : DevExpress.XtraEditors.XtraForm
     {
         #region variablesfordetection
-        HaarCascade faceDetected;
-        Image<Bgr, Byte> Frame;
-        Emgu.CV.Capture camera;
-        Image<Gray, byte> result;
-        Image<Gray, byte> TrainedFace = null;
-        Image<Gray, byte> grayFace = null;
-        List<Image<Gray, byte>> trainingImages = new List<Image<Gray, byte>>();
-        List<string> labels = new List<string>();
-        List<string> Users = new List<string>();
-        int Count, Numlabels, t;
-        string name, names, errm, filename;
         #endregion
 
         public CaptureImage()
@@ -87,15 +76,14 @@ namespace LibraryFaceRecog
         private FilterInfoCollection CaptureDevice; // list of webcam
         private VideoCaptureDevice FinalFrame;
         private bool CameraConnected;
-        private bool programFirstLoad,HasDetection;
+        private bool programFirstLoad;
 
         private void CaptureImage_Shown(object sender, EventArgs e)
         {
             ShowLoading("Loading Dependencies...");
-            faceDetected = new HaarCascade("BisuHaarcascade.xml");
-            CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);//constructor
             programFirstLoad = false;
             int cameraCounter = 0;
+            CaptureDevice = new FilterInfoCollection(FilterCategory.VideoInputDevice);//constructor
             foreach (FilterInfo Device in CaptureDevice)
             {
                 cmbCameraList.Properties.Items.Add(Device.Name);
@@ -113,7 +101,6 @@ namespace LibraryFaceRecog
             else
             {
                 cmbCameraList.SelectedIndex = 0;
-                // cmbCameraList.Enabled = false;
                 CameraConnected = true;
                 StartCamera();
             }
@@ -128,25 +115,37 @@ namespace LibraryFaceRecog
 
         private void StartCamera()
         {
-            camera = new Emgu.CV.Capture();
-            camera.QueryFrame();
-            Application.Idle += new EventHandler(FrameProcedure);
-        }
-
-        public void FrameProcedure(object sender, EventArgs e)
-        {
-            if (CameraConnected)
+            try
             {
-                Users.Add("");
-                Frame = camera.QueryFrame().Resize(800, 720, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-                grayFace = Frame.Convert<Gray, Byte>();
-                MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.1, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 90));
-                btnCapture.Enabled = faceDetectedNow[0].Count() > 0?true:false;
-                CameraBox.Image = Frame;
-                names = "";
+                if (!string.IsNullOrEmpty(cmbCameraList.Text))
+                {
+                    if (cmbResolution.SelectedIndex > -1)
+                    {
+                        FinalFrame = new VideoCaptureDevice(CaptureDevice[cmbCameraList.SelectedIndex].MonikerString);// specified web cam and its filter moniker string
+                        FinalFrame.NewFrame += new NewFrameEventHandler(FinalFrame_NewFrame);// click button event is fired, 
+                        //FinalFrame.DesiredFrameSize = new System.Drawing.Size(1920, 1080);
+                        FinalFrame.VideoResolution = FinalFrame.VideoCapabilities[cmbResolution.SelectedIndex];
+                        FinalFrame.Start();
+                        CameraConnected = true;
+                    }
+                }
+            }
+            catch
+            {
+                Msgbox.Error("Unknown error in using the camera. \nPlease attached the camera to the unit.");
+                this.Dispose();
             }
         }
 
+        private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            try
+            {
+                Bitmap cameraImage = (Bitmap)eventArgs.Frame.Clone();// clone the bitmap
+                peCameraBox.Image = cameraImage;
+            }
+            catch { }
+        }
 
         private void cmbCameraList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -173,35 +172,6 @@ namespace LibraryFaceRecog
             }
         }
 
-        private void FinalFrame_NewFrame(object sender, NewFrameEventArgs eventArgs)
-        {
-            //try
-            //{
-            //    Bitmap cameraImage = (Bitmap)eventArgs.Frame.Clone();// clone the bitmap
-            //    var filter = new Mirror(false, false);
-            //    filter.ApplyInPlace(cameraImage);
-            //    Frame = camera.QueryFrame().Resize(800, 720, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            //    grayFace = Frame.Convert<Gray, Byte>();
-            //    MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 100));
-            //    foreach (MCvAvgComp f in faceDetectedNow[0])
-            //    {
-            //        result = Frame.Copy(f.rect).Convert<Gray, Byte>().Resize(100, 100, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-            //        Frame.Draw(f.rect, new Bgr(Color.Green), 3);
-            //        //if (trainingImages.ToArray().Length != 0)
-            //        //{
-            //        //    MCvTermCriteria termCriterias = new MCvTermCriteria(Count, 0.001);
-            //        //    EigenObjectRecognizer recognizer = new EigenObjectRecognizer(trainingImages.ToArray(),labels.ToArray(),1500,ref termCriterias);
-            //        //    name = recognizer.Recognize(result);
-            //        //    Frame.Draw(name, ref font, new Point(f.rect.X -2,f.rect.Y-2),new Bgr(Color.Red));
-            //        //}
-            //        ////Users[t - 1] = name;
-            //        //Users.Add("");
-            //    }
-            //    CameraBox.Image = Frame;
-            //}
-            //catch { }
-        }
-
         private void cmbResolution_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cmbResolution.SelectedIndex > -1)
@@ -223,8 +193,8 @@ namespace LibraryFaceRecog
         {
             try
             {
-                camera = new Emgu.CV.Capture();
-                camera.Dispose();
+                if (FinalFrame.IsRunning)
+                    FinalFrame.Stop();
                 CameraConnected = false;
             }
             catch (Exception ex) { Msgbox.Error(ex.Message); }
@@ -249,26 +219,12 @@ namespace LibraryFaceRecog
 
         private void btnCapture_Click(object sender, EventArgs e)
         {
-            peCapturedImage.Image = CameraBox.Image;
+            CapturedImage.Image = peCameraBox.Image;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-
-            //Frame = camera.QueryFrame().Resize(800, 720, Emgu.CV.CvEnum.INTER.CV_INTER_CUBIC);
-
-            //Image<Bgr, Byte> Frame = (Emgu.CV.Image<Emgu.CV.Structure.Bgr, byte>)peCapturedImage.Image;
-            //grayFace = Frame.Convert<Gray, Byte>();
-            //MCvAvgComp[][] faceDetectedNow = grayFace.DetectHaarCascade(faceDetected, 1.2, 10, Emgu.CV.CvEnum.HAAR_DETECTION_TYPE.DO_CANNY_PRUNING, new Size(100, 100));
-            //if (faceDetectedNow[0].Count() < 1)
-            //{
-            //    Msgbox.Information("Cannot Close");
-            //}
-            //else
-            //{
-            //    btnCapture.Enabled = faceDetectedNow[0].Count() > 0 ? true : false;
             this.Close();
-            //}
         }
 
     }
