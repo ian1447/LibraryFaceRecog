@@ -258,9 +258,9 @@ namespace LibraryFaceRecog
                 if (PublicVariables.AccountType == "Bisu")
                 {
                     BisuBookBorrowReport bbr = new BisuBookBorrowReport();
+                    bbr.lblDate.Text = "Borrow Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
                     bbr.DataMember = "CustomSqlQuery";
                     bbr.DataSource = dtBorrow.DataSource;
-                    bbr.lblDate.Text = "Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
                     bbr.ShowPreviewDialog();
                 }
                 else
@@ -268,7 +268,7 @@ namespace LibraryFaceRecog
                     CongressionalBookBorrowReport cbr = new CongressionalBookBorrowReport();
                     cbr.DataMember = "CustomSqlQuery";
                     cbr.DataSource = dtBorrow.DataSource;
-                    cbr.lblDate.Text = "Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
+                    cbr.lblDate.Text = "Borrow Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
                     cbr.ShowPreviewDialog();
                 }
             }

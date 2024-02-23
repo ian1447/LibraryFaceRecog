@@ -244,6 +244,12 @@
     <Compile Include="RegisterFormManagement.Designer.cs">
       <DependentUpon>RegisterFormManagement.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reports\BisuEntranceLogsReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\BisuEntranceLogsReport.Designer.cs">
+      <DependentUpon>BisuEntranceLogsReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reports\BisuBookBorrowReport.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -255,6 +261,12 @@
     </Compile>
     <Compile Include="Reports\CongressionalBookBorrowReport.Designer.cs">
       <DependentUpon>CongressionalBookBorrowReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\CongressionalEntranceLogsReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\CongressionalEntranceLogsReport.Designer.cs">
+      <DependentUpon>CongressionalEntranceLogsReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\ReturnForm.cs">
       <SubType>Component</SubType>
@@ -342,11 +354,17 @@
     <EmbeddedResource Include="RegisterFormManagement.resx">
       <DependentUpon>RegisterFormManagement.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BisuEntranceLogsReport.resx">
+      <DependentUpon>BisuEntranceLogsReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reports\BisuBookBorrowReport.resx">
       <DependentUpon>BisuBookBorrowReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CongressionalBookBorrowReport.resx">
       <DependentUpon>CongressionalBookBorrowReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\CongressionalEntranceLogsReport.resx">
+      <DependentUpon>CongressionalEntranceLogsReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\ReturnForm.resx">
       <DependentUpon>ReturnForm.cs</DependentUpon>

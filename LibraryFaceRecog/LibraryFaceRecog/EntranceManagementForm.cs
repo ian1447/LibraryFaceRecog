@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using LibraryFaceRecog.Dal;
 using LibraryFaceRecog.Core;
+using LibraryFaceRecog.Reports;
+using DevExpress.XtraReports.UI;
 
 namespace LibraryFaceRecog
 {
@@ -59,8 +61,28 @@ namespace LibraryFaceRecog
             }
             catch { }
         }
-
         #endregion
+
+        private bool SelectionPass()
+        {
+            try
+            {
+                if (!gvLogs.IsGroupRow(gvLogs.FocusedRowHandle))
+                {
+                    if (gvLogs.SelectedRowsCount > 0)
+                    {
+                        int selectedRowId = Convert.ToInt32(gvLogs.GetRowCellValue(gvLogs.FocusedRowHandle, "id"));
+                        return true;
+                    }
+                    else
+                        return false;
+                }
+                else
+                    return false;
+            }
+            catch { return false; }
+        }
+
         private void EntranceManagementForm_Shown(object sender, EventArgs e)
         {
             pnlDates.Location = new Point(
@@ -186,6 +208,31 @@ namespace LibraryFaceRecog
                 dateTo = DateTime.Now;
                 layoutControlGroup1.Enabled = false;
             }
+        }
+
+        private void btnPrintReport_Click(object sender, EventArgs e)
+        {
+            if (gvLogs.RowCount > 0)
+            {
+                if (PublicVariables.AccountType == "Bisu")
+                {
+                    BisuEntranceLogsReport belr = new BisuEntranceLogsReport();
+                    belr.DataMember = "CustomSqlQuery";
+                    belr.DataSource = dtLogs.DataSource;
+                    belr.lblDate.Text = "Entrance Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
+                    belr.ShowPreviewDialog();
+                }
+                else
+                {
+                    CongressionalEntranceLogsReport celr = new CongressionalEntranceLogsReport();
+                    celr.DataMember = "CustomSqlQuery";
+                    celr.DataSource = dtLogs.DataSource;
+                    celr.lblDate.Text = "Entrance Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
+                    celr.ShowPreviewDialog();
+                }
+            }
+            else
+                Msgbox.Information("Nothing to print ");
         }
     }
 }

@@ -113,7 +113,7 @@ namespace LibraryFaceRecog
             {
                 var focusRowView = (DataRowView)gvBooks.GetFocusedRow();
                 BookId = Convert.ToInt32(focusRowView.Row[0].ToString());
-                BookTitle = focusRowView.Row[6].ToString();
+                BookTitle = focusRowView.Row["title"].ToString();
                 this.Close();
             }
             else

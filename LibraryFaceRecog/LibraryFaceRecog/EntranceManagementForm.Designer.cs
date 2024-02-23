@@ -133,6 +133,7 @@
             this.btnPrintReport.StyleController = this.layoutControl1;
             this.btnPrintReport.TabIndex = 11;
             this.btnPrintReport.Text = "Print Report";
+            this.btnPrintReport.Click += new System.EventHandler(this.btnPrintReport_Click);
             // 
             // btnRefresh
             // 
