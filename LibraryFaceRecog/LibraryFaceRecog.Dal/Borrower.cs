@@ -136,7 +136,7 @@ namespace LibraryFaceRecog.Dal
                 using (MySqlConnection con = new MySqlConnection(ConnectionString()))
                 {
                     con.Open();
-                    MySqlCommand cmd = new MySqlCommand("sp_return_book", con);
+                    MySqlCommand cmd = new MySqlCommand("sp_book_return", con);
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.Add(new MySqlParameter("_barcode", _barcode));
                     cmd.ExecuteNonQuery();
