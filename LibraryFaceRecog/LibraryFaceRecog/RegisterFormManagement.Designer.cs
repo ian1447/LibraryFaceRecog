@@ -54,6 +54,7 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetDetails = new System.ComponentModel.BackgroundWorker();
+            this.contact_number = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
@@ -83,13 +84,13 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(856, 388, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(779, 569);
+            this.layoutControl1.Size = new System.Drawing.Size(949, 569);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // checkEdit1
             // 
-            this.checkEdit1.Location = new System.Drawing.Point(640, 12);
+            this.checkEdit1.Location = new System.Drawing.Point(810, 12);
             this.checkEdit1.Name = "checkEdit1";
             this.checkEdit1.Properties.Caption = "Show Deactivated";
             this.checkEdit1.Size = new System.Drawing.Size(127, 19);
@@ -137,7 +138,7 @@
             this.dtRegistered.Name = "dtRegistered";
             this.dtRegistered.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
             this.repositoryItemCheckEdit1});
-            this.dtRegistered.Size = new System.Drawing.Size(731, 471);
+            this.dtRegistered.Size = new System.Drawing.Size(901, 471);
             this.dtRegistered.TabIndex = 8;
             this.dtRegistered.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvRegistered});
@@ -150,7 +151,8 @@
             this.course,
             this.year_and_section,
             this.added_on,
-            this.sex});
+            this.sex,
+            this.contact_number});
             this.gvRegistered.GridControl = this.dtRegistered;
             this.gvRegistered.Name = "gvRegistered";
             this.gvRegistered.OptionsBehavior.Editable = false;
@@ -178,7 +180,7 @@
             this.course.FieldName = "course";
             this.course.Name = "course";
             this.course.Visible = true;
-            this.course.VisibleIndex = 2;
+            this.course.VisibleIndex = 3;
             // 
             // year_and_section
             // 
@@ -186,7 +188,7 @@
             this.year_and_section.FieldName = "year_and_section";
             this.year_and_section.Name = "year_and_section";
             this.year_and_section.Visible = true;
-            this.year_and_section.VisibleIndex = 3;
+            this.year_and_section.VisibleIndex = 4;
             // 
             // added_on
             // 
@@ -194,7 +196,7 @@
             this.added_on.FieldName = "added_on";
             this.added_on.Name = "added_on";
             this.added_on.Visible = true;
-            this.added_on.VisibleIndex = 4;
+            this.added_on.VisibleIndex = 5;
             // 
             // sex
             // 
@@ -202,7 +204,7 @@
             this.sex.FieldName = "sex";
             this.sex.Name = "sex";
             this.sex.Visible = true;
-            this.sex.VisibleIndex = 1;
+            this.sex.VisibleIndex = 2;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -223,7 +225,7 @@
             this.layoutControlItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(779, 569);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(949, 569);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // emptySpaceItem2
@@ -231,7 +233,7 @@
             this.emptySpaceItem2.AllowHotTrack = false;
             this.emptySpaceItem2.Location = new System.Drawing.Point(303, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(325, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(495, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // splitterItem1
@@ -239,7 +241,7 @@
             this.splitterItem1.AllowHotTrack = true;
             this.splitterItem1.Location = new System.Drawing.Point(0, 26);
             this.splitterItem1.Name = "splitterItem1";
-            this.splitterItem1.Size = new System.Drawing.Size(759, 5);
+            this.splitterItem1.Size = new System.Drawing.Size(929, 5);
             // 
             // layoutControlItem2
             // 
@@ -259,7 +261,7 @@
             this.layoutControlItem1});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 31);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(759, 518);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(929, 518);
             this.layoutControlGroup2.Text = "Registered";
             // 
             // layoutControlItem1
@@ -267,7 +269,7 @@
             this.layoutControlItem1.Control = this.dtRegistered;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(735, 475);
+            this.layoutControlItem1.Size = new System.Drawing.Size(905, 475);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -298,7 +300,7 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.checkEdit1;
-            this.layoutControlItem6.Location = new System.Drawing.Point(628, 0);
+            this.layoutControlItem6.Location = new System.Drawing.Point(798, 0);
             this.layoutControlItem6.MaxSize = new System.Drawing.Size(131, 26);
             this.layoutControlItem6.MinSize = new System.Drawing.Size(131, 26);
             this.layoutControlItem6.Name = "layoutControlItem6";
@@ -314,11 +316,19 @@
             this.bwGetDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetDetails_DoWork);
             this.bwGetDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetDetails_RunWorkerCompleted);
             // 
+            // contact_number
+            // 
+            this.contact_number.Caption = "Contact Number";
+            this.contact_number.FieldName = "contact_number";
+            this.contact_number.Name = "contact_number";
+            this.contact_number.Visible = true;
+            this.contact_number.VisibleIndex = 1;
+            // 
             // RegisterFormManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(779, 569);
+            this.ClientSize = new System.Drawing.Size(949, 569);
             this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "RegisterFormManagement";
@@ -371,5 +381,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn sex;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private System.ComponentModel.BackgroundWorker bwGetDetails;
+        private DevExpress.XtraGrid.Columns.GridColumn contact_number;
     }
 }

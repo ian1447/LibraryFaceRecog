@@ -45,7 +45,7 @@ namespace LibraryFaceRecog.Dal
 
         public static string RegisteredBorrowersAddErrorMessage;
         public static bool RegisteredBorrowersAddSuccessful;
-        public static void RegisteredBorrowersAdd(string _first_name, string _middle_name, string _last_name, string _sex, string _course, string _year, string _section, byte[] _image)
+        public static void RegisteredBorrowersAdd(string _contact_number, string _first_name, string _middle_name, string _last_name, string _sex, string _course, string _year, string _section, byte[] _image)
         {
             try
             {
@@ -54,6 +54,7 @@ namespace LibraryFaceRecog.Dal
                     con.Open();
                     MySqlCommand cmd = new MySqlCommand("sp_registered_borrowers_add", con);
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("_contact_number", _contact_number));
                     cmd.Parameters.Add(new MySqlParameter("_first_name", _first_name));
                     cmd.Parameters.Add(new MySqlParameter("_middle_name", _middle_name));
                     cmd.Parameters.Add(new MySqlParameter("_last_name", _last_name));
@@ -79,7 +80,7 @@ namespace LibraryFaceRecog.Dal
 
         public static string RegisteredBorrowersEditErrorMessage;
         public static bool RegisteredBorrowersEditSuccessful;
-        public static void RegisteredBorrowersEdit(string _first_name, string _middle_name, string _last_name, string _sex, string _course, string _year, string _section, byte[] _image,int _edit_id)
+        public static void RegisteredBorrowersEdit(string _contact_number,string _first_name, string _middle_name, string _last_name, string _sex, string _course, string _year, string _section, byte[] _image,int _edit_id)
         {
             try
             {
@@ -88,6 +89,7 @@ namespace LibraryFaceRecog.Dal
                     con.Open();
                     MySqlCommand cmd = new MySqlCommand("sp_registered_borrowers_edit", con);
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new MySqlParameter("_contact_number", _contact_number));
                     cmd.Parameters.Add(new MySqlParameter("_first_name", _first_name));
                     cmd.Parameters.Add(new MySqlParameter("_middle_name", _middle_name));
                     cmd.Parameters.Add(new MySqlParameter("_last_name", _last_name));
