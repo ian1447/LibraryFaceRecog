@@ -259,16 +259,16 @@ namespace LibraryFaceRecog
                 {
                     BisuBookBorrowReport bbr = new BisuBookBorrowReport();
                     bbr.lblDate.Text = "Borrow Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
-                    bbr.DataMember = "CustomSqlQuery";
                     bbr.DataSource = dtBorrow.DataSource;
+                    bbr.DataMember = "CustomSqlQuery";
                     bbr.ShowPreviewDialog();
                 }
                 else
                 {
                     CongressionalBookBorrowReport cbr = new CongressionalBookBorrowReport();
-                    cbr.DataMember = "CustomSqlQuery";
-                    cbr.DataSource = dtBorrow.DataSource;
                     cbr.lblDate.Text = "Borrow Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
+                    cbr.DataSource = dtBorrow.DataSource;
+                    cbr.DataMember = "CustomSqlQuery";
                     cbr.ShowPreviewDialog();
                 }
             }

@@ -217,17 +217,17 @@ namespace LibraryFaceRecog
                 if (PublicVariables.AccountType == "Bisu")
                 {
                     BisuEntranceLogsReport belr = new BisuEntranceLogsReport();
-                    belr.DataMember = "CustomSqlQuery";
-                    belr.DataSource = dtLogs.DataSource;
                     belr.lblDate.Text = "Entrance Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
+                    belr.DataSource = EntranceLogTable;
+                    belr.DataMember = "CustomSqlQuery";
                     belr.ShowPreviewDialog();
                 }
                 else
                 {
                     CongressionalEntranceLogsReport celr = new CongressionalEntranceLogsReport();
-                    celr.DataMember = "CustomSqlQuery";
-                    celr.DataSource = dtLogs.DataSource;
                     celr.lblDate.Text = "Entrance Report for: " + dtpFrom.Text + " - " + dtpTo.Text;
+                    celr.DataSource = dtLogs.DataSource;
+                    celr.DataMember = "CustomSqlQuery";
                     celr.ShowPreviewDialog();
                 }
             }
