@@ -208,6 +208,7 @@ namespace LibraryFaceRecog
 
         private void btnSelect_Click(object sender, EventArgs e)
         {
+            File.WriteAllText(filename, String.Empty);
             string type = btnSelect.Text == "Select as Borrower" ? "Borrower" : "Returner";
 
             Process facerecog = new Process()
@@ -222,20 +223,29 @@ namespace LibraryFaceRecog
             facerecog.WaitForExit();
             StreamReader sr = new StreamReader(filename);
             string line = sr.ReadLine();
-            if (line.All(char.IsDigit))
+            sr.Dispose();
+            if (!string.IsNullOrEmpty(line))
             {
-                RegisteredUserId = Convert.ToInt32(line);
-                DataTable Borrower = RegisteredUsers.AsEnumerable()
-                      .Where(row => row.Field<int>("id") == RegisteredUserId).CopyToDataTable();
-                lblName.Text = Borrower.Rows[0]["name"].ToString();
+                if (line.All(char.IsDigit))
+                {
+                    RegisteredUserId = Convert.ToInt32(line);
+                    DataTable Borrower = RegisteredUsers.AsEnumerable()
+                            .Where(row => row.Field<int>("id") == RegisteredUserId).CopyToDataTable();
+                    lblName.Text = Borrower.Rows[0]["name"].ToString();
+                }
+                this.Focus();
+                Msgbox.QuestionYesNo("Are you sure you want to select " + lblName.Text + " as " + type + "?");
+                if (Msgbox.isYes)
+                {
+                    if (CameraConnected)
+                        StopCamera();
+                    this.Close();
+                }
             }
-            this.Focus();
-            Msgbox.QuestionYesNo("Are you sure you want to select " + lblName.Text + " as " + type + "?");
-            if (Msgbox.isYes)
+            else
             {
-                if (CameraConnected)
-                    StopCamera();
-                this.Close();
+                lblName.Text = "";
+                Msgbox.Error("No Detections found..");
             }
         }
 
@@ -269,6 +279,48 @@ namespace LibraryFaceRecog
             CapturedImage.Image = CameraBox.Image;
             CapturedImage.Image.Save(knownpath + "known.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
             btnSelect.Enabled = true;
+        }
+
+        private void btnRecognize_Click(object sender, EventArgs e)
+        {
+            if (CapturedImage.Image != null)
+            {
+                File.WriteAllText(filename, String.Empty);
+                Process facerecog = new Process()
+                {
+                    StartInfo = new ProcessStartInfo(PublicVariables.DefaultDirectory + "\\Recognize\\Recognize.exe")
+                    {
+                        WorkingDirectory = PublicVariables.DefaultDirectory + "\\Recognize"
+                    }
+                };
+                facerecog.StartInfo.FileName = PublicVariables.DefaultDirectory + "\\Recognize\\Recognize.exe";
+                facerecog.Start();
+                facerecog.WaitForExit();
+                StreamReader sr = new StreamReader(filename);
+                string line = sr.ReadLine();
+                sr.Dispose();
+                if (!string.IsNullOrEmpty(line))
+                {
+                    if (line.All(char.IsDigit))
+                    {
+                        RegisteredUserId = Convert.ToInt32(line);
+                        DataTable Borrower = RegisteredUsers.AsEnumerable()
+                              .Where(row => row.Field<int>("id") == RegisteredUserId).CopyToDataTable();
+                        lblName.Text = Borrower.Rows[0]["name"].ToString();
+                    }
+                    this.Focus();
+                    ShowBorrowerDetailsForm sbdf = new ShowBorrowerDetailsForm();
+                    sbdf.borrower_id = RegisteredUserId;
+                    sbdf.ShowDialog();
+                }
+                else
+                {
+                    lblName.Text = "";
+                    Msgbox.Error("No Detections found..");
+                }
+            }
+            else
+                Msgbox.Exclamation("Please Capture Image first ");
         }
 
     }

@@ -108,7 +108,7 @@
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(660, 266, 250, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
-            this.layoutControl1.Size = new System.Drawing.Size(514, 430);
+            this.layoutControl1.Size = new System.Drawing.Size(514, 412);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -117,7 +117,7 @@
             this.mePlaceandPublisher.Location = new System.Drawing.Point(12, 167);
             this.mePlaceandPublisher.Name = "mePlaceandPublisher";
             this.mePlaceandPublisher.Properties.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.mePlaceandPublisher.Size = new System.Drawing.Size(490, 61);
+            this.mePlaceandPublisher.Size = new System.Drawing.Size(490, 43);
             this.mePlaceandPublisher.StyleController = this.layoutControl1;
             this.mePlaceandPublisher.TabIndex = 19;
             // 
@@ -133,7 +133,7 @@
             // btnCancel
             // 
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(251, 396);
+            this.btnCancel.Location = new System.Drawing.Point(251, 378);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(251, 22);
             this.btnCancel.StyleController = this.layoutControl1;
@@ -144,7 +144,7 @@
             // btnSave
             // 
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(12, 396);
+            this.btnSave.Location = new System.Drawing.Point(12, 378);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(235, 22);
             this.btnSave.StyleController = this.layoutControl1;
@@ -154,7 +154,7 @@
             // 
             // txtCopyrightYear
             // 
-            this.txtCopyrightYear.Location = new System.Drawing.Point(251, 372);
+            this.txtCopyrightYear.Location = new System.Drawing.Point(251, 354);
             this.txtCopyrightYear.Name = "txtCopyrightYear";
             this.txtCopyrightYear.Properties.Mask.EditMask = "d";
             this.txtCopyrightYear.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -164,7 +164,7 @@
             // 
             // txtCost
             // 
-            this.txtCost.Location = new System.Drawing.Point(12, 372);
+            this.txtCost.Location = new System.Drawing.Point(12, 354);
             this.txtCost.Name = "txtCost";
             this.txtCost.Properties.Mask.EditMask = "n0";
             this.txtCost.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.Numeric;
@@ -174,7 +174,7 @@
             // 
             // txtEdition
             // 
-            this.txtEdition.Location = new System.Drawing.Point(251, 331);
+            this.txtEdition.Location = new System.Drawing.Point(251, 313);
             this.txtEdition.Name = "txtEdition";
             this.txtEdition.Size = new System.Drawing.Size(251, 20);
             this.txtEdition.StyleController = this.layoutControl1;
@@ -182,7 +182,7 @@
             // 
             // txtNoofCopies
             // 
-            this.txtNoofCopies.Location = new System.Drawing.Point(12, 331);
+            this.txtNoofCopies.Location = new System.Drawing.Point(12, 313);
             this.txtNoofCopies.Name = "txtNoofCopies";
             this.txtNoofCopies.Size = new System.Drawing.Size(235, 20);
             this.txtNoofCopies.StyleController = this.layoutControl1;
@@ -190,7 +190,7 @@
             // 
             // txtAccountNo
             // 
-            this.txtAccountNo.Location = new System.Drawing.Point(12, 290);
+            this.txtAccountNo.Location = new System.Drawing.Point(12, 272);
             this.txtAccountNo.Name = "txtAccountNo";
             this.txtAccountNo.Size = new System.Drawing.Size(490, 20);
             this.txtAccountNo.StyleController = this.layoutControl1;
@@ -198,7 +198,7 @@
             // 
             // txtCallNo
             // 
-            this.txtCallNo.Location = new System.Drawing.Point(251, 248);
+            this.txtCallNo.Location = new System.Drawing.Point(251, 230);
             this.txtCallNo.Name = "txtCallNo";
             this.txtCallNo.Size = new System.Drawing.Size(251, 20);
             this.txtCallNo.StyleController = this.layoutControl1;
@@ -206,7 +206,7 @@
             // 
             // txtSection
             // 
-            this.txtSection.Location = new System.Drawing.Point(12, 249);
+            this.txtSection.Location = new System.Drawing.Point(12, 231);
             this.txtSection.Name = "txtSection";
             this.txtSection.Size = new System.Drawing.Size(235, 20);
             this.txtSection.StyleController = this.layoutControl1;
@@ -253,7 +253,7 @@
             this.layoutControlItem15});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(514, 430);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(514, 412);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
@@ -288,7 +288,7 @@
             this.layoutControlItem6.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem6.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem6.Control = this.txtSection;
-            this.layoutControlItem6.Location = new System.Drawing.Point(0, 220);
+            this.layoutControlItem6.Location = new System.Drawing.Point(0, 202);
             this.layoutControlItem6.MinSize = new System.Drawing.Size(96, 41);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Size = new System.Drawing.Size(239, 41);
@@ -300,7 +300,7 @@
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.txtCallNo;
-            this.layoutControlItem7.Location = new System.Drawing.Point(239, 220);
+            this.layoutControlItem7.Location = new System.Drawing.Point(239, 202);
             this.layoutControlItem7.MinSize = new System.Drawing.Size(96, 40);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(255, 41);
@@ -314,7 +314,7 @@
             this.layoutControlItem8.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem8.Control = this.txtAccountNo;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 261);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 243);
             this.layoutControlItem8.MinSize = new System.Drawing.Size(96, 41);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(494, 41);
@@ -328,7 +328,7 @@
             this.layoutControlItem9.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem9.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem9.Control = this.txtNoofCopies;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 302);
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 284);
             this.layoutControlItem9.MinSize = new System.Drawing.Size(96, 41);
             this.layoutControlItem9.Name = "layoutControlItem9";
             this.layoutControlItem9.Size = new System.Drawing.Size(239, 41);
@@ -342,7 +342,7 @@
             this.layoutControlItem10.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem10.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem10.Control = this.txtEdition;
-            this.layoutControlItem10.Location = new System.Drawing.Point(239, 302);
+            this.layoutControlItem10.Location = new System.Drawing.Point(239, 284);
             this.layoutControlItem10.MinSize = new System.Drawing.Size(96, 41);
             this.layoutControlItem10.Name = "layoutControlItem10";
             this.layoutControlItem10.Size = new System.Drawing.Size(255, 41);
@@ -356,7 +356,7 @@
             this.layoutControlItem11.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem11.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem11.Control = this.txtCost;
-            this.layoutControlItem11.Location = new System.Drawing.Point(0, 343);
+            this.layoutControlItem11.Location = new System.Drawing.Point(0, 325);
             this.layoutControlItem11.MinSize = new System.Drawing.Size(96, 41);
             this.layoutControlItem11.Name = "layoutControlItem11";
             this.layoutControlItem11.Size = new System.Drawing.Size(239, 41);
@@ -370,7 +370,7 @@
             this.layoutControlItem12.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem12.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem12.Control = this.txtCopyrightYear;
-            this.layoutControlItem12.Location = new System.Drawing.Point(239, 343);
+            this.layoutControlItem12.Location = new System.Drawing.Point(239, 325);
             this.layoutControlItem12.MinSize = new System.Drawing.Size(96, 41);
             this.layoutControlItem12.Name = "layoutControlItem12";
             this.layoutControlItem12.Size = new System.Drawing.Size(255, 41);
@@ -382,7 +382,7 @@
             // layoutControlItem13
             // 
             this.layoutControlItem13.Control = this.btnSave;
-            this.layoutControlItem13.Location = new System.Drawing.Point(0, 384);
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 366);
             this.layoutControlItem13.Name = "layoutControlItem13";
             this.layoutControlItem13.Size = new System.Drawing.Size(239, 26);
             this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
@@ -391,7 +391,7 @@
             // layoutControlItem14
             // 
             this.layoutControlItem14.Control = this.btnCancel;
-            this.layoutControlItem14.Location = new System.Drawing.Point(239, 384);
+            this.layoutControlItem14.Location = new System.Drawing.Point(239, 366);
             this.layoutControlItem14.Name = "layoutControlItem14";
             this.layoutControlItem14.Size = new System.Drawing.Size(255, 26);
             this.layoutControlItem14.TextSize = new System.Drawing.Size(0, 0);
@@ -419,7 +419,7 @@
             this.layoutControlItem15.Control = this.mePlaceandPublisher;
             this.layoutControlItem15.Location = new System.Drawing.Point(0, 138);
             this.layoutControlItem15.Name = "layoutControlItem15";
-            this.layoutControlItem15.Size = new System.Drawing.Size(494, 82);
+            this.layoutControlItem15.Size = new System.Drawing.Size(494, 64);
             this.layoutControlItem15.Text = "Place and Publisher:*";
             this.layoutControlItem15.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem15.TextSize = new System.Drawing.Size(115, 14);
@@ -440,7 +440,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(514, 430);
+            this.ClientSize = new System.Drawing.Size(514, 412);
             this.Controls.Add(this.layoutControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AddBooksForm";

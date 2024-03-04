@@ -193,7 +193,7 @@
             // 
             // call_no
             // 
-            this.call_no.Caption = "Call No.";
+            this.call_no.Caption = "Class No.";
             this.call_no.ColumnEdit = this.repositoryItemMemoEdit1;
             this.call_no.FieldName = "call_no";
             this.call_no.MaxWidth = 75;
@@ -208,7 +208,7 @@
             // 
             // account_no
             // 
-            this.account_no.Caption = "Account No.";
+            this.account_no.Caption = "Accension No.";
             this.account_no.ColumnEdit = this.repositoryItemMemoEdit1;
             this.account_no.FieldName = "account_no";
             this.account_no.Name = "account_no";
@@ -279,7 +279,7 @@
             // 
             // copyright_year
             // 
-            this.copyright_year.Caption = "Copyright Year";
+            this.copyright_year.Caption = "Copyright";
             this.copyright_year.FieldName = "copyright_year";
             this.copyright_year.MaxWidth = 80;
             this.copyright_year.MinWidth = 80;

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.txtContactNo = new DevExpress.XtraEditors.TextEdit();
             this.peCapturedImage = new DevExpress.XtraEditors.PictureEdit();
             this.btnCapture = new DevExpress.XtraEditors.SimpleButton();
             this.btnCancel = new DevExpress.XtraEditors.SimpleButton();
@@ -54,13 +55,13 @@
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwSaveDetails = new System.ComponentModel.BackgroundWorker();
             this.bwEditDetails = new System.ComponentModel.BackgroundWorker();
-            this.txtContactNo = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtContactNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.peCapturedImage.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSection.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear.Properties)).BeginInit();
@@ -82,7 +83,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContactNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,11 +103,19 @@
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
             this.layoutControl1.Name = "layoutControl1";
-            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(559, 280, 250, 350);
+            this.layoutControl1.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(559, 280, 607, 350);
             this.layoutControl1.Root = this.layoutControlGroup1;
             this.layoutControl1.Size = new System.Drawing.Size(361, 491);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // txtContactNo
+            // 
+            this.txtContactNo.Location = new System.Drawing.Point(12, 117);
+            this.txtContactNo.Name = "txtContactNo";
+            this.txtContactNo.Size = new System.Drawing.Size(337, 20);
+            this.txtContactNo.StyleController = this.layoutControl1;
+            this.txtContactNo.TabIndex = 15;
             // 
             // peCapturedImage
             // 
@@ -376,26 +384,6 @@
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
-            // bwSaveDetails
-            // 
-            this.bwSaveDetails.WorkerSupportsCancellation = true;
-            this.bwSaveDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwSaveDetails_DoWork);
-            this.bwSaveDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwSaveDetails_RunWorkerCompleted);
-            // 
-            // bwEditDetails
-            // 
-            this.bwEditDetails.WorkerSupportsCancellation = true;
-            this.bwEditDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwEditDetails_DoWork);
-            this.bwEditDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwEditDetails_RunWorkerCompleted);
-            // 
-            // txtContactNo
-            // 
-            this.txtContactNo.Location = new System.Drawing.Point(12, 117);
-            this.txtContactNo.Name = "txtContactNo";
-            this.txtContactNo.Size = new System.Drawing.Size(337, 20);
-            this.txtContactNo.StyleController = this.layoutControl1;
-            this.txtContactNo.TabIndex = 15;
-            // 
             // layoutControlItem12
             // 
             this.layoutControlItem12.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -407,6 +395,18 @@
             this.layoutControlItem12.Text = "Contact Number: *";
             this.layoutControlItem12.TextLocation = DevExpress.Utils.Locations.Top;
             this.layoutControlItem12.TextSize = new System.Drawing.Size(121, 16);
+            // 
+            // bwSaveDetails
+            // 
+            this.bwSaveDetails.WorkerSupportsCancellation = true;
+            this.bwSaveDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwSaveDetails_DoWork);
+            this.bwSaveDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwSaveDetails_RunWorkerCompleted);
+            // 
+            // bwEditDetails
+            // 
+            this.bwEditDetails.WorkerSupportsCancellation = true;
+            this.bwEditDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwEditDetails_DoWork);
+            this.bwEditDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwEditDetails_RunWorkerCompleted);
             // 
             // RegisterForm
             // 
@@ -421,6 +421,7 @@
             this.Load += new System.EventHandler(this.RegisterForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.txtContactNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.peCapturedImage.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtSection.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear.Properties)).EndInit();
@@ -442,7 +443,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtContactNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             this.ResumeLayout(false);
 

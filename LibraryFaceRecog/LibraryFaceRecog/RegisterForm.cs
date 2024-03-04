@@ -62,7 +62,7 @@ namespace LibraryFaceRecog
         public int EditId;
         private void RegisterForm_Load(object sender, EventArgs e)
         {
-            btnSave.Text = !IsAdd? "Edit":"Add";
+            btnSave.Text = !IsAdd ? "Edit" : "Add";
         }
         private void btnCapture_Click(object sender, EventArgs e)
         {

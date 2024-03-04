@@ -280,6 +280,12 @@
     <Compile Include="ScanBarcodeForm.Designer.cs">
       <DependentUpon>ScanBarcodeForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowBorrowerDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowBorrowerDetailsForm.Designer.cs">
+      <DependentUpon>ShowBorrowerDetailsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -371,6 +377,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScanBarcodeForm.resx">
       <DependentUpon>ScanBarcodeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowBorrowerDetailsForm.resx">
+      <DependentUpon>ShowBorrowerDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserManagementForm.resx">
       <DependentUpon>UserManagementForm.cs</DependentUpon>

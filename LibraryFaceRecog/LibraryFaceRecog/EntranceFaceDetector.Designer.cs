@@ -54,6 +54,8 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.bwEntranceLogsAdd = new System.ComponentModel.BackgroundWorker();
+            this.btnRecognize = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CapturedImage)).BeginInit();
@@ -74,10 +76,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnRecognize);
             this.layoutControl1.Controls.Add(this.btnSelect);
             this.layoutControl1.Controls.Add(this.btnCapture);
             this.layoutControl1.Controls.Add(this.CapturedImage);
@@ -98,7 +102,7 @@
             // btnSelect
             // 
             this.btnSelect.Image = ((System.Drawing.Image)(resources.GetObject("btnSelect.Image")));
-            this.btnSelect.Location = new System.Drawing.Point(740, 324);
+            this.btnSelect.Location = new System.Drawing.Point(740, 350);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(124, 22);
             this.btnSelect.StyleController = this.layoutControl1;
@@ -109,7 +113,7 @@
             // btnCapture
             // 
             this.btnCapture.Image = ((System.Drawing.Image)(resources.GetObject("btnCapture.Image")));
-            this.btnCapture.Location = new System.Drawing.Point(591, 324);
+            this.btnCapture.Location = new System.Drawing.Point(591, 350);
             this.btnCapture.Name = "btnCapture";
             this.btnCapture.Size = new System.Drawing.Size(145, 22);
             this.btnCapture.StyleController = this.layoutControl1;
@@ -147,7 +151,7 @@
             // btnCancel
             // 
             this.btnCancel.Image = ((System.Drawing.Image)(resources.GetObject("btnCancel.Image")));
-            this.btnCancel.Location = new System.Drawing.Point(868, 324);
+            this.btnCancel.Location = new System.Drawing.Point(868, 350);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(131, 22);
             this.btnCancel.StyleController = this.layoutControl1;
@@ -197,9 +201,9 @@
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(567, 350);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(567, 376);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(436, 212);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(436, 186);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // simpleSeparator1
@@ -260,16 +264,17 @@
             this.layoutControlItem9,
             this.layoutControlItem5,
             this.layoutControlItem4,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.layoutControlItem8});
             this.layoutControlGroup3.Location = new System.Drawing.Point(567, 0);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(436, 350);
+            this.layoutControlGroup3.Size = new System.Drawing.Size(436, 376);
             this.layoutControlGroup3.Text = "Captured Image";
             // 
             // layoutControlItem7
             // 
             this.layoutControlItem7.Control = this.btnCancel;
-            this.layoutControlItem7.Location = new System.Drawing.Point(277, 281);
+            this.layoutControlItem7.Location = new System.Drawing.Point(277, 307);
             this.layoutControlItem7.MaxSize = new System.Drawing.Size(135, 26);
             this.layoutControlItem7.MinSize = new System.Drawing.Size(135, 26);
             this.layoutControlItem7.Name = "layoutControlItem7";
@@ -302,7 +307,7 @@
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.btnCapture;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 281);
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 307);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(149, 26);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(149, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
@@ -314,7 +319,7 @@
             // layoutControlItem6
             // 
             this.layoutControlItem6.Control = this.btnSelect;
-            this.layoutControlItem6.Location = new System.Drawing.Point(149, 281);
+            this.layoutControlItem6.Location = new System.Drawing.Point(149, 307);
             this.layoutControlItem6.MaxSize = new System.Drawing.Size(128, 26);
             this.layoutControlItem6.MinSize = new System.Drawing.Size(128, 26);
             this.layoutControlItem6.Name = "layoutControlItem6";
@@ -336,6 +341,26 @@
             this.bwEntranceLogsAdd.WorkerSupportsCancellation = true;
             this.bwEntranceLogsAdd.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwEntranceLogsAdd_DoWork);
             this.bwEntranceLogsAdd.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwEntranceLogsAdd_RunWorkerCompleted);
+            // 
+            // btnRecognize
+            // 
+            this.btnRecognize.Image = ((System.Drawing.Image)(resources.GetObject("btnRecognize.Image")));
+            this.btnRecognize.Location = new System.Drawing.Point(591, 324);
+            this.btnRecognize.Name = "btnRecognize";
+            this.btnRecognize.Size = new System.Drawing.Size(408, 22);
+            this.btnRecognize.StyleController = this.layoutControl1;
+            this.btnRecognize.TabIndex = 14;
+            this.btnRecognize.Text = "Recognize";
+            this.btnRecognize.Click += new System.EventHandler(this.btnRecognize_Click);
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.btnRecognize;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 281);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(412, 26);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
             // 
             // EntranceFaceDetector
             // 
@@ -369,6 +394,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -400,5 +426,7 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
         private System.ComponentModel.BackgroundWorker bwEntranceLogsAdd;
+        private DevExpress.XtraEditors.SimpleButton btnRecognize;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
     }
 }
