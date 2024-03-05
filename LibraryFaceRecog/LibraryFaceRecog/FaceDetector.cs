@@ -226,21 +226,26 @@ namespace LibraryFaceRecog
             sr.Dispose();
             if (!string.IsNullOrEmpty(line))
             {
-                if (line.All(char.IsDigit))
+                if (line == "multiple")
+                {
+                    Msgbox.Exclamation("Multiple faces detected...");
+                }
+                else if (line.All(char.IsDigit))
                 {
                     RegisteredUserId = Convert.ToInt32(line);
                     DataTable Borrower = RegisteredUsers.AsEnumerable()
                             .Where(row => row.Field<int>("id") == RegisteredUserId).CopyToDataTable();
                     lblName.Text = Borrower.Rows[0]["name"].ToString();
+                    this.Focus();
+                    Msgbox.QuestionYesNo("Are you sure you want to select " + lblName.Text + " as " + type + "?");
+                    if (Msgbox.isYes)
+                    {
+                        if (CameraConnected)
+                            StopCamera();
+                        this.Close();
+                    }
                 }
                 this.Focus();
-                Msgbox.QuestionYesNo("Are you sure you want to select " + lblName.Text + " as " + type + "?");
-                if (Msgbox.isYes)
-                {
-                    if (CameraConnected)
-                        StopCamera();
-                    this.Close();
-                }
             }
             else
             {
@@ -301,17 +306,22 @@ namespace LibraryFaceRecog
                 sr.Dispose();
                 if (!string.IsNullOrEmpty(line))
                 {
-                    if (line.All(char.IsDigit))
+                    if (line == "multiple")
+                    {
+                        Msgbox.Exclamation("Multiple faces detected...");
+                    }
+                    else if (line.All(char.IsDigit))
                     {
                         RegisteredUserId = Convert.ToInt32(line);
                         DataTable Borrower = RegisteredUsers.AsEnumerable()
                               .Where(row => row.Field<int>("id") == RegisteredUserId).CopyToDataTable();
                         lblName.Text = Borrower.Rows[0]["name"].ToString();
+                        this.Focus();
+                        ShowBorrowerDetailsForm sbdf = new ShowBorrowerDetailsForm();
+                        sbdf.borrower_id = RegisteredUserId;
+                        sbdf.ShowDialog();
                     }
                     this.Focus();
-                    ShowBorrowerDetailsForm sbdf = new ShowBorrowerDetailsForm();
-                    sbdf.borrower_id = RegisteredUserId;
-                    sbdf.ShowDialog();
                 }
                 else
                 {
