@@ -288,5 +288,16 @@ namespace LibraryFaceRecog
                 layoutControlGroup1.Enabled = false;
             }
         }
+
+        private void btnDetails_Click(object sender, EventArgs e)
+        {
+            if (SelectionPass())
+            {
+                var focusRowView = (DataRowView)gvBorrow.GetFocusedRow();
+                ShowBorrowerDetailsForm sbdf = new ShowBorrowerDetailsForm();
+                sbdf.borrower_id = Convert.ToInt32(focusRowView.Row["borrower_id"].ToString());
+                sbdf.ShowDialog();
+            }
+        }
     }
 }

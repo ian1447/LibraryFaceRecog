@@ -119,7 +119,7 @@
     </Reference>
     <Reference Include="LibraryFaceRecog.Sop, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Assemblies\LibraryFaceRecog.Sop.dll</HintPath>
+      <HintPath>..\Assemblies\ReferenceEmgu\References\LibraryFaceRecog.Sop.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />

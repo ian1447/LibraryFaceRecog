@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookBorrowManagement));
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnDetails = new DevExpress.XtraEditors.SimpleButton();
             this.btnPrint = new DevExpress.XtraEditors.SimpleButton();
             this.luePeriod = new DevExpress.XtraEditors.LookUpEdit();
             this.lueBorrower = new DevExpress.XtraEditors.LookUpEdit();
@@ -58,6 +59,7 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetBorrowedDetails = new System.ComponentModel.BackgroundWorker();
@@ -68,6 +70,7 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.dtpTo = new DevExpress.XtraEditors.DateEdit();
             this.dtpFrom = new DevExpress.XtraEditors.DateEdit();
+            this.borrower_id = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.luePeriod.Properties)).BeginInit();
@@ -87,6 +90,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDates)).BeginInit();
             this.pnlDates.SuspendLayout();
@@ -98,6 +102,7 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.btnDetails);
             this.layoutControl1.Controls.Add(this.btnPrint);
             this.layoutControl1.Controls.Add(this.luePeriod);
             this.layoutControl1.Controls.Add(this.lueBorrower);
@@ -113,6 +118,17 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // btnDetails
+            // 
+            this.btnDetails.Image = ((System.Drawing.Image)(resources.GetObject("btnDetails.Image")));
+            this.btnDetails.Location = new System.Drawing.Point(199, 12);
+            this.btnDetails.Name = "btnDetails";
+            this.btnDetails.Size = new System.Drawing.Size(109, 22);
+            this.btnDetails.StyleController = this.layoutControl1;
+            this.btnDetails.TabIndex = 18;
+            this.btnDetails.Text = "Borrower Details";
+            this.btnDetails.Click += new System.EventHandler(this.btnDetails_Click);
+            // 
             // btnPrint
             // 
             this.btnPrint.Image = ((System.Drawing.Image)(resources.GetObject("btnPrint.Image")));
@@ -126,7 +142,7 @@
             // 
             // luePeriod
             // 
-            this.luePeriod.Location = new System.Drawing.Point(631, 12);
+            this.luePeriod.Location = new System.Drawing.Point(744, 12);
             this.luePeriod.Name = "luePeriod";
             this.luePeriod.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -138,7 +154,7 @@
             // 
             // lueBorrower
             // 
-            this.lueBorrower.Location = new System.Drawing.Point(409, 12);
+            this.lueBorrower.Location = new System.Drawing.Point(522, 12);
             this.lueBorrower.Name = "lueBorrower";
             this.lueBorrower.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
@@ -155,7 +171,7 @@
             // btnRefresh
             // 
             this.btnRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnRefresh.Image")));
-            this.btnRefresh.Location = new System.Drawing.Point(199, 12);
+            this.btnRefresh.Location = new System.Drawing.Point(312, 12);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(105, 22);
             this.btnRefresh.StyleController = this.layoutControl1;
@@ -207,7 +223,8 @@
             this.borrower,
             this.barcode,
             this.borrowed_on,
-            this.returned_on});
+            this.returned_on,
+            this.borrower_id});
             this.gvBorrow.GridControl = this.dtBorrow;
             this.gvBorrow.Name = "gvBorrow";
             this.gvBorrow.OptionsBehavior.Editable = false;
@@ -292,7 +309,8 @@
             this.layoutControlItem5,
             this.layoutControlItem6,
             this.layoutControlItem4,
-            this.layoutControlItem7});
+            this.layoutControlItem7,
+            this.layoutControlItem8});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(1241, 597);
@@ -301,9 +319,9 @@
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(783, 0);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(896, 0);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
-            this.emptySpaceItem2.Size = new System.Drawing.Size(300, 26);
+            this.emptySpaceItem2.Size = new System.Drawing.Size(187, 26);
             this.emptySpaceItem2.TextSize = new System.Drawing.Size(0, 0);
             // 
             // splitterItem1
@@ -358,7 +376,7 @@
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.btnRefresh;
-            this.layoutControlItem5.Location = new System.Drawing.Point(187, 0);
+            this.layoutControlItem5.Location = new System.Drawing.Point(300, 0);
             this.layoutControlItem5.MaxSize = new System.Drawing.Size(109, 26);
             this.layoutControlItem5.MinSize = new System.Drawing.Size(109, 26);
             this.layoutControlItem5.Name = "layoutControlItem5";
@@ -372,7 +390,7 @@
             this.layoutControlItem6.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem6.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem6.Control = this.lueBorrower;
-            this.layoutControlItem6.Location = new System.Drawing.Point(296, 0);
+            this.layoutControlItem6.Location = new System.Drawing.Point(409, 0);
             this.layoutControlItem6.MaxSize = new System.Drawing.Size(271, 26);
             this.layoutControlItem6.MinSize = new System.Drawing.Size(271, 26);
             this.layoutControlItem6.Name = "layoutControlItem6";
@@ -386,7 +404,7 @@
             this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem4.Control = this.luePeriod;
-            this.layoutControlItem4.Location = new System.Drawing.Point(567, 0);
+            this.layoutControlItem4.Location = new System.Drawing.Point(680, 0);
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(216, 26);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(216, 26);
             this.layoutControlItem4.Name = "layoutControlItem4";
@@ -408,6 +426,18 @@
             this.layoutControlItem7.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem7.TextVisible = false;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.btnDetails;
+            this.layoutControlItem8.Location = new System.Drawing.Point(187, 0);
+            this.layoutControlItem8.MaxSize = new System.Drawing.Size(113, 26);
+            this.layoutControlItem8.MinSize = new System.Drawing.Size(113, 26);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(113, 26);
+            this.layoutControlItem8.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
@@ -519,6 +549,12 @@
             this.dtpFrom.Size = new System.Drawing.Size(148, 24);
             this.dtpFrom.TabIndex = 362;
             // 
+            // borrower_id
+            // 
+            this.borrower_id.Caption = "Borrower Id";
+            this.borrower_id.FieldName = "borrower_id";
+            this.borrower_id.Name = "borrower_id";
+            // 
             // BookBorrowManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,6 +584,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pnlDates)).EndInit();
             this.pnlDates.ResumeLayout(false);
@@ -601,5 +638,8 @@
         private DevExpress.XtraEditors.DateEdit dtpFrom;
         private DevExpress.XtraEditors.SimpleButton btnPrint;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraEditors.SimpleButton btnDetails;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
+        private DevExpress.XtraGrid.Columns.GridColumn borrower_id;
     }
 }
