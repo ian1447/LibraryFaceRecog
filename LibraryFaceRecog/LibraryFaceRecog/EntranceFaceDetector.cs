@@ -208,7 +208,6 @@ namespace LibraryFaceRecog
         private void btnSelect_Click(object sender, EventArgs e)
         {
             File.WriteAllText(filename, String.Empty);
-            string type = btnSelect.Text == "Select as Borrower" ? "Borrower" : "Returner";
 
             Process facerecog = new Process()
             {
@@ -236,12 +235,14 @@ namespace LibraryFaceRecog
                             .Where(row => row.Field<int>("id") == RegisteredUserId).CopyToDataTable();
                     lblName.Text = Borrower.Rows[0]["name"].ToString();
                     this.Focus();
-                    Msgbox.QuestionYesNo("Are you sure you want to select " + lblName.Text + " as " + type + "?");
+                    Msgbox.QuestionYesNo("Are you sure you want to log " + lblName.Text + " for entry?");
                     if (Msgbox.isYes)
                     {
-                        if (CameraConnected)
-                            StopCamera();
-                        this.Close();
+                        if (!bwEntranceLogsAdd.IsBusy)
+                        {
+                            ShowLoading("Adding logs...");
+                            bwEntranceLogsAdd.RunWorkerAsync();
+                        }
                     }
                 }
                 this.Focus();
@@ -299,6 +300,8 @@ namespace LibraryFaceRecog
                 Msgbox.QuestionYesNo("Entrance Logs Addedd. Do you want to continue adding logs?");
                 if (!Msgbox.isYes)
                 {
+                    if (CameraConnected)
+                        StopCamera();
                     this.Close();
                 }
             }
