@@ -88,12 +88,14 @@ namespace LibraryFaceRecog
             {
                 if (Borrowertable.Rows.Count > 0)
                 {
-                    txtName.Text = Borrowertable.Rows[0]["name"].ToString();
-                    txtContactNo.Text = Borrowertable.Rows[0]["contact_number"].ToString();
-                    txtCourse.Text = Borrowertable.Rows[0]["course"].ToString();
-                    txtSex.Text = Borrowertable.Rows[0]["sex"].ToString();
-                    txtYearSection.Text = Borrowertable.Rows[0]["year_and_section"].ToString();
-                    byte[] img = (byte[])Borrowertable.Rows[0]["image"];
+                    DataTable BorrowerDetail = Borrowertable.AsEnumerable()
+                        .Where(row => row.Field<int>("id") == borrower_id).CopyToDataTable();
+                    txtName.Text = BorrowerDetail.Rows[0]["name"].ToString();
+                    txtContactNo.Text = BorrowerDetail.Rows[0]["contact_number"].ToString();
+                    txtCourse.Text = BorrowerDetail.Rows[0]["course"].ToString();
+                    txtSex.Text = BorrowerDetail.Rows[0]["sex"].ToString();
+                    txtYearSection.Text = BorrowerDetail.Rows[0]["year_and_section"].ToString();
+                    byte[] img = (byte[])BorrowerDetail.Rows[0]["image"];
                     MemoryStream ms = new MemoryStream(img);
                     peCapturedImage.Image = Image.FromStream(ms);
                 }

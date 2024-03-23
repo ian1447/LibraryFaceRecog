@@ -208,7 +208,7 @@
             // 
             // account_no
             // 
-            this.account_no.Caption = "Accension No.";
+            this.account_no.Caption = "Accesion No.";
             this.account_no.ColumnEdit = this.repositoryItemMemoEdit1;
             this.account_no.FieldName = "account_no";
             this.account_no.Name = "account_no";

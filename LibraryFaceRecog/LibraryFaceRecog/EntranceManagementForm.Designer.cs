@@ -154,7 +154,7 @@
             this.btnEntrance.Size = new System.Drawing.Size(121, 22);
             this.btnEntrance.StyleController = this.layoutControl1;
             this.btnEntrance.TabIndex = 9;
-            this.btnEntrance.Text = "Entrace";
+            this.btnEntrance.Text = "Entrance";
             this.btnEntrance.Click += new System.EventHandler(this.btnEntrance_Click);
             // 
             // dtLogs

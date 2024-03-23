@@ -47,6 +47,7 @@
             this.barcode = new DevExpress.XtraGrid.Columns.GridColumn();
             this.borrowed_on = new DevExpress.XtraGrid.Columns.GridColumn();
             this.returned_on = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.borrower_id = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -70,7 +71,6 @@
             this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.dtpTo = new DevExpress.XtraEditors.DateEdit();
             this.dtpFrom = new DevExpress.XtraEditors.DateEdit();
-            this.borrower_id = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.luePeriod.Properties)).BeginInit();
@@ -290,6 +290,12 @@
             this.returned_on.Name = "returned_on";
             this.returned_on.Visible = true;
             this.returned_on.VisibleIndex = 5;
+            // 
+            // borrower_id
+            // 
+            this.borrower_id.Caption = "Borrower Id";
+            this.borrower_id.FieldName = "borrower_id";
+            this.borrower_id.Name = "borrower_id";
             // 
             // repositoryItemCheckEdit1
             // 
@@ -548,12 +554,6 @@
             this.dtpFrom.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.None;
             this.dtpFrom.Size = new System.Drawing.Size(148, 24);
             this.dtpFrom.TabIndex = 362;
-            // 
-            // borrower_id
-            // 
-            this.borrower_id.Caption = "Borrower Id";
-            this.borrower_id.FieldName = "borrower_id";
-            this.borrower_id.Name = "borrower_id";
             // 
             // BookBorrowManagement
             // 
