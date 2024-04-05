@@ -77,7 +77,7 @@ namespace LibraryFaceRecog
             catch { return false; }
         }
 
-        public string BookTitle;
+        public string BookTitle, BookAuthor;
         public int BookId;
         DataTable BooksTable = new DataTable();
         private void btnSearch_Click(object sender, EventArgs e)
@@ -114,6 +114,7 @@ namespace LibraryFaceRecog
                 var focusRowView = (DataRowView)gvBooks.GetFocusedRow();
                 BookId = Convert.ToInt32(focusRowView.Row[0].ToString());
                 BookTitle = focusRowView.Row["title"].ToString();
+                BookAuthor = focusRowView.Row["author"].ToString();
                 this.Close();
             }
             else
@@ -127,6 +128,7 @@ namespace LibraryFaceRecog
                 var focusRowView = (DataRowView)gvBooks.GetFocusedRow();
                 BookId = Convert.ToInt32(focusRowView.Row[0].ToString());
                 BookTitle = focusRowView.Row[6].ToString();
+                BookAuthor = focusRowView.Row["author"].ToString();
             }
         }
     }

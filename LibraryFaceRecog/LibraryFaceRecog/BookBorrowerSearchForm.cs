@@ -77,7 +77,6 @@ namespace LibraryFaceRecog
             catch { return false; }
         }
 
-        string _type = "Bisu";
         public int BorrowerId = 0;
         DataTable BorrowerTable = new DataTable();
         private void BoorBorrowerSearchForm_Shown(object sender, EventArgs e)
@@ -91,7 +90,7 @@ namespace LibraryFaceRecog
         
         private void bwGetBorrower_DoWork(object sender, DoWorkEventArgs e)
         {
-            BorrowerTable = Register.GetRegisteredBorrowers(_type);
+            BorrowerTable = Register.GetRegisteredBorrowers(PublicVariables.AccountType);
             bwGetBorrower.CancelAsync();
         }
 

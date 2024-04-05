@@ -63,6 +63,7 @@ namespace LibraryFaceRecog
         DataTable BorrowersTable = new DataTable();
         int bookid, BorrowerId;
         string barcode;
+        string bookauthor;
         private void txtBookTitle_Click(object sender, EventArgs e)
         {
             bool OpenSearchGood = true;
@@ -81,6 +82,7 @@ namespace LibraryFaceRecog
                 if (!string.IsNullOrEmpty(bsf.BookTitle))
                 {
                     meBookTitle.Text = bsf.BookTitle;
+                    bookauthor = bsf.BookAuthor;
                     bookid = bsf.BookId;
                 }
             }
@@ -223,7 +225,9 @@ namespace LibraryFaceRecog
                 rf.lblDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
                 rf.lblBookTitle.Text = meBookTitle.Text;
                 rf.lblBorrower.Text = txtBorrowerName.Text;
+                rf.lblAuthor.Text = bookauthor;
                 rf.xrBarCode.Text = barcode;
+                rf.lblReturnDay.Text = PublicVariables.AccountType == "Bisu" ? "Please Return within 3 Days" : "Please Return within 5 Days";
                 rf.ShowPreviewDialog();
                 this.Close();
             }

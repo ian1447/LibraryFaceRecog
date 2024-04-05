@@ -87,7 +87,10 @@
             this.btnUserManagement.Caption = "User Management";
             this.btnUserManagement.Glyph = ((System.Drawing.Image)(resources.GetObject("btnUserManagement.Glyph")));
             this.btnUserManagement.Id = 12;
+            this.btnUserManagement.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUserManagement.ItemAppearance.Normal.Options.UseFont = true;
             this.btnUserManagement.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnUserManagement.LargeGlyph")));
+            this.btnUserManagement.LargeGlyphDisabled = ((System.Drawing.Image)(resources.GetObject("btnUserManagement.LargeGlyphDisabled")));
             this.btnUserManagement.Name = "btnUserManagement";
             this.btnUserManagement.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnUserManagement_ItemClick);
             // 
@@ -96,6 +99,8 @@
             this.btnBooksManagement.Caption = "Books Management";
             this.btnBooksManagement.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBooksManagement.Glyph")));
             this.btnBooksManagement.Id = 1;
+            this.btnBooksManagement.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBooksManagement.ItemAppearance.Normal.Options.UseFont = true;
             this.btnBooksManagement.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBooksManagement.LargeGlyph")));
             this.btnBooksManagement.Name = "btnBooksManagement";
             this.btnBooksManagement.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBooksManagement_ItemClick);
@@ -105,6 +110,8 @@
             this.btnBookBorrow.Caption = "Book Borrowing";
             this.btnBookBorrow.Glyph = ((System.Drawing.Image)(resources.GetObject("btnBookBorrow.Glyph")));
             this.btnBookBorrow.Id = 2;
+            this.btnBookBorrow.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBookBorrow.ItemAppearance.Normal.Options.UseFont = true;
             this.btnBookBorrow.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnBookBorrow.LargeGlyph")));
             this.btnBookBorrow.Name = "btnBookBorrow";
             this.btnBookBorrow.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBookBorrow_ItemClick);
@@ -113,8 +120,12 @@
             // 
             this.btnRegister.Caption = "Register";
             this.btnRegister.Glyph = ((System.Drawing.Image)(resources.GetObject("btnRegister.Glyph")));
+            this.btnRegister.GlyphDisabled = ((System.Drawing.Image)(resources.GetObject("btnRegister.GlyphDisabled")));
             this.btnRegister.Id = 3;
+            this.btnRegister.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegister.ItemAppearance.Normal.Options.UseFont = true;
             this.btnRegister.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnRegister.LargeGlyph")));
+            this.btnRegister.LargeGlyphDisabled = ((System.Drawing.Image)(resources.GetObject("btnRegister.LargeGlyphDisabled")));
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRegister_ItemClick);
             // 
@@ -123,6 +134,8 @@
             this.btnEntry.Caption = "Entrance Management";
             this.btnEntry.Glyph = ((System.Drawing.Image)(resources.GetObject("btnEntry.Glyph")));
             this.btnEntry.Id = 4;
+            this.btnEntry.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEntry.ItemAppearance.Normal.Options.UseFont = true;
             this.btnEntry.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnEntry.LargeGlyph")));
             this.btnEntry.Name = "btnEntry";
             this.btnEntry.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnEntry_ItemClick);
