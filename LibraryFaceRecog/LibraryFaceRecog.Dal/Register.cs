@@ -45,7 +45,7 @@ namespace LibraryFaceRecog.Dal
 
         public static string RegisteredBorrowersAddErrorMessage;
         public static bool RegisteredBorrowersAddSuccessful;
-        public static void RegisteredBorrowersAdd(string _contact_number, string _first_name, string _middle_name, string _last_name, string _sex, string _course, string _year, string _section, byte[] _image)
+        public static void RegisteredBorrowersAdd(string _student_id_no, string _contact_number, string _first_name, string _middle_name, string _last_name, string _sex, string _course, string _year, string _section, byte[] _image)
         {
             try
             {
@@ -61,6 +61,7 @@ namespace LibraryFaceRecog.Dal
                     cmd.Parameters.Add(new MySqlParameter("_sex", _sex));
                     cmd.Parameters.Add(new MySqlParameter("_course", _course));
                     cmd.Parameters.Add(new MySqlParameter("_year", _year));
+                    cmd.Parameters.Add(new MySqlParameter("_student_id_no", _student_id_no));
                     cmd.Parameters.Add(new MySqlParameter("_section", _section));
                     cmd.Parameters.Add("_image", MySqlDbType.Blob);
                     cmd.Parameters["_image"].Value = _image;
@@ -80,7 +81,7 @@ namespace LibraryFaceRecog.Dal
 
         public static string RegisteredBorrowersEditErrorMessage;
         public static bool RegisteredBorrowersEditSuccessful;
-        public static void RegisteredBorrowersEdit(string _contact_number,string _first_name, string _middle_name, string _last_name, string _sex, string _course, string _year, string _section, byte[] _image,int _edit_id)
+        public static void RegisteredBorrowersEdit(string _student_id_no,string _contact_number,string _first_name, string _middle_name, string _last_name, string _sex, string _course, string _year, string _section, byte[] _image,int _edit_id)
         {
             try
             {
@@ -96,6 +97,7 @@ namespace LibraryFaceRecog.Dal
                     cmd.Parameters.Add(new MySqlParameter("_sex", _sex));
                     cmd.Parameters.Add(new MySqlParameter("_course", _course));
                     cmd.Parameters.Add(new MySqlParameter("_year", _year));
+                    cmd.Parameters.Add(new MySqlParameter("_student_id_no", _student_id_no));
                     cmd.Parameters.Add(new MySqlParameter("_section", _section));
                     cmd.Parameters.Add(new MySqlParameter("_edit_id", _edit_id));
                     cmd.Parameters.Add("_image", MySqlDbType.Blob);

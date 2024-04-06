@@ -156,7 +156,7 @@ namespace LibraryFaceRecog
 
         private void bwSaveDetails_DoWork(object sender, DoWorkEventArgs e)
         {
-            Register.RegisteredBorrowersAdd(txtContactNo.Text,txtFirstName.Text, txtMiddleInitial.Text, txtFamilyName.Text, cmbSex.Text, txtCourse.Text, txtYear.Text, txtSection.Text, img);
+            Register.RegisteredBorrowersAdd(txtStudentId.Text,txtContactNo.Text,txtFirstName.Text, txtMiddleInitial.Text, txtFamilyName.Text, cmbSex.Text, txtCourse.Text, txtYear.Text, txtSection.Text, img);
             bwSaveDetails.CancelAsync();
         }
 
@@ -174,7 +174,7 @@ namespace LibraryFaceRecog
 
         private void bwEditDetails_DoWork(object sender, DoWorkEventArgs e)
         {
-            Register.RegisteredBorrowersEdit(txtContactNo.Text,txtFirstName.Text, txtMiddleInitial.Text, txtFamilyName.Text, cmbSex.Text, txtCourse.Text, txtYear.Text, txtSection.Text, img,EditId);
+            Register.RegisteredBorrowersEdit(txtStudentId.Text,txtContactNo.Text, txtFirstName.Text, txtMiddleInitial.Text, txtFamilyName.Text, cmbSex.Text, txtCourse.Text, txtYear.Text, txtSection.Text, img, EditId);
             bwEditDetails.CancelAsync();
         }
 

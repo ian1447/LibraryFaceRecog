@@ -42,6 +42,7 @@
             this.year_and_section = new DevExpress.XtraGrid.Columns.GridColumn();
             this.added_on = new DevExpress.XtraGrid.Columns.GridColumn();
             this.sex = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.contact_number = new DevExpress.XtraGrid.Columns.GridColumn();
             this.repositoryItemCheckEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -54,7 +55,7 @@
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetDetails = new System.ComponentModel.BackgroundWorker();
-            this.contact_number = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.student_id_no = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEdit1.Properties)).BeginInit();
@@ -152,7 +153,8 @@
             this.year_and_section,
             this.added_on,
             this.sex,
-            this.contact_number});
+            this.contact_number,
+            this.student_id_no});
             this.gvRegistered.GridControl = this.dtRegistered;
             this.gvRegistered.Name = "gvRegistered";
             this.gvRegistered.OptionsBehavior.Editable = false;
@@ -172,7 +174,7 @@
             this.name.FieldName = "name";
             this.name.Name = "name";
             this.name.Visible = true;
-            this.name.VisibleIndex = 0;
+            this.name.VisibleIndex = 1;
             // 
             // course
             // 
@@ -180,7 +182,7 @@
             this.course.FieldName = "course";
             this.course.Name = "course";
             this.course.Visible = true;
-            this.course.VisibleIndex = 3;
+            this.course.VisibleIndex = 4;
             // 
             // year_and_section
             // 
@@ -188,7 +190,7 @@
             this.year_and_section.FieldName = "year_and_section";
             this.year_and_section.Name = "year_and_section";
             this.year_and_section.Visible = true;
-            this.year_and_section.VisibleIndex = 4;
+            this.year_and_section.VisibleIndex = 5;
             // 
             // added_on
             // 
@@ -196,7 +198,7 @@
             this.added_on.FieldName = "added_on";
             this.added_on.Name = "added_on";
             this.added_on.Visible = true;
-            this.added_on.VisibleIndex = 5;
+            this.added_on.VisibleIndex = 6;
             // 
             // sex
             // 
@@ -204,7 +206,15 @@
             this.sex.FieldName = "sex";
             this.sex.Name = "sex";
             this.sex.Visible = true;
-            this.sex.VisibleIndex = 2;
+            this.sex.VisibleIndex = 3;
+            // 
+            // contact_number
+            // 
+            this.contact_number.Caption = "Contact Number";
+            this.contact_number.FieldName = "contact_number";
+            this.contact_number.Name = "contact_number";
+            this.contact_number.Visible = true;
+            this.contact_number.VisibleIndex = 2;
             // 
             // repositoryItemCheckEdit1
             // 
@@ -316,13 +326,13 @@
             this.bwGetDetails.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetDetails_DoWork);
             this.bwGetDetails.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetDetails_RunWorkerCompleted);
             // 
-            // contact_number
+            // student_id_no
             // 
-            this.contact_number.Caption = "Contact Number";
-            this.contact_number.FieldName = "contact_number";
-            this.contact_number.Name = "contact_number";
-            this.contact_number.Visible = true;
-            this.contact_number.VisibleIndex = 1;
+            this.student_id_no.Caption = "Student ID No.";
+            this.student_id_no.FieldName = "student_id_no";
+            this.student_id_no.Name = "student_id_no";
+            this.student_id_no.Visible = true;
+            this.student_id_no.VisibleIndex = 0;
             // 
             // RegisterFormManagement
             // 
@@ -382,5 +392,6 @@
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private System.ComponentModel.BackgroundWorker bwGetDetails;
         private DevExpress.XtraGrid.Columns.GridColumn contact_number;
+        private DevExpress.XtraGrid.Columns.GridColumn student_id_no;
     }
 }

@@ -127,6 +127,8 @@ namespace LibraryFaceRecog
                 rf.txtSection.Properties.ReadOnly = true;
                 rf.txtYear.Text = "N/A";
                 rf.txtYear.Properties.ReadOnly = true;
+                rf.txtStudentId.Text = "N/A";
+                rf.txtStudentId.Properties.ReadOnly = true;
             }
             rf.ShowDialog();
             btnRefresh.PerformClick();
@@ -146,8 +148,10 @@ namespace LibraryFaceRecog
                 rf.txtFamilyName.Text = EditTable.Rows[0]["last_name"].ToString();
                 rf.cmbSex.Text = EditTable.Rows[0]["sex"].ToString();
                 rf.txtCourse.Text = EditTable.Rows[0]["course"].ToString();
+                rf.txtContactNo.Text = EditTable.Rows[0]["contact_number"].ToString();
                 rf.txtSection.Text = EditTable.Rows[0]["section"].ToString();
                 rf.txtYear.Text = EditTable.Rows[0]["year"].ToString();
+                rf.txtStudentId.Text = EditTable.Rows[0]["student_id_no"].ToString();
                 byte[] img = (byte[])EditTable.Rows[0]["image"];
                 MemoryStream ms = new MemoryStream(img);
                 rf.peCapturedImage.Image = Image.FromStream(ms);
@@ -157,6 +161,7 @@ namespace LibraryFaceRecog
                     rf.txtCourse.Properties.ReadOnly = true;
                     rf.txtSection.Properties.ReadOnly = true;
                     rf.txtYear.Properties.ReadOnly = true;
+                    rf.txtStudentId.Properties.ReadOnly = true;
                 }
                 rf.ShowDialog();
                 btnRefresh.PerformClick();

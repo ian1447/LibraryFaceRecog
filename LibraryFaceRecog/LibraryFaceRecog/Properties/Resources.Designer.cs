@@ -63,6 +63,16 @@ namespace LibraryFaceRecog.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap bagong_pilipinas {
+            get {
+                object obj = ResourceManager.GetObject("bagong_pilipinas", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap BISU_Logo {
             get {
                 object obj = ResourceManager.GetObject("BISU_Logo", resourceCulture);

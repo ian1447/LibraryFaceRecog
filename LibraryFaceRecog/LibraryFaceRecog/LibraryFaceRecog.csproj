@@ -414,6 +414,7 @@
   <ItemGroup>
     <Content Include="BisuHaarcascade.xml" />
     <Content Include="Logo.ico" />
+    <None Include="Resources\bagong-pilipinas.jpg" />
     <None Include="Resources\pbxLoading.EditValue.gif" />
     <None Include="Resources\pbxBarcodeImage.EditValue.jpg" />
     <None Include="Resources\bohol first cngressional district logo editedl copy.png" />
