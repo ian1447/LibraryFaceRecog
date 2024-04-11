@@ -244,17 +244,17 @@
     <Compile Include="RegisterFormManagement.Designer.cs">
       <DependentUpon>RegisterFormManagement.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reports\BisuEntranceLogsReport.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Reports\BisuEntranceLogsReport.Designer.cs">
-      <DependentUpon>BisuEntranceLogsReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="Reports\BisuBookBorrowReport.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Reports\BisuBookBorrowReport.Designer.cs">
+    <Compile Include="Reports\BisuBookBorrowReport.designer.cs">
       <DependentUpon>BisuBookBorrowReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\BisuEntranceLogsReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\BisuEntranceLogsReport.designer.cs">
+      <DependentUpon>BisuEntranceLogsReport.cs</DependentUpon>
     </Compile>
     <Compile Include="Reports\CongressionalBookBorrowReport.cs">
       <SubType>Component</SubType>
@@ -360,11 +360,11 @@
     <EmbeddedResource Include="RegisterFormManagement.resx">
       <DependentUpon>RegisterFormManagement.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reports\BisuEntranceLogsReport.resx">
-      <DependentUpon>BisuEntranceLogsReport.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Reports\BisuBookBorrowReport.resx">
       <DependentUpon>BisuBookBorrowReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\BisuEntranceLogsReport.resx">
+      <DependentUpon>BisuEntranceLogsReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reports\CongressionalBookBorrowReport.resx">
       <DependentUpon>CongressionalBookBorrowReport.cs</DependentUpon>
@@ -414,7 +414,6 @@
   <ItemGroup>
     <Content Include="BisuHaarcascade.xml" />
     <Content Include="Logo.ico" />
-    <None Include="Resources\bagong-pilipinas.jpg" />
     <None Include="Resources\pbxLoading.EditValue.gif" />
     <None Include="Resources\pbxBarcodeImage.EditValue.jpg" />
     <None Include="Resources\bohol first cngressional district logo editedl copy.png" />
