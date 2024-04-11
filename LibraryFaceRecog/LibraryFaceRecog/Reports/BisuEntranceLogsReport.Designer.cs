@@ -67,11 +67,10 @@
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLabel8 = new DevExpress.XtraReports.UI.XRLabel();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.xrLabel9 = new DevExpress.XtraReports.UI.XRLabel();
-            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource();
-            this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel12 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
+            this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -402,22 +401,41 @@
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.xrLabel12,
             this.xrLabel11,
-            this.xrLabel10,
-            this.xrLabel9});
-            this.ReportFooter.HeightF = 171.875F;
+            this.xrLabel10});
+            this.ReportFooter.HeightF = 94.79166F;
             this.ReportFooter.Name = "ReportFooter";
             // 
-            // xrLabel9
+            // xrLabel12
             // 
-            this.xrLabel9.Borders = DevExpress.XtraPrinting.BorderSide.Top;
-            this.xrLabel9.LocationFloat = new DevExpress.Utils.PointFloat(498.0417F, 36.45833F);
-            this.xrLabel9.Name = "xrLabel9";
-            this.xrLabel9.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel9.SizeF = new System.Drawing.SizeF(223.9583F, 23F);
-            this.xrLabel9.StylePriority.UseBorders = false;
-            this.xrLabel9.StylePriority.UseTextAlignment = false;
-            this.xrLabel9.Text = "Signature over printed name";
-            this.xrLabel9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(498.0416F, 38.12497F);
+            this.xrLabel12.Name = "xrLabel12";
+            this.xrLabel12.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel12.SizeF = new System.Drawing.SizeF(223.9583F, 23.00001F);
+            this.xrLabel12.StylePriority.UseTextAlignment = false;
+            this.xrLabel12.Text = "VIRGINIA S. PONOLLERA";
+            this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel11
+            // 
+            this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(479.9998F, 9.999974F);
+            this.xrLabel11.Name = "xrLabel11";
+            this.xrLabel11.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel11.SizeF = new System.Drawing.SizeF(100F, 23F);
+            this.xrLabel11.StylePriority.UseTextAlignment = false;
+            this.xrLabel11.Text = "Checked by:";
+            this.xrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleJustify;
+            // 
+            // xrLabel10
+            // 
+            this.xrLabel10.Borders = DevExpress.XtraPrinting.BorderSide.Top;
+            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(498.0416F, 61.12499F);
+            this.xrLabel10.Name = "xrLabel10";
+            this.xrLabel10.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel10.SizeF = new System.Drawing.SizeF(223.9583F, 23F);
+            this.xrLabel10.StylePriority.UseBorders = false;
+            this.xrLabel10.StylePriority.UseTextAlignment = false;
+            this.xrLabel10.Text = "Signature over printed name";
+            this.xrLabel10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // sqlDataSource1
             // 
@@ -431,38 +449,6 @@
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             customSqlQuery1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
-            // 
-            // xrLabel10
-            // 
-            this.xrLabel10.Borders = DevExpress.XtraPrinting.BorderSide.Top;
-            this.xrLabel10.LocationFloat = new DevExpress.Utils.PointFloat(498.0417F, 138.875F);
-            this.xrLabel10.Name = "xrLabel10";
-            this.xrLabel10.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel10.SizeF = new System.Drawing.SizeF(223.9583F, 23F);
-            this.xrLabel10.StylePriority.UseBorders = false;
-            this.xrLabel10.StylePriority.UseTextAlignment = false;
-            this.xrLabel10.Text = "Signature over printed name";
-            this.xrLabel10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel11
-            // 
-            this.xrLabel11.LocationFloat = new DevExpress.Utils.PointFloat(479.9999F, 87.74999F);
-            this.xrLabel11.Name = "xrLabel11";
-            this.xrLabel11.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrLabel11.SizeF = new System.Drawing.SizeF(100F, 23F);
-            this.xrLabel11.StylePriority.UseTextAlignment = false;
-            this.xrLabel11.Text = "Checked by:";
-            this.xrLabel11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleJustify;
-            // 
-            // xrLabel12
-            // 
-            this.xrLabel12.LocationFloat = new DevExpress.Utils.PointFloat(498.0417F, 115.875F);
-            this.xrLabel12.Name = "xrLabel12";
-            this.xrLabel12.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel12.SizeF = new System.Drawing.SizeF(223.9583F, 23.00001F);
-            this.xrLabel12.StylePriority.UseTextAlignment = false;
-            this.xrLabel12.Text = "VIRGINIA S. PONOLLERA";
-            this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // BisuEntranceLogsReport
             // 
@@ -511,7 +497,6 @@
         public DevExpress.XtraReports.UI.XRLabel xrLabel8;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell15;
         private DevExpress.XtraReports.UI.ReportFooterBand ReportFooter;
-        private DevExpress.XtraReports.UI.XRLabel xrLabel9;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell9;
         private DevExpress.XtraReports.UI.XRTable xrTable2;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow2;
