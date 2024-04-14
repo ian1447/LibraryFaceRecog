@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BisuBookBorrowReport));
             DevExpress.DataAccess.ConnectionParameters.MySqlConnectionParameters mySqlConnectionParameters1 = new DevExpress.DataAccess.ConnectionParameters.MySqlConnectionParameters();
             DevExpress.DataAccess.Sql.CustomSqlQuery customSqlQuery1 = new DevExpress.DataAccess.Sql.CustomSqlQuery();
+            DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
@@ -64,6 +65,8 @@
             this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLine1 = new DevExpress.XtraReports.UI.XRLine();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource();
+            this.xrTableCell13 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -92,6 +95,7 @@
             // xrTableRow2
             // 
             this.xrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell14,
             this.xrTableCell1,
             this.xrTableCell7,
             this.xrTableCell8,
@@ -108,7 +112,7 @@
             this.xrTableCell1.Multiline = true;
             this.xrTableCell1.Name = "xrTableCell1";
             this.xrTableCell1.Text = "Title";
-            this.xrTableCell1.Weight = 1.621285931356363D;
+            this.xrTableCell1.Weight = 1.3287344415459752D;
             // 
             // xrTableCell7
             // 
@@ -189,16 +193,21 @@
             this.xrTable1.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top)
                         | DevExpress.XtraPrinting.BorderSide.Right)
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrTable1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 262.9166F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
             this.xrTable1.SizeF = new System.Drawing.SizeF(722F, 25F);
             this.xrTable1.StylePriority.UseBorders = false;
+            this.xrTable1.StylePriority.UseFont = false;
+            this.xrTable1.StylePriority.UseTextAlignment = false;
+            this.xrTable1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrTableRow1
             // 
             this.xrTableRow1.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell13,
             this.xrTableCell2,
             this.xrTableCell3,
             this.xrTableCell11,
@@ -213,7 +222,7 @@
             this.xrTableCell2.Multiline = true;
             this.xrTableCell2.Name = "xrTableCell2";
             this.xrTableCell2.Text = "Title";
-            this.xrTableCell2.Weight = 1.621285931356363D;
+            this.xrTableCell2.Weight = 1.3287344415459752D;
             // 
             // xrTableCell3
             // 
@@ -268,7 +277,7 @@
             this.xrLabel7.SizeF = new System.Drawing.SizeF(58.91656F, 27.91667F);
             this.xrLabel7.StylePriority.UseFont = false;
             this.xrLabel7.StylePriority.UseTextAlignment = false;
-            this.xrLabel7.Text = "Vission: ";
+            this.xrLabel7.Text = "Vision: ";
             this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrPictureBox2
@@ -337,7 +346,7 @@
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel4.SizeF = new System.Drawing.SizeF(602.4999F, 31.91666F);
             this.xrLabel4.StylePriority.UseTextAlignment = false;
-            this.xrLabel4.Text = "          A Premier Science and Technology university for the formation of world " +
+            this.xrLabel4.Text = "          A premier Science and Technology university for the formation of world " +
                 "class and virtuous human resource for sustainable development in Bohol and the c" +
                 "ountry.";
             this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -384,6 +393,22 @@
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             customSqlQuery1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
+            // 
+            // xrTableCell13
+            // 
+            this.xrTableCell13.Name = "xrTableCell13";
+            this.xrTableCell13.Text = "No. ";
+            this.xrTableCell13.Weight = 0.29255144038135394D;
+            // 
+            // xrTableCell14
+            // 
+            this.xrTableCell14.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.barcode")});
+            this.xrTableCell14.Name = "xrTableCell14";
+            xrSummary1.Func = DevExpress.XtraReports.UI.SummaryFunc.RecordNumber;
+            xrSummary1.Running = DevExpress.XtraReports.UI.SummaryRunning.Report;
+            this.xrTableCell14.Summary = xrSummary1;
+            this.xrTableCell14.Weight = 0.29255144038135394D;
             // 
             // BisuBookBorrowReport
             // 
@@ -439,5 +464,7 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell10;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell12;
         private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell13;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell14;
     }
 }

@@ -82,7 +82,7 @@ namespace LibraryFaceRecog
                     {
                         if (string.IsNullOrEmpty((x as TextEdit).Text))
                         {
-                            Msgbox.Exclamation("Please Input " + (x as TextEdit).Name.ToString().Remove(0, 3).Trim(':') + "!");
+                            Msgbox.Exclamation("Please input all fields.");
                             (x as TextEdit).Focus();
                             (x as TextEdit).Select();
                             IsGood = false;
@@ -94,7 +94,7 @@ namespace LibraryFaceRecog
                 {
                     if (string.IsNullOrEmpty((x as MemoEdit).Text))
                     {
-                        Msgbox.Exclamation("Please Input " + (x as MemoEdit).Name.ToString().Remove(0, 3).Trim(':') + "!");
+                        Msgbox.Exclamation("Please input all fields.");
                         (x as MemoEdit).Focus();
                         (x as MemoEdit).Select();
                         IsGood = false;

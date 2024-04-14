@@ -143,7 +143,7 @@ namespace LibraryFaceRecog
                 {
                     if (string.IsNullOrEmpty((x as TextEdit).Text))
                     {
-                        Msgbox.Exclamation("Please Input " + (x as TextEdit).Name.ToString().Remove(0, 3).Trim(':') + "!");
+                        Msgbox.Exclamation("Please input all fields.");
                         (x as TextEdit).Focus();
                         (x as TextEdit).Select();
                         IsGood = false;
@@ -155,7 +155,7 @@ namespace LibraryFaceRecog
                 {
                     if ((x as MemoEdit).EditValue == null)
                     {
-                        Msgbox.Exclamation("Please Input " + (x as MemoEdit).Name.ToString().Remove(0, 3).Trim(':') + "!");
+                        Msgbox.Exclamation("Please input all fields.");
                         IsGood = false;
                         break;
                     }
@@ -227,7 +227,7 @@ namespace LibraryFaceRecog
                 rf.lblBorrower.Text = txtBorrowerName.Text;
                 rf.lblAuthor.Text = bookauthor;
                 rf.xrBarCode.Text = barcode;
-                rf.lblReturnDay.Text = PublicVariables.AccountType == "Bisu" ? "Please Return within 3 Days" : "Please Return within 5 Days";
+                rf.lblReturnDay.Text = PublicVariables.AccountType == "Bisu" ? "Note: Please Return within 3 Days. Thank you." : "Note: Please Return within 5 Days. Thank you.";
                 rf.ShowPreviewDialog();
                 this.Close();
             }

@@ -57,6 +57,7 @@ namespace LibraryFaceRecog
 
         #endregion
 
+        bool IsGood;
         int BorrowerId;
         private void btnFaceRecog_Click(object sender, EventArgs e)
         {
@@ -85,13 +86,43 @@ namespace LibraryFaceRecog
             else
                 Msgbox.Exclamation("Please select a returner or scan a barcode");
         }
-
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            if (!bwReturnBook.IsBusy)
+            IsGood = true;
+            foreach (Control x in this.layoutControl1.Controls)
             {
-                ShowLoading("Returning Book...");
-                bwReturnBook.RunWorkerAsync();
+                if (x is TextEdit)
+                {
+                    {
+                        if (string.IsNullOrEmpty((x as TextEdit).Text))
+                        {
+                            Msgbox.Exclamation("Please input all fields.");
+                            (x as TextEdit).Focus();
+                            (x as TextEdit).Select();
+                            IsGood = false;
+                            break;
+                        }
+                    }
+                }
+                if (x is MemoEdit)
+                {
+                    if (string.IsNullOrEmpty((x as MemoEdit).Text))
+                    {
+                        Msgbox.Exclamation("Please input all fields.");
+                        (x as MemoEdit).Focus();
+                        (x as MemoEdit).Select();
+                        IsGood = false;
+                        break;
+                    }
+                }
+            }
+            if (IsGood)
+            {
+                if (!bwReturnBook.IsBusy)
+                {
+                    ShowLoading("Returning Book...");
+                    bwReturnBook.RunWorkerAsync();
+                }
             }
         }
 
@@ -124,6 +155,13 @@ namespace LibraryFaceRecog
                 txtBorrowerName.Text = sbf.BorrowDetails.Rows[0]["name"].ToString();
                 meBookTitle.Text = sbf.BorrowDetails.Rows[0]["title"].ToString();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Msgbox.QuestionYesNo("Are you sure you want to close form?");
+            if (Msgbox.isYes)
+                this.Close();
         }
     }
 }
