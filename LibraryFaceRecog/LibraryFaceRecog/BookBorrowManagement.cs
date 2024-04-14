@@ -152,6 +152,7 @@ namespace LibraryFaceRecog
         {
             BookReturnForm bbf = new BookReturnForm();
             bbf.ShowDialog();
+            btnRefresh.PerformClick();
         }
 
         DataTable BorrowerTable = new DataTable();

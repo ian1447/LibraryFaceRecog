@@ -221,15 +221,30 @@ namespace LibraryFaceRecog
             if (Borrower.BorrowBookSuccessful)
             {
                 Msgbox.Information("Barcode for return is:\n\n" + barcode);
-                ReturnForm rf = new ReturnForm();
-                rf.lblDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
-                rf.lblBookTitle.Text = meBookTitle.Text;
-                rf.lblBorrower.Text = txtBorrowerName.Text;
-                rf.lblAuthor.Text = bookauthor;
-                rf.xrBarCode.Text = barcode;
-                rf.lblReturnDay.Text = PublicVariables.AccountType == "Bisu" ? "Note: Please Return within 3 Days. Thank you." : "Note: Please Return within 5 Days. Thank you.";
-                rf.ShowPreviewDialog();
-                this.Close();
+                if (PublicVariables.AccountType == "Bisu")
+                {
+                    ReturnForm rf = new ReturnForm();
+                    rf.lblDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
+                    rf.lblBookTitle.Text = meBookTitle.Text;
+                    rf.lblBorrower.Text = txtBorrowerName.Text;
+                    rf.lblAuthor.Text = bookauthor;
+                    rf.xrBarCode.Text = barcode;
+                    rf.lblReturnDay.Text = PublicVariables.AccountType == "Bisu" ? "Note: Please Return within 3 Days. Thank you." : "Note: Please Return within 5 Days. Thank you.";
+                    rf.ShowPreviewDialog();
+                    this.Close();
+                }
+                else
+                {
+                    CongReturnForm rf = new CongReturnForm();
+                    rf.lblDate.Text = DateTime.Now.ToString("MMM dd, yyyy");
+                    rf.lblBookTitle.Text = meBookTitle.Text;
+                    rf.lblBorrower.Text = txtBorrowerName.Text;
+                    rf.lblAuthor.Text = bookauthor;
+                    rf.xrBarCode.Text = barcode;
+                    rf.lblReturnDay.Text = PublicVariables.AccountType == "Bisu" ? "Note: Please Return within 3 Days. Thank you." : "Note: Please Return within 5 Days. Thank you.";
+                    rf.ShowPreviewDialog();
+                    this.Close();
+                }
             }
             else
                 Msgbox.Error(Borrower.BorrowBookErrorMessage);

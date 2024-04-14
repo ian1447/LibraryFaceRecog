@@ -377,9 +377,9 @@
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel4.SizeF = new System.Drawing.SizeF(602.4999F, 31.91666F);
             this.xrLabel4.StylePriority.UseTextAlignment = false;
-            this.xrLabel4.Text = "          A premier Science and Technology university for the formation of world " +
-                "class and virtuous human resource for sustainable development in Bohol and the c" +
-                "ountry.";
+            this.xrLabel4.Text = "          A  premier Science and Technology university for the formation of world" +
+                " class and virtuous human resource for sustainable development in Bohol and the " +
+                "country.";
             this.xrLabel4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel5
