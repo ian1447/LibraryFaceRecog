@@ -63,16 +63,6 @@ namespace LibraryFaceRecog.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bagong_pilipinas {
-            get {
-                object obj = ResourceManager.GetObject("bagong_pilipinas", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap BISU_Logo {
             get {
                 object obj = ResourceManager.GetObject("BISU_Logo", resourceCulture);
@@ -86,6 +76,16 @@ namespace LibraryFaceRecog.Properties {
         internal static System.Drawing.Bitmap bohol_first_cngressional_district_logo_editedl_copy {
             get {
                 object obj = ResourceManager.GetObject("bohol_first_cngressional_district_logo_editedl_copy", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Hi_Res_BAGONG_PILIPINAS_LOGO_1474x1536 {
+            get {
+                object obj = ResourceManager.GetObject("Hi_Res_BAGONG_PILIPINAS_LOGO_1474x1536", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -177,8 +177,8 @@ namespace LibraryFaceRecog
             HideLoading();
             if (Entrance.GetLogsSuccessful)
             {
-                EntranceLogTable = EntranceLogTable.AsEnumerable().Where(row => row.Field<string>("type") == PublicVariables.AccountType).Count() > 0 ?
-                    EntranceLogTable.AsEnumerable().Where(row => row.Field<string>("type") == PublicVariables.AccountType).CopyToDataTable() : new DataTable();
+                //EntranceLogTable = EntranceLogTable.AsEnumerable().Where(row => row.Field<string>("type") == PublicVariables.AccountType).Count() > 0 ?
+                //    EntranceLogTable.AsEnumerable().Where(row => row.Field<string>("type") == PublicVariables.AccountType).CopyToDataTable() : new DataTable();
                 dtLogs.DataSource = EntranceLogTable;
             }
             else

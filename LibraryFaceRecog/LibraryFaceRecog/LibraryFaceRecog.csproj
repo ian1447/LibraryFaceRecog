@@ -423,6 +423,7 @@
   <ItemGroup>
     <Content Include="BisuHaarcascade.xml" />
     <Content Include="Logo.ico" />
+    <None Include="Resources\Hi-Res-BAGONG-PILIPINAS-LOGO-1474x1536.png" />
     <None Include="Resources\pbxLoading.EditValue.gif" />
     <None Include="Resources\pbxBarcodeImage.EditValue.jpg" />
     <None Include="Resources\bohol first cngressional district logo editedl copy.png" />
