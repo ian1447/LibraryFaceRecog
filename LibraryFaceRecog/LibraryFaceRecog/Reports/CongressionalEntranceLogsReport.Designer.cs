@@ -113,7 +113,9 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.name")});
             this.xrTableCell1.Multiline = true;
             this.xrTableCell1.Name = "xrTableCell1";
+            this.xrTableCell1.StylePriority.UseTextAlignment = false;
             this.xrTableCell1.Text = "Name";
+            this.xrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             this.xrTableCell1.Weight = 1.7604166100105976D;
             // 
             // xrTableCell7
@@ -122,7 +124,7 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.sex")});
             this.xrTableCell7.Name = "xrTableCell7";
             this.xrTableCell7.Text = "Sex";
-            this.xrTableCell7.Weight = 0.36458397727822028D;
+            this.xrTableCell7.Weight = 0.59374748294063284D;
             // 
             // xrTableCell8
             // 
@@ -130,7 +132,7 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.course")});
             this.xrTableCell8.Name = "xrTableCell8";
             this.xrTableCell8.Text = "Course";
-            this.xrTableCell8.Weight = 0.69791576388756438D;
+            this.xrTableCell8.Weight = 0.96875171469434707D;
             // 
             // xrTableCell9
             // 
@@ -138,7 +140,7 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.year_and_section")});
             this.xrTableCell9.Name = "xrTableCell9";
             this.xrTableCell9.Text = "Year and Section";
-            this.xrTableCell9.Weight = 1.1770835905809105D;
+            this.xrTableCell9.Weight = 0.67708413411171531D;
             // 
             // xrTableCell10
             // 
@@ -200,7 +202,7 @@
             this.lblDate,
             this.xrLabel1,
             this.xrTable1});
-            this.ReportHeader.HeightF = 185.7917F;
+            this.ReportHeader.HeightF = 202.8751F;
             this.ReportHeader.Name = "ReportHeader";
             // 
             // xrPictureBox1
@@ -239,11 +241,11 @@
                         | DevExpress.XtraPrinting.BorderSide.Right)
                         | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTable1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(9.155273E-05F, 160.7917F);
+            this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(9.536743E-05F, 160.7917F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(649.9998F, 25F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(649.9998F, 42.08334F);
             this.xrTable1.StylePriority.UseBorders = false;
             this.xrTable1.StylePriority.UseFont = false;
             this.xrTable1.StylePriority.UseTextAlignment = false;
@@ -277,19 +279,19 @@
             // 
             this.xrTableCell3.Name = "xrTableCell3";
             this.xrTableCell3.Text = "Sex";
-            this.xrTableCell3.Weight = 0.36458366416604909D;
+            this.xrTableCell3.Weight = 0.59374799754698748D;
             // 
             // xrTableCell4
             // 
             this.xrTableCell4.Name = "xrTableCell4";
             this.xrTableCell4.Text = "Course";
-            this.xrTableCell4.Weight = 0.69791612154824256D;
+            this.xrTableCell4.Weight = 0.9687518133255848D;
             // 
             // xrTableCell5
             // 
             this.xrTableCell5.Name = "xrTableCell5";
             this.xrTableCell5.Text = "Year and Section";
-            this.xrTableCell5.Weight = 1.1770835905809105D;
+            this.xrTableCell5.Weight = 0.67708356542263D;
             // 
             // xrTableCell6
             // 
