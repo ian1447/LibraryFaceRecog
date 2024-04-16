@@ -1,4 +1,4 @@
-﻿namespace LibraryFaceRecog.Reports
+namespace LibraryFaceRecog.Reports
 {
     partial class CongressionalEntranceLogsReport
     {
@@ -113,6 +113,8 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.name")});
             this.xrTableCell1.Multiline = true;
             this.xrTableCell1.Name = "xrTableCell1";
+            this.xrTableCell1.Padding = new DevExpress.XtraPrinting.PaddingInfo(4, 0, 0, 0, 100F);
+            this.xrTableCell1.StylePriority.UsePadding = false;
             this.xrTableCell1.StylePriority.UseTextAlignment = false;
             this.xrTableCell1.Text = "Name";
             this.xrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;

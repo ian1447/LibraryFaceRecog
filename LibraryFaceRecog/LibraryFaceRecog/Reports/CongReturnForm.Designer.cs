@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator code39ExtendedGenerator1 = new DevExpress.XtraPrinting.BarCode.Code39ExtendedGenerator();
+            DevExpress.XtraPrinting.BarCode.Code93ExtendedGenerator code93ExtendedGenerator1 = new DevExpress.XtraPrinting.BarCode.Code93ExtendedGenerator();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CongReturnForm));
             this.Detail = new DevExpress.XtraReports.UI.DetailBand();
             this.xrLabel1 = new DevExpress.XtraReports.UI.XRLabel();
@@ -205,8 +205,7 @@
             this.xrBarCode.Name = "xrBarCode";
             this.xrBarCode.Padding = new DevExpress.XtraPrinting.PaddingInfo(10, 10, 0, 0, 100F);
             this.xrBarCode.SizeF = new System.Drawing.SizeF(146.7917F, 655.625F);
-            code39ExtendedGenerator1.WideNarrowRatio = 3F;
-            this.xrBarCode.Symbology = code39ExtendedGenerator1;
+            this.xrBarCode.Symbology = code93ExtendedGenerator1;
             this.xrBarCode.Text = "K0hmjVyL+v";
             // 
             // xrLabel8
