@@ -218,6 +218,12 @@
     <Compile Include="FaceDetector.Designer.cs">
       <DependentUpon>FaceDetector.cs</DependentUpon>
     </Compile>
+    <Compile Include="ImportFromExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ImportFromExcel.Designer.cs">
+      <DependentUpon>ImportFromExcel.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FaceDetector.resx">
       <DependentUpon>FaceDetector.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImportFromExcel.resx">
+      <DependentUpon>ImportFromExcel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

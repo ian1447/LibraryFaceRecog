@@ -77,6 +77,8 @@ namespace LibraryFaceRecog
         private VideoCaptureDevice FinalFrame;
         private bool CameraConnected;
         private bool programFirstLoad;
+        string filename = (Application.StartupPath + "\\Checker") + "/log.txt";
+        string knownpath = (Application.StartupPath + "\\Checker\\");
 
         private void CaptureImage_Shown(object sender, EventArgs e)
         {
@@ -220,6 +222,29 @@ namespace LibraryFaceRecog
         private void btnCapture_Click(object sender, EventArgs e)
         {
             CapturedImage.Image = peCameraBox.Image;
+            CapturedImage.Image.Save(knownpath + "known.jpg", System.Drawing.Imaging.ImageFormat.Jpeg);
+            File.WriteAllText(filename, String.Empty);
+            Process facerecog = new Process()
+            {
+                StartInfo = new ProcessStartInfo(PublicVariables.DefaultDirectory + "\\Checker\\checkExisting.exe")
+                {
+                    WorkingDirectory = PublicVariables.DefaultDirectory + "\\Checker"
+                }
+            };
+            facerecog.StartInfo.FileName = PublicVariables.DefaultDirectory + "\\Checker\\checkExisting.exe";
+            facerecog.Start();
+            facerecog.WaitForExit();
+            StreamReader sr = new StreamReader(filename);
+            string line = sr.ReadLine();
+            sr.Dispose();
+            if (!string.IsNullOrEmpty(line))
+            {
+                Msgbox.Error("Face already Registered...");
+                CapturedImage.Image = null;
+                btnSave.Enabled = false;
+            }
+            else
+                btnSave.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)

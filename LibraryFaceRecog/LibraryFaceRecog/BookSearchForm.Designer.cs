@@ -50,6 +50,7 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetBooks = new System.ComponentModel.BackgroundWorker();
+            this.no_of_copies = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtBooks)).BeginInit();
@@ -121,7 +122,8 @@
             this.gvBooks.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.id,
             this.author,
-            this.title});
+            this.title,
+            this.no_of_copies});
             this.gvBooks.GridControl = this.dtBooks;
             this.gvBooks.Name = "gvBooks";
             this.gvBooks.OptionsBehavior.Editable = false;
@@ -267,6 +269,14 @@
             this.bwGetBooks.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetBooks_DoWork);
             this.bwGetBooks.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetBooks_RunWorkerCompleted);
             // 
+            // no_of_copies
+            // 
+            this.no_of_copies.Caption = "No of Copies";
+            this.no_of_copies.FieldName = "no_of_copies";
+            this.no_of_copies.Name = "no_of_copies";
+            this.no_of_copies.Visible = true;
+            this.no_of_copies.VisibleIndex = 2;
+            // 
             // BookSearchForm
             // 
             this.AcceptButton = this.btnSearch;
@@ -319,5 +329,6 @@
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private System.ComponentModel.BackgroundWorker bwGetBooks;
         private DevExpress.XtraGrid.Columns.GridColumn author;
+        private DevExpress.XtraGrid.Columns.GridColumn no_of_copies;
     }
 }

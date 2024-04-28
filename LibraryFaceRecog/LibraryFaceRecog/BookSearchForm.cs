@@ -115,7 +115,10 @@ namespace LibraryFaceRecog
                 BookId = Convert.ToInt32(focusRowView.Row[0].ToString());
                 BookTitle = focusRowView.Row["title"].ToString();
                 BookAuthor = focusRowView.Row["author"].ToString();
-                this.Close();
+                if (Convert.ToInt32(focusRowView.Row["no_of_copies"].ToString()) > 1)
+                    this.Close();
+                else
+                    Msgbox.Exclamation("Cannot Borrow books with only 1 copy left.");
             }
             else
                 Msgbox.Exclamation("Nothing to select.");

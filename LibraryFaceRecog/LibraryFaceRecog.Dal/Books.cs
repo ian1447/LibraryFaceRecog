@@ -47,27 +47,44 @@ namespace LibraryFaceRecog.Dal
         public static bool BooksAddSuccessful;
         public static void BooksAdd(string _title, string _author, string _place_and_publisher, string _section, string _call_no, string _account_no, int _no_of_copies, string _edition, double _cost_price, string _copyright_year, string _type)
         {
+            DataTable dt = new DataTable();
             try
             {
                 using (MySqlConnection con = new MySqlConnection(ConnectionString()))
                 {
                     con.Open();
-                    MySqlCommand cmd = new MySqlCommand("sp_books_add", con);
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new MySqlParameter("_title", _title));
-                    cmd.Parameters.Add(new MySqlParameter("_author", _author));
-                    cmd.Parameters.Add(new MySqlParameter("_place_and_publisher", _place_and_publisher));
-                    cmd.Parameters.Add(new MySqlParameter("_section", _section));
-                    cmd.Parameters.Add(new MySqlParameter("_call_no", _call_no));
-                    cmd.Parameters.Add(new MySqlParameter("_account_no", _account_no));
-                    cmd.Parameters.Add(new MySqlParameter("_no_of_copies", _no_of_copies));
-                    cmd.Parameters.Add(new MySqlParameter("_edition", _edition));
-                    cmd.Parameters.Add(new MySqlParameter("_cost_price", _cost_price));
-                    cmd.Parameters.Add(new MySqlParameter("_copyright_year", _copyright_year));
-                    cmd.Parameters.Add(new MySqlParameter("_type", _type));
-                    cmd.ExecuteNonQuery();
-                    con.Close();
-                    BooksAddSuccessful = true;
+
+                    MySqlCommand cmd2 = new MySqlCommand("sp_book_add_validator", con);
+                    cmd2.CommandType = CommandType.StoredProcedure;
+                    cmd2.Parameters.Add(new MySqlParameter("_title", _title));
+                    cmd2.Parameters.Add(new MySqlParameter("_account_no", _account_no));
+                    MySqlDataAdapter adp = new MySqlDataAdapter(cmd2);
+                    adp.Fill(dt);
+                    if (dt.Rows[0][0].ToString() == "0")
+                    {
+                        MySqlCommand cmd = new MySqlCommand("sp_books_add", con);
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.Add(new MySqlParameter("_title", _title));
+                        cmd.Parameters.Add(new MySqlParameter("_author", _author));
+                        cmd.Parameters.Add(new MySqlParameter("_place_and_publisher", _place_and_publisher));
+                        cmd.Parameters.Add(new MySqlParameter("_section", _section));
+                        cmd.Parameters.Add(new MySqlParameter("_call_no", _call_no));
+                        cmd.Parameters.Add(new MySqlParameter("_account_no", _account_no));
+                        cmd.Parameters.Add(new MySqlParameter("_no_of_copies", _no_of_copies));
+                        cmd.Parameters.Add(new MySqlParameter("_edition", _edition));
+                        cmd.Parameters.Add(new MySqlParameter("_cost_price", _cost_price));
+                        cmd.Parameters.Add(new MySqlParameter("_copyright_year", _copyright_year));
+                        cmd.Parameters.Add(new MySqlParameter("_type", _type));
+                        cmd.ExecuteNonQuery();
+                        con.Close();
+                        BooksAddSuccessful = true;
+                    }
+                    else
+                    {
+                        con.Close();
+                        BooksAddSuccessful = false;
+                        BooksAddErrorMessage = "Book Already exists in database.";
+                    }
                 }
             }
             catch (Exception ex)

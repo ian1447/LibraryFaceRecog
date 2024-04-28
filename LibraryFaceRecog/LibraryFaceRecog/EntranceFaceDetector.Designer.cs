@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EntranceFaceDetector));
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.btnRecognize = new DevExpress.XtraEditors.SimpleButton();
             this.btnSelect = new DevExpress.XtraEditors.SimpleButton();
             this.btnCapture = new DevExpress.XtraEditors.SimpleButton();
             this.CapturedImage = new System.Windows.Forms.PictureBox();
@@ -52,10 +53,9 @@
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem2 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.bwEntranceLogsAdd = new System.ComponentModel.BackgroundWorker();
-            this.btnRecognize = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CapturedImage)).BeginInit();
@@ -75,8 +75,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
@@ -98,6 +98,17 @@
             this.layoutControl1.Size = new System.Drawing.Size(1023, 582);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // btnRecognize
+            // 
+            this.btnRecognize.Image = ((System.Drawing.Image)(resources.GetObject("btnRecognize.Image")));
+            this.btnRecognize.Location = new System.Drawing.Point(591, 324);
+            this.btnRecognize.Name = "btnRecognize";
+            this.btnRecognize.Size = new System.Drawing.Size(408, 22);
+            this.btnRecognize.StyleController = this.layoutControl1;
+            this.btnRecognize.TabIndex = 14;
+            this.btnRecognize.Text = "Recognize";
+            this.btnRecognize.Click += new System.EventHandler(this.btnRecognize_Click);
             // 
             // btnSelect
             // 
@@ -328,6 +339,15 @@
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextVisible = false;
             // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.btnRecognize;
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 281);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Size = new System.Drawing.Size(412, 26);
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextVisible = false;
+            // 
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
@@ -341,26 +361,6 @@
             this.bwEntranceLogsAdd.WorkerSupportsCancellation = true;
             this.bwEntranceLogsAdd.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwEntranceLogsAdd_DoWork);
             this.bwEntranceLogsAdd.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwEntranceLogsAdd_RunWorkerCompleted);
-            // 
-            // btnRecognize
-            // 
-            this.btnRecognize.Image = ((System.Drawing.Image)(resources.GetObject("btnRecognize.Image")));
-            this.btnRecognize.Location = new System.Drawing.Point(591, 324);
-            this.btnRecognize.Name = "btnRecognize";
-            this.btnRecognize.Size = new System.Drawing.Size(408, 22);
-            this.btnRecognize.StyleController = this.layoutControl1;
-            this.btnRecognize.TabIndex = 14;
-            this.btnRecognize.Text = "Recognize";
-            this.btnRecognize.Click += new System.EventHandler(this.btnRecognize_Click);
-            // 
-            // layoutControlItem8
-            // 
-            this.layoutControlItem8.Control = this.btnRecognize;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 281);
-            this.layoutControlItem8.Name = "layoutControlItem8";
-            this.layoutControlItem8.Size = new System.Drawing.Size(412, 26);
-            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem8.TextVisible = false;
             // 
             // EntranceFaceDetector
             // 
@@ -393,8 +393,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem2)).EndInit();
             this.ResumeLayout(false);
 
         }

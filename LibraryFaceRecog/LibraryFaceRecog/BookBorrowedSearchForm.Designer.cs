@@ -46,6 +46,7 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::LibraryFaceRecog.WaitForm1), true, true);
             this.bwGetBorrowedBooks = new System.ComponentModel.BackgroundWorker();
+            this.no_of_copies = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtBorrowedBooks)).BeginInit();
@@ -125,7 +126,8 @@
             // 
             this.gvBorrowedBooks.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this._title,
-            this._barcode});
+            this._barcode,
+            this.no_of_copies});
             this.gvBorrowedBooks.GridControl = this.dtBorrowedBooks;
             this.gvBorrowedBooks.Name = "gvBorrowedBooks";
             this.gvBorrowedBooks.OptionsBehavior.Editable = false;
@@ -218,6 +220,12 @@
             this.bwGetBorrowedBooks.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwGetBorrowedBooks_DoWork);
             this.bwGetBorrowedBooks.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwGetBorrowedBooks_RunWorkerCompleted);
             // 
+            // no_of_copies
+            // 
+            this.no_of_copies.Caption = "no_of_copies";
+            this.no_of_copies.FieldName = "no_of_copies";
+            this.no_of_copies.Name = "no_of_copies";
+            // 
             // BookBorrowedSearchForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,5 +271,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraSplashScreen.SplashScreenManager splashScreenManager1;
         private System.ComponentModel.BackgroundWorker bwGetBorrowedBooks;
+        private DevExpress.XtraGrid.Columns.GridColumn no_of_copies;
     }
 }
