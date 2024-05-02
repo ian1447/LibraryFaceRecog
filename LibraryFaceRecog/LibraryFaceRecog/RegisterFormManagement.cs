@@ -170,6 +170,13 @@ namespace LibraryFaceRecog
                 Msgbox.Exclamation("Please select a borrower to edit.");
         }
 
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            ImportForm imf = new ImportForm();
+            imf.ShowDialog();
+            btnRefresh.PerformClick();
+        }
+
         //public Image byteArrayToImage(byte[] byteArrayIn)
         //{
         //    MemoryStream ms = new MemoryStream(byteArrayIn);

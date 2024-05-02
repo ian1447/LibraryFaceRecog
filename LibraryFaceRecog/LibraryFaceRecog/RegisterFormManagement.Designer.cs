@@ -102,6 +102,7 @@
             this.btnImport.StyleController = this.layoutControl1;
             this.btnImport.TabIndex = 13;
             this.btnImport.Text = "Import From Excel";
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // checkEdit1
             // 
