@@ -239,7 +239,7 @@ namespace LibraryFaceRecog
             sr.Dispose();
             if (!string.IsNullOrEmpty(line))
             {
-                Msgbox.Error("Face already Registered...");
+               //Msgbox.Error("Face already Registered...");
                 CapturedImage.Image = null;
                 btnSave.Enabled = false;
             }

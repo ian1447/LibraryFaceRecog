@@ -71,6 +71,7 @@
             this.xrLabel11 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel10 = new DevExpress.XtraReports.UI.XRLabel();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource();
+            this.xrTableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -93,7 +94,7 @@
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(722F, 27F);
+            this.xrTable2.SizeF = new System.Drawing.SizeF(721.9999F, 27F);
             this.xrTable2.StylePriority.UseBorders = false;
             this.xrTable2.StylePriority.UseTextAlignment = false;
             this.xrTable2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
@@ -107,7 +108,8 @@
             this.xrTableCell4,
             this.xrTableCell7,
             this.xrTableCell8,
-            this.xrTableCell10});
+            this.xrTableCell10,
+            this.xrTableCell11});
             this.xrTableRow2.Name = "xrTableRow2";
             this.xrTableRow2.Weight = 1D;
             // 
@@ -154,7 +156,7 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.course")});
             this.xrTableCell7.Name = "xrTableCell7";
             this.xrTableCell7.Text = "Course";
-            this.xrTableCell7.Weight = 0.87500093090864328D;
+            this.xrTableCell7.Weight = 0.68750055803279442D;
             // 
             // xrTableCell8
             // 
@@ -162,15 +164,14 @@
             new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.year_and_section")});
             this.xrTableCell8.Name = "xrTableCell8";
             this.xrTableCell8.Text = "Year and Section";
-            this.xrTableCell8.Weight = 1.3837469769944992D;
+            this.xrTableCell8.Weight = 0.7470797545885417D;
             // 
             // xrTableCell10
             // 
             this.xrTableCell10.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.date_time")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.date")});
             this.xrTableCell10.Name = "xrTableCell10";
-            this.xrTableCell10.Text = "Date and Time of Entry";
-            this.xrTableCell10.Weight = 1.2833358029376452D;
+            this.xrTableCell10.Weight = 1.1433333360925939D;
             // 
             // TopMargin
             // 
@@ -370,19 +371,19 @@
             // 
             this.xrTableCell12.Name = "xrTableCell12";
             this.xrTableCell12.Text = "Course";
-            this.xrTableCell12.Weight = 0.87500093090864328D;
+            this.xrTableCell12.Weight = 0.6875009295407486D;
             // 
             // xrTableCell13
             // 
             this.xrTableCell13.Name = "xrTableCell13";
             this.xrTableCell13.Text = "Year and Section";
-            this.xrTableCell13.Weight = 1.3837469769944992D;
+            this.xrTableCell13.Weight = 0.74707949188098122D;
             // 
             // xrTableCell14
             // 
             this.xrTableCell14.Name = "xrTableCell14";
             this.xrTableCell14.Text = "Date and Time of Entry";
-            this.xrTableCell14.Weight = 1.2833358029376452D;
+            this.xrTableCell14.Weight = 2.107503289419058D;
             // 
             // xrLine1
             // 
@@ -456,6 +457,17 @@
             customSqlQuery1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
+            // xrTableCell11
+            // 
+            this.xrTableCell11.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "CustomSqlQuery.time")});
+            this.xrTableCell11.Name = "xrTableCell11";
+            this.xrTableCell11.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 0, 0, 0, 100F);
+            this.xrTableCell11.StylePriority.UsePadding = false;
+            this.xrTableCell11.StylePriority.UseTextAlignment = false;
+            this.xrTableCell11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
+            this.xrTableCell11.Weight = 0.96416845782981386D;
+            // 
             // BisuEntranceLogsReport
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -518,5 +530,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;
         private DevExpress.XtraReports.UI.XRPictureBox xrPictureBox2;
         public DevExpress.XtraReports.UI.XRLabel xrLabel7;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell11;
     }
 }
